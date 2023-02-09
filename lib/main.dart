@@ -9,6 +9,7 @@ import 'package:mtg_roulette/views/game_screen.dart';
 import 'package:mtg_roulette/views/stats_screen.dart';
 
 import 'package:mtg_roulette/commands/base_command.dart' as Commands;
+import 'tools/tools.dart';
 import 'package:mtg_roulette/constants/colors.dart';
 
 
@@ -41,14 +42,13 @@ class MyApp extends StatelessWidget {
             textTheme: const TextTheme(
               headline1: TextStyle(fontSize: 86.0, fontWeight: FontWeight.bold),
               headline2: TextStyle(fontSize: 44.0, fontWeight: FontWeight.bold),
-              //fontSizeFactor: 1.4,
             ),
           ),
           // ----------- routes
           initialRoute: '/splash',
           routes: {
             '/splash': (context) => const SplashScreen(),
-            '/creation': (context) => const CreationScreen(),
+            //'/creation': (context) => const CreationScreen(),
             '/game': (context) => const GameScreen(),
             '/stats': (context) => const StatsScreen(),
           },
@@ -91,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: _appLoaded
-            ? CreationScreen()
+            ? CreationScreen(color: AppModel().colorPalette[randInt(0, AppModel().colorPalette.length)])
             : CircularProgressIndicator(), //show splash screen here instead of progress indicator
       ),
     );
