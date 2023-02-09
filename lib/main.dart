@@ -1,4 +1,4 @@
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             accentColor: Colors.grey,
             fontFamily: 'Oswald',
             textTheme: const TextTheme(
-              headline1: TextStyle(fontSize: 86.0, fontFamily: 'Oswald', /*fontWeight: FontWeight.bold,*/ color: Colors.black87),
+              headline1: TextStyle(fontSize: 86.0, /*fontWeight: FontWeight.bold,*/ color: Colors.black87),
               headline2: TextStyle(fontSize: 44.0, fontWeight: FontWeight.bold, color: Colors.black87),
             ),
           ),

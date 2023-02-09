@@ -24,7 +24,7 @@ class CenterButton extends StatelessWidget {
           child: RotationTransition(
             turns: new AlwaysStoppedAnimation(45 / 360),
             child: Icon(
-              Icons.add,
+              Icons.menu,
             ),
           ),
         ),
