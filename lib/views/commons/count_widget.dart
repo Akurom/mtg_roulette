@@ -3,6 +3,7 @@ import 'package:mtg_roulette/constants/colors.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/views/commons/clock.dart';
 import 'package:mtg_roulette/views/commons/counters_bar.dart';
+import 'dart:async';
 
 typedef void IntCallback(int id);
 
@@ -31,6 +32,7 @@ class CountWidget extends StatefulWidget {
 
 class _CountWidgetState extends State<CountWidget> {
   late int _count;
+  late Timer _timer;
 
   @override
   void initState() {
@@ -62,12 +64,21 @@ class _CountWidgetState extends State<CountWidget> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
-                  child: InkWell(
-                    child: Icon(
-                      Icons.remove,
-                    ),
+                  child: GestureDetector (
+                    child: Icon(Icons.remove),
                     onTap: () {
-                      if (widget.lowLimit == null || _count > widget.lowLimit!) _updateCount(_count - 1);
+                      if (widget.highLimit == null || _count < widget.highLimit!) _updateCount(_count - 1);
+                    },
+                    onTapDown: (TapDownDetails details) {
+                      _timer = Timer.periodic(Duration(milliseconds: 100), (t) {
+                        _updateCount(_count - 1);
+                      });
+                    },
+                    onTapUp: (TapUpDetails details) {
+                      _timer.cancel();
+                    },
+                    onTapCancel: () {
+                      _timer.cancel();
                     },
                   ),
                 ),
@@ -78,10 +89,21 @@ class _CountWidgetState extends State<CountWidget> {
                   ),
                 ),
                 Expanded(
-                  child: InkWell(
+                  child: GestureDetector (
                     child: Icon(Icons.add),
                     onTap: () {
                       if (widget.highLimit == null || _count < widget.highLimit!) _updateCount(_count + 1);
+                    },
+                    onTapDown: (TapDownDetails details) {
+                      _timer = Timer.periodic(Duration(milliseconds: 100), (t) {
+                        _updateCount(_count + 1);
+                      });
+                    },
+                    onTapUp: (TapUpDetails details) {
+                      _timer.cancel();
+                    },
+                    onTapCancel: () {
+                      _timer.cancel();
                     },
                   ),
                 ),

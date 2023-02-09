@@ -13,6 +13,7 @@ class AppColors {
   static const Color pastelOrange = Color(0xFFFFDAC1);
 
   static const Color white = Colors.white;
+  static const Color black = Colors.black;
   static const Color centerButton = Colors.white;
 
 
