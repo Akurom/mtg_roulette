@@ -45,6 +45,7 @@ class _GameScreenState extends State<GameScreen> {
                               quarterTurns: 1,
                               child: CountWidget(
                                 defaultV: gameModel.players[0].lifeCount,
+                                player: gameModel.players[0],
                                 onChanged: (int) {},
                               ),
                             ),
@@ -56,7 +57,8 @@ class _GameScreenState extends State<GameScreen> {
                             child: RotatedBox(
                               quarterTurns: -1,
                               child: CountWidget(
-                                defaultV: gameModel.players[0].lifeCount,
+                                defaultV: gameModel.players[1].lifeCount,
+                                player: gameModel.players[1],
                                 onChanged: (int) {},
                               ),
                             ),
@@ -72,7 +74,8 @@ class _GameScreenState extends State<GameScreen> {
                             child: RotatedBox(
                               quarterTurns: 1,
                               child: CountWidget(
-                                defaultV: gameModel.players[0].lifeCount,
+                                defaultV: gameModel.players[3].lifeCount,
+                                player: gameModel.players[3],
                                 onChanged: (int) {},
                               ),
                             ),
@@ -84,7 +87,8 @@ class _GameScreenState extends State<GameScreen> {
                             child: RotatedBox(
                               quarterTurns: -1,
                               child: CountWidget(
-                                defaultV: gameModel.players[0].lifeCount,
+                                defaultV: gameModel.players[2].lifeCount,
+                                player: gameModel.players[2],
                                 onChanged: (int) {},
                               ),
                             ),

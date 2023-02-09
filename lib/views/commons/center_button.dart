@@ -22,7 +22,7 @@ class CenterButton extends StatelessWidget {
             //border: Border.all(),
           ),
           child: RotationTransition(
-            turns: new AlwaysStoppedAnimation(45 / 360),
+            turns: new AlwaysStoppedAnimation(-45 / 360),
             child: Icon(
               Icons.menu,
             ),
