@@ -8,22 +8,26 @@ import 'player_model.dart';
 
 class GameModel extends ChangeNotifier {
 
-  late final List<PlayerModel> players; // not final ? when a player dies must remove it ?
-  final int nbPlayers;
-  final int initialLifeCount;
+  late List<PlayerModel> _players = []; // not final ? when a player dies must remove it ?
+  late final int _nbPlayers;
+  late final int _initialLifeCount;
 
-  GameModel({required this.nbPlayers, required this.initialLifeCount}) {
+  GameModel();
 
+  void init(int nbPlayers, int initialLifeCount) {
+    _nbPlayers = nbPlayers; _initialLifeCount = nbPlayers;
     int base = randInt(0, AppModel().colorPalette.length);  // used for default color picks
     for (int p = 0; p < nbPlayers; p ++) {
-      players.add(
+      _players.add(
           PlayerModel(
               lifeCount: initialLifeCount,
               color: AppModel().colorPalette[(base + p) % AppModel().colorPalette.length]
           )
       );
     }
-
     notifyListeners();
   }
+
+
+  get players => _players;
 }

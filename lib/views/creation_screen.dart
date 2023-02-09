@@ -3,34 +3,46 @@ import 'package:mtg_roulette/constants/colors.dart';
 import 'package:mtg_roulette/constants/strings.dart';
 import 'commons/count_widget.dart';
 
-class CreationScreen extends StatelessWidget {
+import 'package:mtg_roulette/commands/create_game_command.dart';
+
+
+const int DEFAULT_LIFE_COUNT = 20;
+const int DEFAULT_NBPLAYERS = 4;
+
+class CreationScreen extends StatefulWidget {
   final Color color;
 
   CreationScreen({Key? key, this.color = Colors.transparent}) : super(key: key);
-/*
+
   @override
   State<CreationScreen> createState() => _CreationScreenState();
 }
 
-class _CreationScreenState extends State<CreationScreen> {*/
-  late int _nbPlayers;
-  late int _lifeCount;
+
+
+class _CreationScreenState extends State<CreationScreen> {
+  late int _nbPlayers = DEFAULT_NBPLAYERS;
+  late int _lifeCount = DEFAULT_LIFE_COUNT;
 
   void _updateNbPlayers(int newNbPlayers) {
-    _nbPlayers = newNbPlayers;
+    setState(() {
+      _nbPlayers = newNbPlayers;
+    });
   }
 
   void _updateLifeCount(int newLifeCount) {
-    _lifeCount = newLifeCount;
+    setState(() {
+      _lifeCount = newLifeCount;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    print(color);
+    print(widget.color);
     return Scaffold(
       body: Center(
         child: Container(
-          color: color,
+          color: widget.color,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -41,7 +53,7 @@ class _CreationScreenState extends State<CreationScreen> {*/
               ),
               // count widget limit 2:6
               CountWidget(
-                defaultV: 2,
+                defaultV: DEFAULT_NBPLAYERS,
                 lowLimit: 2,
                 highLimit: 6,
                 onChanged: _updateNbPlayers,
@@ -52,7 +64,7 @@ class _CreationScreenState extends State<CreationScreen> {*/
                 style: Theme.of(context).textTheme.headline4,
               ),
               CountWidget(
-                defaultV: 20,
+                defaultV: DEFAULT_LIFE_COUNT,
                 lowLimit: 1,
                 //color: AppColors.pastelBlack,
                 onChanged: _updateLifeCount,
@@ -67,6 +79,7 @@ class _CreationScreenState extends State<CreationScreen> {*/
                 ),
                 onTap: () {
                   // navigate to GameScreen
+                  CreateGameCommand().run(_nbPlayers, _lifeCount);
                   Navigator.pushNamed(context, '/game');
                 },
               ),

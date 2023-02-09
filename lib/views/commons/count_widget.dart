@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/constants/colors.dart';
 
-
 typedef void IntCallback(int id);
-
 
 class CountWidget extends StatefulWidget {
   final int defaultV;
@@ -45,7 +43,7 @@ class _CountWidgetState extends State<CountWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: widget.color, border: Border.all()),
+      //decoration: BoxDecoration(color: widget.color, border: Border.all()),
       child: IntrinsicHeight(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -57,21 +55,22 @@ class _CountWidgetState extends State<CountWidget> {
                   Icons.remove,
                 ),
                 onTap: () {
-                  if (widget.lowLimit == null || _count > widget.lowLimit!)
-                    _updateCount(_count - 1);
+                  if (widget.lowLimit == null || _count > widget.lowLimit!) _updateCount(_count - 1);
                 },
               ),
             ),
-            Text(
-              _count.toString(),
-              style: Theme.of(context).textTheme.headline1,
+            Center(
+
+              child: Text(
+                _count.toString(),
+                style: Theme.of(context).textTheme.headline1,
+              ),
             ),
             Expanded(
               child: InkWell(
                 child: Icon(Icons.add),
                 onTap: () {
-                  if (widget.highLimit == null || _count < widget.highLimit!)
-                    _updateCount(_count + 1);
+                  if (widget.highLimit == null || _count < widget.highLimit!) _updateCount(_count + 1);
                 },
               ),
             ),

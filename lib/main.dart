@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mtg_roulette/models/game_model.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mtg_roulette/models/app_model.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (c) => AppModel()),
-        //ChangeNotifierProvider<LightModel>(create: (c) => LightModel()),  // todo set in sky section init ther and link to basecommand
+        ChangeNotifierProvider<GameModel>(create: (c) => GameModel()),  // todo set in sky section init ther and link to basecommand
       ],
       child: Builder(builder: (context) {
         Commands.init(context);         // todo UNDERSTAND !!!
