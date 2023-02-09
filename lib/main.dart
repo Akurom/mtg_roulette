@@ -1,3 +1,5 @@
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mtg_roulette/models/game_model.dart';
@@ -39,10 +41,10 @@ class MyApp extends StatelessWidget {
           theme: new ThemeData(       // todo load from AppModel
             scaffoldBackgroundColor: AppColors.white,
             accentColor: Colors.grey,
-            fontFamily: 'Georgia',
+            fontFamily: 'Oswald',
             textTheme: const TextTheme(
-              headline1: TextStyle(fontSize: 86.0, fontWeight: FontWeight.bold),
-              headline2: TextStyle(fontSize: 44.0, fontWeight: FontWeight.bold),
+              headline1: TextStyle(fontSize: 86.0, fontFamily: 'Oswald', /*fontWeight: FontWeight.bold,*/ color: Colors.black87),
+              headline2: TextStyle(fontSize: 44.0, fontWeight: FontWeight.bold, color: Colors.black87),
             ),
           ),
           // ----------- routes
