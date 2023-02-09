@@ -37,8 +37,10 @@ class MyApp extends StatelessWidget {
           theme: new ThemeData(       // todo load from AppModel
             scaffoldBackgroundColor: AppColors.white,
             accentColor: Colors.grey,
-            textTheme: Theme.of(context).textTheme.apply(
-              fontFamily: 'Georgia',
+            fontFamily: 'Georgia',
+            textTheme: const TextTheme(
+              headline1: TextStyle(fontSize: 86.0, fontWeight: FontWeight.bold),
+              headline2: TextStyle(fontSize: 44.0, fontWeight: FontWeight.bold),
               //fontSizeFactor: 1.4,
             ),
           ),
