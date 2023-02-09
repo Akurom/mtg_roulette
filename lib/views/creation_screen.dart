@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_roulette/constants/strings.dart';
 
 
 class CreationScreen extends StatefulWidget {
@@ -8,13 +9,24 @@ class CreationScreen extends StatefulWidget {
   State<CreationScreen> createState() => _CreationScreenState();
 }
 
-
 class _CreationScreenState extends State<CreationScreen> {
-
-
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            // players
+            Text(Strings.creationPlayersNumber),
+            // count widget limit 2:6
+            // starting life total
+            Text(Strings.creationStartingLife),
+            // timer per player
+            Text(Strings.creationTimePerPlayer),
+          ],
+        ),
+      ),
+    );
   }
 }
