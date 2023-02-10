@@ -47,6 +47,7 @@ class _GameScreenState extends State<GameScreen> {
                                 defaultV: gameModel.players[0].lifeCount,
                                 player: gameModel.players[0],
                                 onChanged: (newCount) {
+                                  // todo snackbar then update
                                   gameModel.players[0].updateLifeCount(newCount);
                                 },
                               ),

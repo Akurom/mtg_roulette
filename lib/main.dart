@@ -21,6 +21,13 @@ import 'package:mtg_roulette/constants/colors.dart';
 
 
 void main() {
+  // ------
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  // ------
+
   runApp(MyApp());
 }
 
@@ -82,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     /// Load appModel first, to fetch the appTheme ASAP
     context.read<AppModel>().load().then((value) async {
-      SystemChrome.setEnabledSystemUIOverlays([]);
+
       // init command ?
       setState(() => _appLoaded = true);
       return true;
