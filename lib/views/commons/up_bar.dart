@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/models/player_model.dart';
+import 'package:mtg_roulette/views/edit_player_screen.dart';
 
 class UpBar extends StatelessWidget {
 
@@ -10,6 +11,26 @@ class UpBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Icon(
+          Icons.access_time
+        ),
+        InkWell(
+          child: Text(player.name),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EditPlayerScreen(player: player)),
+            );
+          },
+        ),
+
+        Icon(
+          Icons.star_border
+        )
+      ],
+    );
   }
 }

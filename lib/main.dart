@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mtg_roulette/models/game_model.dart';
+import 'package:mtg_roulette/views/edit_player_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mtg_roulette/models/app_model.dart';
