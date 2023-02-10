@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:mtg_roulette/constants/strings.dart';
 import 'package:mtg_roulette/models/app_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'player_model.dart';
@@ -20,6 +21,7 @@ class GameModel extends ChangeNotifier {
     for (int p = 0; p < nbPlayers; p ++) {
       _players.add(
           PlayerModel(
+              name: Strings.defaultPlayerName + '${p + 1}',
               lifeCount: initialLifeCount,
               color: AppModel().colorPalette[(base + p) % AppModel().colorPalette.length]
           )

@@ -5,6 +5,8 @@ import 'package:mtg_roulette/views/commons/clock.dart';
 import 'package:mtg_roulette/views/commons/counters_bar.dart';
 import 'dart:async';
 
+import 'package:mtg_roulette/views/commons/player_name.dart';
+
 typedef void IntCallback(int id);
 
 class CountWidget extends StatefulWidget {
@@ -55,8 +57,8 @@ class _CountWidgetState extends State<CountWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // -------- Clock
-          if (widget.player != null) Clock(),
+          // -------- player name
+          //if (widget.player != null) PlayerName(playerName: widget.player!.name),
           // ---
           IntrinsicHeight(
             child: Row(
@@ -111,7 +113,7 @@ class _CountWidgetState extends State<CountWidget> {
             ),
           ),
           // --------- Counters bar
-          if (widget.player != null) CountersBar(),
+          if (widget.player != null) CountersBar(player: widget.player!,),
           // ---
         ],
       ),

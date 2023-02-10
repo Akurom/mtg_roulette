@@ -9,4 +9,6 @@ class Strings {
   static const String creationTimePerPlayer = "Time limit";
   static const String creationPlay = "PLAY!";
 
+  static const String defaultPlayerName = "Player ";
+
 }
