@@ -15,6 +15,12 @@ class PlayerModel extends ChangeNotifier {
     required this.lifeCount,
   });
 
+
+  void updateLifeCount(int newCount) {
+    lifeCount = newCount;
+  }
+
+
   void addOneCounter(String tag) {
     if (countersMap[tag] == null) {
       countersMap[tag] = 1;
@@ -23,8 +29,18 @@ class PlayerModel extends ChangeNotifier {
     }
     notifyListeners();
   }
+  void removeOneCounter(String tag) {
 
-  void removeCounterTag(String tag) {
+    if (countersMap[tag] != null) {
+      countersMap[tag] = countersMap[tag]! - 1;
+    }
+    if (countersMap[tag] == 0) {
+      clearCounterTag(tag);
+    }
+    notifyListeners();
+  }
+
+  void clearCounterTag(String tag) {
     countersMap.remove(tag);
     notifyListeners();
   }

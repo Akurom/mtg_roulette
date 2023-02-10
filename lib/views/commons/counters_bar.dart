@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/add_counter_command.dart';
+import 'package:mtg_roulette/commands/remove_one_counter_command.dart';
 import 'package:mtg_roulette/commands/clear_counter_command.dart';
 import 'package:mtg_roulette/constants/colors.dart';
 import 'package:mtg_roulette/models/player_model.dart';
@@ -20,15 +21,22 @@ class _CountersBarState extends State<CountersBar> {
   List<String> _setCounterList = []; //['PSN', 'ENR', 'EXP'];
   List<String> _counterList = ['PSN', 'ENR', 'EXP'];
   bool _visible = false;
+  Timer? _timer;
 
-  void _toggleMenu() {
+  void _openMenu() {
+    //if (_timer != null) _timer!.cancel();
     setState(() {
-      _visible = !_visible;
+      _visible = true;
     });
-    Timer(Duration(seconds: 3), () {
-      setState(() {
-        _visible = !_visible;
-      });
+    _timer = Timer(Duration(seconds: 5), () {
+      _closeMenu();
+    });
+  }
+
+  void _closeMenu() {
+    if (_timer != null) _timer!.cancel();
+    setState(() {
+      _visible = false;
     });
   }
 
@@ -74,7 +82,7 @@ class _CountersBarState extends State<CountersBar> {
                           Icons.add_circle_outline,
                         ),
                         onTap: () {
-                          _toggleMenu();
+                          _openMenu();
                         },
                       ),
                     ),
@@ -118,7 +126,7 @@ class CounterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         if (isInMenu) {
           // add to list & grey out in menu
@@ -133,6 +141,11 @@ class CounterItem extends StatelessWidget {
         if (!isInMenu) {
           // remove from list and restore in menu
           ClearCounterCommand().run(player, tag);
+        }
+      },
+      onVerticalDragStart: (DragStartDetails details) {
+        if (!isInMenu) {
+          RemoveOneCounterCommand().run(player, tag);
         }
       },
       child: Column(

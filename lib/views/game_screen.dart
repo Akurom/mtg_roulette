@@ -46,7 +46,9 @@ class _GameScreenState extends State<GameScreen> {
                               child: CountWidget(
                                 defaultV: gameModel.players[0].lifeCount,
                                 player: gameModel.players[0],
-                                onChanged: (int) {},
+                                onChanged: (newCount) {
+                                  gameModel.players[0].updateLifeCount(newCount);
+                                },
                               ),
                             ),
                           ),
@@ -59,7 +61,9 @@ class _GameScreenState extends State<GameScreen> {
                               child: CountWidget(
                                 defaultV: gameModel.players[1].lifeCount,
                                 player: gameModel.players[1],
-                                onChanged: (int) {},
+                                onChanged: (newCount) {
+                                  gameModel.players[1].updateLifeCount(newCount);
+                                },
                               ),
                             ),
                           ),
@@ -76,7 +80,9 @@ class _GameScreenState extends State<GameScreen> {
                               child: CountWidget(
                                 defaultV: gameModel.players[3].lifeCount,
                                 player: gameModel.players[3],
-                                onChanged: (int) {},
+                                onChanged: (newCount) {
+                                  gameModel.players[3].updateLifeCount(newCount);
+                                },
                               ),
                             ),
                           ),
@@ -89,7 +95,9 @@ class _GameScreenState extends State<GameScreen> {
                               child: CountWidget(
                                 defaultV: gameModel.players[2].lifeCount,
                                 player: gameModel.players[2],
-                                onChanged: (int) {},
+                                onChanged: (newCount) {
+                                  gameModel.players[2].updateLifeCount(newCount);
+                                },
                               ),
                             ),
                           ),

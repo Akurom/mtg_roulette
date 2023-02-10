@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mtg_roulette/constants/colors.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/views/commons/clock.dart';
+
+import 'package:mtg_roulette/views/commons/up_bar.dart';
 import 'package:mtg_roulette/views/commons/counters_bar.dart';
 import 'dart:async';
 
@@ -57,6 +59,7 @@ class _CountWidgetState extends State<CountWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          if (widget.player != null) UpBar(player: widget.player!),
           // -------- player name
           //if (widget.player != null) PlayerName(playerName: widget.player!.name),
           // ---

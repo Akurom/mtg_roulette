@@ -8,7 +8,7 @@ class ClearCounterCommand extends BaseCommand {
 
   Future<bool> run(PlayerModel playerModel, String counterTag) async {
 
-    playerModel.removeCounterTag(counterTag);
+    playerModel.clearCounterTag(counterTag);
     return true;
   }
 }
