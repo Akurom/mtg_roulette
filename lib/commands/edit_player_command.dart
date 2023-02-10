@@ -8,8 +8,9 @@ class EditPlayerCommand extends BaseCommand {
 
 
   Future<bool> run(PlayerModel player, String name, Color color) async {
-    player.name = name;
-    player.color = color;
+    print(player.color);
+    print(color);
+    player.editPreferences(name, color);
     return true;
   }
 }

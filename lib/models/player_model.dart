@@ -21,6 +21,12 @@ class PlayerModel extends ChangeNotifier {
   }
 
 
+  void editPreferences(String name, Color color) {
+    this.name = name; this.color = color;
+    notifyListeners();
+  }
+
+
   void addOneCounter(String tag) {
     if (countersMap[tag] == null) {
       countersMap[tag] = 1;

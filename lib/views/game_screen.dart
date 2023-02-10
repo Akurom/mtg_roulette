@@ -40,7 +40,7 @@ class _GameScreenState extends State<GameScreen> {
                           Container(
                             width: getScreenWidth(context) / 2,
                             height: getScreenHeight(context) / 2,
-                            color: gameModel.players[0].color,
+                            //color: gameModel.players[0].color,
                             child: RotatedBox(
                               quarterTurns: 1,
                               child: CountWidget(
@@ -75,7 +75,7 @@ class _GameScreenState extends State<GameScreen> {
                           Container(
                             width: getScreenWidth(context) / 2,
                             height: getScreenHeight(context) / 2,
-                            color: gameModel.players[2].color,
+                            color: gameModel.players[3].color,
                             child: RotatedBox(
                               quarterTurns: 1,
                               child: CountWidget(
@@ -90,7 +90,7 @@ class _GameScreenState extends State<GameScreen> {
                           Container(
                             width: getScreenWidth(context) / 2,
                             height: getScreenHeight(context) / 2,
-                            color: gameModel.players[3].color,
+                            color: gameModel.players[2].color,
                             child: RotatedBox(
                               quarterTurns: -1,
                               child: CountWidget(

@@ -75,7 +75,7 @@ class _EditPlayerScreenState extends State<EditPlayerScreen> {
                     return InkWell(
                       child: Card(
                           color: AppModel().colorPalette[index],
-                          child: (AppModel().colorPalette[index] == _currentColor) ? Icon(Icons.check) : null),
+                          child: (AppModel().colorPalette[index].value == _currentColor.value) ? Icon(Icons.check) : null),
                       onTap: () {
                         setState(() {
                           _currentColor = AppModel().colorPalette[index];

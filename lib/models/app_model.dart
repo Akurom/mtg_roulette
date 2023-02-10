@@ -10,6 +10,13 @@ class AppModel extends ChangeNotifier {
     AppColors.pastelRed,
     AppColors.pastelOrange,
     AppColors.pastelWhite,
+    AppColors.pastelDeepBlue,
+    AppColors.pastelLightGreen,
+    AppColors.pastelPink,
+    AppColors.fluoRed,
+    AppColors.fluoBlue,
+    AppColors.fluoOrange,
+    AppColors.fluoYellow,
   ];
 
 
