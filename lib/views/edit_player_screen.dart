@@ -18,18 +18,23 @@ class _EditPlayerScreenState extends State<EditPlayerScreen> {
 
   late Color _currentColor;
   late PlayerModel _player;
-  late TextEditingController textController;
+  late TextEditingController _textController;
 
   @override
   void initState() {
     _currentColor = widget.player.color;
     _player = widget.player;
+    _textController = TextEditingController(text: _player.name);
+    /*_textController.selection = TextSelection(
+      baseOffset: 0,
+      extentOffset: _player.name.length,
+    );*/
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    textController = TextEditingController(text: _player.name);
+
 
     return Scaffold(
       backgroundColor: _currentColor,
@@ -40,12 +45,20 @@ class _EditPlayerScreenState extends State<EditPlayerScreen> {
             //Text("Name"),
             // ----- name
             TextField(
-              controller: textController,
+              controller: _textController,
               textAlign: TextAlign.center,
               decoration: const InputDecoration(
                 border: UnderlineInputBorder(),
+                focusedBorder:OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                ),
               ),
               style: Theme.of(context).textTheme.headline4,
+              onTap: () {
+                _textController.selection
+                = TextSelection(baseOffset: 0, extentOffset: _textController.value.text.length);
+              },
+
             ),
             // ----- Colors
             // todo
@@ -81,7 +94,7 @@ class _EditPlayerScreenState extends State<EditPlayerScreen> {
                 style: Theme.of(context).textTheme.headline3,
               ),
               onTap: () {
-                EditPlayerCommand().run(widget.player, textController.text, _currentColor);
+                EditPlayerCommand().run(widget.player, _textController.text, _currentColor);
                 Navigator.pop(context);
               },
             )
