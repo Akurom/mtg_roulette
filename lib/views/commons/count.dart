@@ -27,22 +27,20 @@ class Count extends StatefulWidget {
 
 class _CountState extends State<Count> {
   //late int _count;
-  ValueNotifier<int> _count = ValueNotifier(0);  // used to build CountDigits
+  late ValueNotifier<int> _count;// = ValueNotifier(0);  // used to build CountDigits
 
   @override
   void initState() {
     // init _count from either default value or player life count
     if (widget.player == null)
-      _count.value = widget.defaultV;
+      _count = ValueNotifier(widget.defaultV);
     else
-      _count.value = widget.player!.lifeCount;
+      _count = ValueNotifier(widget.player!.lifeCount);
     super.initState();
   }
 
   void _updateCount(int newCount) {
-    //setState(() {
-      _count.value = newCount;
-    //});
+    _count.value = newCount;
     widget.onChanged(_count.value); // call callback passed by parent
   }
 
@@ -58,6 +56,8 @@ class _CountState extends State<Count> {
       value: widget.player,
       child: Consumer<PlayerModel?>(builder: (context, player, child) {
         return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CountButton(pace: -1, onClicked: _onClicked),
             ValueListenableBuilder(
