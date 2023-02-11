@@ -5,44 +5,32 @@ import 'commons/count_widget.dart';
 
 import 'package:mtg_roulette/commands/create_game_command.dart';
 
-
 const int DEFAULT_LIFE_COUNT = 20;
 const int DEFAULT_NBPLAYERS = 4;
 
-class CreationScreen extends StatefulWidget {
+class CreationScreen extends StatelessWidget {
   final Color color;
 
-  CreationScreen({Key? key, this.color = Colors.transparent}) : super(key: key);
+  CreationScreen({required this.color});
 
-  @override
-  State<CreationScreen> createState() => _CreationScreenState();
-}
-
-
-
-class _CreationScreenState extends State<CreationScreen> {
-  late int _nbPlayers = DEFAULT_NBPLAYERS;
-  late int _lifeCount = DEFAULT_LIFE_COUNT;
+  int _nbPlayers = DEFAULT_NBPLAYERS;
+  int _lifeCount = DEFAULT_LIFE_COUNT;
 
   void _updateNbPlayers(int newNbPlayers) {
-    setState(() {
-      _nbPlayers = newNbPlayers;
-    });
+    _nbPlayers = newNbPlayers;
   }
 
   void _updateLifeCount(int newLifeCount) {
-    setState(() {
-      _lifeCount = newLifeCount;
-    });
+    _lifeCount = newLifeCount;
   }
 
   @override
   Widget build(BuildContext context) {
-    print(widget.color);
+    print(color);
     return Scaffold(
       body: Center(
         child: Container(
-          color: widget.color,
+          color: color,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

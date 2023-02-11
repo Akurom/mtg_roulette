@@ -18,7 +18,10 @@ class UpBar extends StatelessWidget {
           Icons.access_time
         ),
         InkWell(
-          child: Text(player.name),
+          child: Text(
+            player.name,
+            style: Theme.of(context).textTheme.headline6,
+          ),
           onTap: () {
             Navigator.push(
               context,
