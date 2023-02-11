@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mtg_roulette/models/game_model.dart';
 import 'package:mtg_roulette/views/edit_player_screen.dart';
+import 'package:mtg_roulette/views/layouts/four_players.dart';
+import 'package:mtg_roulette/views/layouts/two_players.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mtg_roulette/models/app_model.dart';
@@ -61,6 +63,8 @@ class MyApp extends StatelessWidget {
             '/splash': (context) => const SplashScreen(),
             //'/creation': (context) => const CreationScreen(),
             '/game': (context) => const GameScreen(),
+            '/two': (context) => const TwoPlayers(),
+            '/four': (context) => const FourPlayers(),
             '/stats': (context) => const StatsScreen(),
           },
           //onGenerateRoute: onGenerateRoute, // todo animation on routing

@@ -68,7 +68,18 @@ class CreationScreen extends StatelessWidget {
                 onTap: () {
                   // navigate to GameScreen
                   CreateGameCommand().run(_nbPlayers, _lifeCount);
-                  Navigator.pushNamed(context, '/game');
+                  if (_nbPlayers == 2) {
+                    Navigator.pushNamed(context, '/two');
+                  } else if (_nbPlayers == 3) {
+                    //Navigator.pushNamed(context, '/game');
+                  } else if (_nbPlayers == 4) {
+                    Navigator.pushNamed(context, '/four');
+                  } else if (_nbPlayers == 5) {
+                    //Navigator.pushNamed(context, '/game');
+                  } else if (_nbPlayers == 6) {
+                    //Navigator.pushNamed(context, '/game');
+                  }
+                  //Navigator.pushNamed(context, '/game');
                 },
               ),
             ],
