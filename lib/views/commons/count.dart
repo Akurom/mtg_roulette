@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/models/player_model.dart';
+import 'package:mtg_roulette/views/commons/count_digits.dart';
 import 'package:provider/provider.dart';
 import 'count_button.dart';
 
@@ -29,6 +30,7 @@ class _CountState extends State<Count> {
 
   @override
   void initState() {
+    // init _count from either default value or player life count
     if (widget.player == null)
       _count = widget.defaultV;
     else
@@ -41,13 +43,15 @@ class _CountState extends State<Count> {
     setState(() {
       _count = newCount;
     });
-    widget.onChanged(_count);
+    widget.onChanged(_count); // call callback passed by parent
   }
 
-
-  void onClicked(int) {
-    if (widget.highLimit == null || _count < widget.highLimit!)
-      _updateCount(_count - 1);
+  // callback passed to CountButton
+  void _onClicked(int pace) {
+    if (pace < 0 && (widget.lowLimit == null || _count > widget.lowLimit!))
+      _updateCount(_count + pace);
+    if (pace > 0 && (widget.highLimit == null || _count < widget.highLimit!))
+      _updateCount(_count + pace);
   }
 
 
@@ -58,9 +62,9 @@ class _CountState extends State<Count> {
       child: Consumer<PlayerModel?>(builder: (context, player, child) {
         return Row(
           children: [
-            CountButton(pace: -1, onClicked: widget.onChanged),
-            Text(player!.lifeCount.toString()),
-            CountButton(pace: 1, onClicked: widget.onChanged),
+            CountButton(pace: -1, onClicked: _onClicked),
+            CountDigits(count: _count),
+            CountButton(pace: 1, onClicked: _onClicked),
           ],
         );
       }),

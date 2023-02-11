@@ -3,6 +3,7 @@ import 'package:mtg_roulette/constants/colors.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/commons/clock.dart';
+import 'package:mtg_roulette/views/commons/count.dart';
 
 import 'package:mtg_roulette/views/commons/up_bar.dart';
 import 'package:mtg_roulette/views/commons/counters_bar.dart';
@@ -75,58 +76,12 @@ class _CountWidgetState extends State<CountWidget> {
               //if (widget.player != null) PlayerName(playerName: widget.player!.name),
               // ---
               IntrinsicHeight(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        child: Container(child: Icon(Icons.remove)),
-                        onTap: () {
-                          if (widget.highLimit == null || _count < widget.highLimit!) _updateCount(_count - 1);
-                        },
-                        onTapDown: (TapDownDetails details) {
-                          _timer = Timer.periodic(Duration(milliseconds: 100), (t) {
-                            _updateCount(_count - 1);
-                          });
-                        },
-                        onTapUp: (TapUpDetails details) {
-                          _timer.cancel();
-                        },
-                        onTapCancel: () {
-                          _timer.cancel();
-                        },
-                      ),
-                    ),
-                    Center(
-                      child: Text(
-                        _count.toString(),
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
-                    ),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          if (widget.highLimit == null || _count < widget.highLimit!) _updateCount(_count + 1);
-                        },
-                        onTapDown: (TapDownDetails details) {
-                          _timer = Timer.periodic(Duration(milliseconds: 100), (t) {
-                            _updateCount(_count + 1);
-                          });
-                        },
-                        onTapUp: (TapUpDetails details) {
-                          _timer.cancel();
-                        },
-                        onTapCancel: () {
-                          _timer.cancel();
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(border: Border.all()),
-                          child: Icon(Icons.add),
-                        ),
-                      ),
-                    ),
-                  ],
+                child: Count(
+                  player: widget.player,
+                  onChanged: _updateCount,
+                  defaultV: widget.defaultV,
+                  lowLimit: widget.lowLimit,
+                  highLimit: widget.highLimit,
                 ),
               ),
 
