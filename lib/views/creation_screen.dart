@@ -71,7 +71,7 @@ class CreationScreen extends StatelessWidget {
                   if (_nbPlayers == 2) {
                     Navigator.pushNamed(context, '/two');
                   } else if (_nbPlayers == 3) {
-                    //Navigator.pushNamed(context, '/game');
+                    Navigator.pushNamed(context, '/three');
                   } else if (_nbPlayers == 4) {
                     Navigator.pushNamed(context, '/four');
                   } else if (_nbPlayers == 5) {
