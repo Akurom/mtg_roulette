@@ -50,7 +50,7 @@ class _CountersBarState extends State<CountersBar> {
           return Center(
             child: Container(
               decoration: BoxDecoration(
-                  border: Border.all()
+                  //border: Border.all()
                   ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,7 +59,7 @@ class _CountersBarState extends State<CountersBar> {
                   // ---------- Set counters
                   Expanded(
                     flex: 6,
-                      child: Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         for (String c in player.countersMap.keys)
@@ -115,8 +115,6 @@ class _CountersBarState extends State<CountersBar> {
   }
 }
 
-
-
 class CounterItem extends StatelessWidget {
   final String tag;
   int? count;
@@ -129,14 +127,7 @@ class CounterItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (isInMenu) {
-          // add to list & grey out in menu
-          AddCounterCommand().run(player, tag);
-        }
-        if (!isInMenu) {
-          // add 1
-          AddCounterCommand().run(player, tag);
-        }
+        AddCounterCommand().run(player, tag);
       },
       onLongPress: () {
         if (!isInMenu) {
@@ -144,13 +135,21 @@ class CounterItem extends StatelessWidget {
           ClearCounterCommand().run(player, tag);
         }
       },
+      onHorizontalDragStart: (DragStartDetails details) {
+        if (!isInMenu) {
+          RemoveOneCounterCommand().run(player, tag);
+        }
+      },
       onVerticalDragStart: (DragStartDetails details) {
         if (!isInMenu) {
           RemoveOneCounterCommand().run(player, tag);
         }
       },
-      child: Column(
+      child: Row(
         children: [
+          // number of counters
+          if (!isInMenu) Text(count.toString()),
+
           Card(
             color: AppColors.black,
             child: Text(
@@ -158,8 +157,6 @@ class CounterItem extends StatelessWidget {
               style: TextStyle(color: AppColors.white),
             ),
           ),
-          // number of counters
-          if (!isInMenu) Text(count.toString()),
         ],
       ),
     );
