@@ -12,7 +12,8 @@ class Count extends StatefulWidget {
   final int defaultV;
   final int? lowLimit, highLimit;
 
-  const Count({Key? key,
+  const Count({
+    Key? key,
     this.player,
     required this.onChanged,
     this.lowLimit,
@@ -25,35 +26,31 @@ class Count extends StatefulWidget {
 }
 
 class _CountState extends State<Count> {
-
-  late int _count;
+  //late int _count;
+  ValueNotifier<int> _count = ValueNotifier(0);  // used to build CountDigits
 
   @override
   void initState() {
     // init _count from either default value or player life count
     if (widget.player == null)
-      _count = widget.defaultV;
+      _count.value = widget.defaultV;
     else
-      _count = widget.player!.lifeCount;
+      _count.value = widget.player!.lifeCount;
     super.initState();
   }
 
-
   void _updateCount(int newCount) {
-    setState(() {
-      _count = newCount;
-    });
-    widget.onChanged(_count); // call callback passed by parent
+    //setState(() {
+      _count.value = newCount;
+    //});
+    widget.onChanged(_count.value); // call callback passed by parent
   }
 
   // callback passed to CountButton
   void _onClicked(int pace) {
-    if (pace < 0 && (widget.lowLimit == null || _count > widget.lowLimit!))
-      _updateCount(_count + pace);
-    if (pace > 0 && (widget.highLimit == null || _count < widget.highLimit!))
-      _updateCount(_count + pace);
+    if (pace < 0 && (widget.lowLimit == null || _count.value > widget.lowLimit!)) _updateCount(_count.value + pace);
+    if (pace > 0 && (widget.highLimit == null || _count.value < widget.highLimit!)) _updateCount(_count.value + pace);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +60,11 @@ class _CountState extends State<Count> {
         return Row(
           children: [
             CountButton(pace: -1, onClicked: _onClicked),
-            CountDigits(count: _count),
+            ValueListenableBuilder(
+                valueListenable: _count,
+                builder: (BuildContext context, int val, Widget? child) {
+                  return CountDigits(count: _count.value);
+                }),
             CountButton(pace: 1, onClicked: _onClicked),
           ],
         );

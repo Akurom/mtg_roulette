@@ -7,12 +7,13 @@ typedef void IntCallback(int c);
 class CountButton extends StatelessWidget {
   final int pace;
   final IntCallback onClicked;
-  CountButton({Key? key, this.pace = 1, required this.onClicked}) : super(key: key);
 
-  late Timer _timer;
+  const CountButton({Key? key, this.pace = 1, required this.onClicked}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    late Timer _timer;
+    print ("CountButton built");
     return GestureDetector(
       child: Container(child: Icon((pace > 0) ? Icons.add : Icons.remove)),
       onTap: () {

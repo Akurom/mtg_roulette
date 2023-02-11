@@ -16,12 +16,12 @@ typedef void IntCallback(int id);
 class CountWidget extends StatefulWidget {
   final int defaultV;
   final int? lowLimit, highLimit;
-  Color color;
+  final Color color;
   final bool displaySnack;
   final IntCallback onChanged;
   final PlayerModel? player;
 
-  CountWidget(
+  const CountWidget(
       {Key? key,
       this.lowLimit,
       this.highLimit,
@@ -53,10 +53,9 @@ class _CountWidgetState extends State<CountWidget> {
     super.initState();
   }
 
-  void _updateCount(int newCount) {
-    setState(() {
-      _count = newCount;
-    });
+  void _updateCount(int newCount) { // let Count handlle counter ? but how to validate form ? => PROVIDER ?
+
+    _count = newCount;
     widget.onChanged(_count);
   }
 
