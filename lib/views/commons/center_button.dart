@@ -7,11 +7,20 @@ import 'package:mtg_roulette/constants/colors.dart';
 
 class CenterButton extends StatelessWidget {
 
+  final double? top;
+  final double? left;
+  const CenterButton({this.top, this.left});
+
   @override
   Widget build(BuildContext context) {
+
+    // ugly ?
+    double _top = top ?? getScreenHeight(context) / 2;
+    double _left = left ?? getScreenWidth(context) / 2;
+
     return Positioned(
-      top: getScreenHeight(context) / 2 - getScreenWidth(context) / 16,
-      left: getScreenWidth(context) / 2 - getScreenWidth(context) / 16,
+      top: _top - getScreenWidth(context) / 16,
+      left: _left - getScreenWidth(context) / 16,
       child: RotationTransition(
         turns: new AlwaysStoppedAnimation(45 / 360),
         child: Container(

@@ -6,6 +6,7 @@ import 'package:mtg_roulette/models/game_model.dart';
 import 'package:mtg_roulette/views/edit_player_screen.dart';
 import 'package:mtg_roulette/views/layouts/four_players.dart';
 import 'package:mtg_roulette/views/layouts/two_players.dart';
+import 'package:mtg_roulette/views/layouts/three_players.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mtg_roulette/models/app_model.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
             //'/creation': (context) => const CreationScreen(),
             '/game': (context) => const GameScreen(),
             '/two': (context) => const TwoPlayers(),
+            '/three': (context) => const ThreePlayers(),
             '/four': (context) => const FourPlayers(),
             '/stats': (context) => const StatsScreen(),
           },
