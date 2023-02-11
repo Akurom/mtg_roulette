@@ -7,6 +7,7 @@ import 'package:mtg_roulette/views/edit_player_screen.dart';
 import 'package:mtg_roulette/views/layouts/four_players.dart';
 import 'package:mtg_roulette/views/layouts/two_players.dart';
 import 'package:mtg_roulette/views/layouts/three_players.dart';
+import 'package:mtg_roulette/views/layouts/five_players.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mtg_roulette/models/app_model.dart';
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
             '/two': (context) => const TwoPlayers(),
             '/three': (context) => const ThreePlayers(),
             '/four': (context) => const FourPlayers(),
+            '/five': (context) => const FivePlayers(),
             '/stats': (context) => const StatsScreen(),
           },
           //onGenerateRoute: onGenerateRoute, // todo animation on routing
