@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -13,23 +12,26 @@ class CountButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late Timer _timer;
-    print ("CountButton built");
-    return GestureDetector(
-      child: Container(child: Icon((pace > 0) ? Icons.add : Icons.remove)),
-      onTap: () {
-        onClicked(pace);
-      },
-      onTapDown: (TapDownDetails details) {
-        _timer = Timer.periodic(Duration(milliseconds: 100), (t) {
+    print("CountButton built");
+    return Expanded(
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        child: SizedBox(child: Icon((pace > 0) ? Icons.add : Icons.remove)),
+        onTap: () {
           onClicked(pace);
-        });
-      },
-      onTapUp: (TapUpDetails details) {
-        _timer.cancel();
-      },
-      onTapCancel: () {
-        _timer.cancel();
-      },
+        },
+        onTapDown: (TapDownDetails details) {
+          _timer = Timer.periodic(Duration(milliseconds: 100), (t) {
+            onClicked(pace);
+          });
+        },
+        onTapUp: (TapUpDetails details) {
+          _timer.cancel();
+        },
+        onTapCancel: () {
+          _timer.cancel();
+        },
+      ),
     );
   }
 }
