@@ -50,15 +50,16 @@ class _CountersBarState extends State<CountersBar> {
           return Center(
             child: Container(
               decoration: BoxDecoration(
-                  //border: Border.all()
+                  border: Border.all()
                   ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   // ---------- Set counters
                   Expanded(
                     flex: 6,
-                    child: Row(
+                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         for (String c in player.countersMap.keys)
@@ -74,8 +75,6 @@ class _CountersBarState extends State<CountersBar> {
                   // -------
                   Expanded(
                     flex: 1,
-                    /*width: getScreenWidth(context) / 8,
-            height: getScreenWidth(context) / 8,*/
                     child: Center(
                       child: InkWell(
                         child: Icon(
@@ -115,6 +114,8 @@ class _CountersBarState extends State<CountersBar> {
     );
   }
 }
+
+
 
 class CounterItem extends StatelessWidget {
   final String tag;

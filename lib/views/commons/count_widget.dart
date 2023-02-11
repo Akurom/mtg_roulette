@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/constants/colors.dart';
 import 'package:mtg_roulette/models/player_model.dart';
+import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/commons/clock.dart';
 
 import 'package:mtg_roulette/views/commons/up_bar.dart';
 import 'package:mtg_roulette/views/commons/counters_bar.dart';
 import 'dart:async';
 
-import 'package:mtg_roulette/views/commons/player_name.dart';
 import 'package:provider/provider.dart';
 
 typedef void IntCallback(int id);
@@ -70,7 +70,7 @@ class _CountWidgetState extends State<CountWidget> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              if (widget.player != null) UpBar(player: player!/* widget.player!*/),
+              if (widget.player != null) UpBar(player: player! /* widget.player!*/),
               // -------- player name
               //if (widget.player != null) PlayerName(playerName: widget.player!.name),
               // ---
@@ -81,7 +81,7 @@ class _CountWidgetState extends State<CountWidget> {
                   children: [
                     Expanded(
                       child: GestureDetector(
-                        child: Icon(Icons.remove),
+                        child: Container(child: Icon(Icons.remove)),
                         onTap: () {
                           if (widget.highLimit == null || _count < widget.highLimit!) _updateCount(_count - 1);
                         },
@@ -106,7 +106,6 @@ class _CountWidgetState extends State<CountWidget> {
                     ),
                     Expanded(
                       child: GestureDetector(
-                        child: Icon(Icons.add),
                         onTap: () {
                           if (widget.highLimit == null || _count < widget.highLimit!) _updateCount(_count + 1);
                         },
@@ -121,11 +120,16 @@ class _CountWidgetState extends State<CountWidget> {
                         onTapCancel: () {
                           _timer.cancel();
                         },
+                        child: Container(
+                          decoration: BoxDecoration(border: Border.all()),
+                          child: Icon(Icons.add),
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
+
               // --------- Counters bar
               if (widget.player != null)
                 CountersBar(
