@@ -12,6 +12,9 @@ class GameModel extends ChangeNotifier {
   late List<PlayerModel> _players = []; // not final ? when a player dies must remove it ?
   late final int _nbPlayers;
   late final int _initialLifeCount;
+  bool _isMenuOpen = false;
+
+
 
   GameModel();
 
@@ -32,4 +35,15 @@ class GameModel extends ChangeNotifier {
 
 
   get players => _players;
+
+
+
+  void toggleMenu() {
+    _isMenuOpen = !_isMenuOpen;
+    // todo pause clocks
+    print (_isMenuOpen);
+    notifyListeners();
+  }
+
+  bool get isMenuOpen => _isMenuOpen;
 }
