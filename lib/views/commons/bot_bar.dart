@@ -84,7 +84,7 @@ class _BotBarState extends State<BotBar> {
                     ),
                     InkWell(
                       child: Icon(
-                        Icons.add_circle_outline,
+                        _icon,
                       ),
                       onTap: () {
                         _toggleMenu();
@@ -143,18 +143,18 @@ class CounterItem extends StatelessWidget {
         AddCounterCommand().run(player, tag);
       },
       onLongPress: () {
-        if (!isInMenu) {
+        if (player.countersMap[tag] != null) {
           // remove from list and restore in menu
           ClearCounterCommand().run(player, tag);
         }
       },
       onHorizontalDragStart: (DragStartDetails details) {
-        if (!isInMenu) {
+        if (player.countersMap[tag] != null) {
           RemoveOneCounterCommand().run(player, tag);
         }
       },
       onVerticalDragStart: (DragStartDetails details) {
-        if (!isInMenu) {
+        if (player.countersMap[tag] != null) {
           RemoveOneCounterCommand().run(player, tag);
         }
       },
@@ -164,10 +164,10 @@ class CounterItem extends StatelessWidget {
           if (player.countersMap[tag] != null) Text(player.countersMap[tag].toString()),
 
           Card(
-            color: AppColors.white,
+            color: (player.countersMap[tag] != null) ? AppColors.black : AppColors.white,
             child: Text(
               tag,
-              style: TextStyle(color: AppColors.black),
+              style: TextStyle(color: (player.countersMap[tag] != null) ? AppColors.white : AppColors.black),
             ),
           ),
         ],
