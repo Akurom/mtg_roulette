@@ -7,7 +7,6 @@ import 'package:mtg_roulette/views/commons/clock.dart';
 import 'package:mtg_roulette/views/commons/count.dart';
 
 import 'package:mtg_roulette/views/commons/up_bar.dart';
-import 'package:mtg_roulette/views/commons/counters_bar.dart';
 import 'dart:async';
 
 import 'package:provider/provider.dart';

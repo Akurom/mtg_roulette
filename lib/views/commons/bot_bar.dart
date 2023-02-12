@@ -59,21 +59,17 @@ class _BotBarState extends State<BotBar> {
                         //crossAxisAlignment: CrossAxisAlignment.end,
 
                         children: [
-                          Visibility(
-                            visible: _visible || player.countersMap['TIX'] != null,
-                            maintainState: true,
-                            maintainAnimation: true,
-                            maintainSize: true,
+                          AnimatedOpacity(
+                            opacity: _visible || player.countersMap['TIX'] != null ? 1.0 : 0.0,
+                            duration: const Duration(milliseconds: 200),
                             child: CounterItem(
                               tag: "TIX",
                               player: player,
                             ),
                           ),
-                          Visibility(
-                            visible: _visible || player.countersMap['EXP'] != null,
-                            maintainState: true,
-                            maintainAnimation: true,
-                            maintainSize: true,
+                          AnimatedOpacity(
+                            opacity: _visible || player.countersMap['EXP'] != null ? 1.0 : 0.0,
+                            duration: const Duration(milliseconds: 200),
                             child: CounterItem(
                               tag: "EXP",
                               player: player,
@@ -96,21 +92,17 @@ class _BotBarState extends State<BotBar> {
                         //crossAxisAlignment: CrossAxisAlignment.end,
 
                         children: [
-                          Visibility(
-                            visible: _visible || player.countersMap['PSN'] != null,
-                            maintainState: true,
-                            maintainAnimation: true,
-                            maintainSize: true,
+                          AnimatedOpacity(
+                            opacity: _visible || player.countersMap['PSN'] != null ? 1.0 : 0.0,
+                            duration: const Duration(milliseconds: 200),
                             child: CounterItem(
                               tag: "PSN",
                               player: player,
                             ),
                           ),
-                          Visibility(
-                            visible: _visible  || player.countersMap['NRG'] != null,
-                            maintainState: true,
-                            maintainAnimation: true,
-                            maintainSize: true,
+                          AnimatedOpacity(
+                            opacity: _visible || player.countersMap['NRG'] != null ? 1.0 : 0.0,
+                            duration: const Duration(milliseconds: 200),
                             child: CounterItem(
                               tag: "NRG",
                               player: player,
