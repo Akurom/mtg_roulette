@@ -59,8 +59,14 @@ class _CountersBarState extends State<CountersBar> {
                   // ---------- Set counters
                   Expanded(
                     flex: 6,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    child: Container(decoration: BoxDecoration(border: Border.all()),
+
+                    child: Wrap(
+                      alignment: WrapAlignment.spaceEvenly,
+                      runAlignment: WrapAlignment.start,
+                      direction: Axis.horizontal, // todo wrap this shit
+                      verticalDirection: VerticalDirection.up,
+
                       children: [
                         for (String c in player.countersMap.keys)
                           CounterItem(
@@ -71,7 +77,7 @@ class _CountersBarState extends State<CountersBar> {
                           ),
                       ],
                     ),
-                  ),
+                  ),),
                   // -------
                   Expanded(
                     flex: 1,

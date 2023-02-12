@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mtg_roulette/constants/colors.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
+import 'package:mtg_roulette/views/commons/bot_bar.dart';
 import 'package:mtg_roulette/views/commons/clock.dart';
 import 'package:mtg_roulette/views/commons/count.dart';
 
@@ -86,7 +87,7 @@ class _CountWidgetState extends State<CountWidget> {
 
               // --------- Counters bar
               if (widget.player != null)
-                CountersBar(
+                BotBar(
                   player: widget.player!,
                 ),
               // ---
