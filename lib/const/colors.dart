@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 
-class AppColors {
-  AppColors._();
+class ColorConstants {
+  ColorConstants._();
 
   static const Color pastelRed = Color(0xFFFF9AA2);
 
@@ -21,6 +21,7 @@ class AppColors {
   static const Color fluoBlue = Color(0xff70d6ff);
   static const Color fluoOrange = Color(0xffff9770);
   static const Color fluoYellow = Color(0xffffd670);
+  static const Color fluoGreen = Color(0xff77dd77);
 
   static const Color white = Colors.white;
   static const Color black = Colors.black;

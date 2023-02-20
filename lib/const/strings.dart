@@ -1,8 +1,8 @@
 
 
-class Strings {
+class TextConstants {
 
-  Strings._();
+  TextConstants._();
   // ----- creation screen
   static const String creationPlayersNumber = "Number of players";
   static const String creationStartingLife = "Starting life total";

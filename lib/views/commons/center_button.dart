@@ -3,7 +3,7 @@ import 'package:mtg_roulette/commands/toggle_menu_command.dart';
 import 'package:mtg_roulette/models/game_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 
-import 'package:mtg_roulette/constants/colors.dart';
+import 'package:mtg_roulette/const/colors.dart';
 
 import 'package:provider/provider.dart';
 
@@ -56,7 +56,7 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
         AnimatedMenuElement(
           w: w,
           h: h,
-          color: AppColors.white,
+          color: ColorConstants.white,
           defaultLeft: _left - w / 2,
           defaultTop: _top - w / 2,
           openLeft: _left / 2 - w / 2,
@@ -65,7 +65,7 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
         AnimatedMenuElement(
           w: w,
           h: h,
-          color: AppColors.white,
+          color: ColorConstants.white,
           defaultLeft: _left - w / 2,
           defaultTop: _top - w / 2,
           openLeft: _left + _left / 2 - w / 2,
@@ -86,7 +86,7 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
                 width: w,
                 height: h,
                 decoration: BoxDecoration(
-                  color: AppColors.centerButton,
+                  color: ColorConstants.centerButton,
                   //border: Border.all(),
                 ),
                 child: RotationTransition(
@@ -122,7 +122,7 @@ class AnimatedMenuElement extends StatefulWidget {
     Key? key,
     required this.w,
     required this.h,
-    this.color = AppColors.white,
+    this.color = ColorConstants.white,
     required this.defaultTop,
     required this.defaultLeft,
     required this.openTop,

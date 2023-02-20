@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/models/player_model.dart';
-import 'package:mtg_roulette/views/edit_player_screen.dart';
+import 'package:mtg_roulette/views/screens/edit_player_screen.dart';
 
 class UpBar extends StatelessWidget {
 

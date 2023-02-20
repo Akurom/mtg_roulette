@@ -15,7 +15,7 @@ class _CountDigitsState extends State<CountDigits> {
   Widget build(BuildContext context) {
     return Text(
       widget.count.toString(),
-      style: Theme.of(context).textTheme.headline1,
+      style: Theme.of(context).textTheme.displayLarge,
     );
   }
 }

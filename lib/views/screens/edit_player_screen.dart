@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/base_command.dart';
 import 'package:mtg_roulette/commands/edit_player_command.dart';
-import 'package:mtg_roulette/constants/strings.dart';
+import 'package:mtg_roulette/const/strings.dart';
 import 'package:mtg_roulette/models/app_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
@@ -90,7 +90,7 @@ class _EditPlayerScreenState extends State<EditPlayerScreen> {
             // todo
             InkWell(
               child: Text(
-                Strings.save,
+                TextConstants.save,
                 style: Theme.of(context).textTheme.headline3,
               ),
               onTap: () {

@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/constants/colors.dart';
+import 'package:mtg_roulette/const/colors.dart';
 
 class AppModel extends ChangeNotifier {
 
   List<Color> colorPalette = [
-    AppColors.pastelBlack,
-    AppColors.pastelBlue,
-    AppColors.pastelGreen,
-    AppColors.pastelRed,
-    AppColors.pastelOrange,
-    AppColors.pastelWhite,
-    AppColors.pastelDeepBlue,
-    AppColors.pastelLightGreen,
-    AppColors.pastelPink,
-    AppColors.fluoRed,
-    AppColors.fluoBlue,
-    AppColors.fluoOrange,
-    AppColors.fluoYellow,
+    ColorConstants.pastelBlack,
+    ColorConstants.pastelBlue,
+    ColorConstants.pastelGreen,
+    ColorConstants.pastelRed,
+    ColorConstants.pastelOrange,
+    ColorConstants.pastelWhite,
+    ColorConstants.pastelDeepBlue,
+    ColorConstants.pastelLightGreen,
+    ColorConstants.pastelPink,
+    ColorConstants.fluoRed,
+    ColorConstants.fluoBlue,
+    ColorConstants.fluoOrange,
+    ColorConstants.fluoGreen,
+    ColorConstants.fluoYellow,
+
+    Colors.cyan,
+    Colors.redAccent,
+    Colors.greenAccent,
+    Colors.purpleAccent,
+    Colors.yellow,
+    Colors.grey,
+    Colors.amber,
   ];
 
 

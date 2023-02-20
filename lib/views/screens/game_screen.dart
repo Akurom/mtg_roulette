@@ -3,7 +3,7 @@ import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/commons/count_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/models/game_model.dart';
-import 'commons/center_button.dart';
+import '../commons/center_button.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);

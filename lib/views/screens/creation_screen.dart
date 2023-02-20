@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/constants/colors.dart';
-import 'package:mtg_roulette/constants/strings.dart';
-import 'commons/count_widget.dart';
+import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/strings.dart';
+import '../commons/count_widget.dart';
 
 import 'package:mtg_roulette/commands/create_game_command.dart';
 
@@ -36,7 +36,7 @@ class CreationScreen extends StatelessWidget {
             children: [
               // players
               Text(
-                Strings.creationPlayersNumber,
+                TextConstants.creationPlayersNumber,
                 style: Theme.of(context).textTheme.headline4,
               ),
               // count widget limit 2:6
@@ -48,7 +48,7 @@ class CreationScreen extends StatelessWidget {
               ),
               // starting life total
               Text(
-                Strings.creationStartingLife,
+                TextConstants.creationStartingLife,
                 style: Theme.of(context).textTheme.headline4,
               ),
               CountWidget(
@@ -62,7 +62,7 @@ class CreationScreen extends StatelessWidget {
 
               InkWell(
                 child: Text(
-                  Strings.creationPlay,
+                  TextConstants.creationPlay,
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 onTap: () {
