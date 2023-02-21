@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/tools/tools.dart';
-import 'package:mtg_roulette/views/commons/player_widget.dart';
+import 'package:mtg_roulette/views/widgets/player_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/models/game_model.dart';
-import '../commons/center_menu.dart';
+import '../widgets/center_menu.dart';
 
 class SixPlayers extends StatefulWidget {
   const SixPlayers({Key? key}) : super(key: key);

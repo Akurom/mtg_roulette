@@ -16,7 +16,7 @@ class _CountDigitsState extends State<CountDigits> {
         fit: BoxFit.fitHeight,
         clipBehavior: Clip.hardEdge,
         child: Container(
-          decoration: BoxDecoration(border: Border.all()),
+          //decoration: BoxDecoration(border: Border.all()),
           child: Text(
             widget.count.toString(),
             style: Theme.of(context).textTheme.displayLarge,

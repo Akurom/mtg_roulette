@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mtg_roulette/const/colors.dart';
 import 'package:mtg_roulette/const/strings.dart';
 import 'package:mtg_roulette/tools/tools.dart';
-import '../commons/player_widget.dart';
+import '../widgets/player_widget.dart';
 
 import 'package:mtg_roulette/commands/create_game_command.dart';
 

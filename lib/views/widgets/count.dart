@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/models/player_model.dart';
-import 'package:mtg_roulette/views/commons/count_digits.dart';
+import 'package:mtg_roulette/views/widgets/count_digits.dart';
 import 'package:provider/provider.dart';
 import 'count_button.dart';
 
@@ -54,7 +54,7 @@ class _CountState extends State<Count> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(),
+        //border: Border.all(),
       ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

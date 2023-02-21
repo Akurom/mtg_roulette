@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
 
 
             textTheme: TextTheme(
-              displayLarge: GoogleFonts.roboto(/*fontSize: 94.0,*/ color: ColorConstants.main),
+              displayLarge: GoogleFonts.roboto(fontSize: 97.0, color: ColorConstants.main),
               displayMedium: GoogleFonts.roboto(fontSize: 44.0, color: ColorConstants.main),
               displaySmall: GoogleFonts.roboto(fontSize: 24.0, color: ColorConstants.main),
             ),
