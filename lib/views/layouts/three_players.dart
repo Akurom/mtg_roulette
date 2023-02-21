@@ -38,39 +38,42 @@ class _ThreePlayersState extends State<ThreePlayers> {
                         //mainAxisAlignment: ,
                         children: [
                           Container(
-                              width: getScreenWidth(context) / 2,
-                              height: getScreenHeight(context) * 3/5,
-                              //color: gameModel.players[0].color,
-                              child: RotatedBox(
-                                quarterTurns: 1,
-                                child: CountWidget(
-                                  defaultV: gameModel.players[0].lifeCount,
-                                  player: gameModel.players[0],
-                                  onChanged: (newCount) {
-                                    // todo snackbar then update
-                                    gameModel.players[0].updateLifeCount(newCount);
-                                  },
-                                ),
-                              ),
-                          ),
-                          Container(
-                              width: getScreenWidth(context) / 2,
-                              height: getScreenHeight(context) * 3/5,
-                              color: gameModel.players[1].color,
-                              child: RotatedBox(
-                                quarterTurns: -1,
-                                child: CountWidget(
-                                  defaultV: gameModel.players[1].lifeCount,
-                                  player: gameModel.players[1],
-                                  onChanged: (newCount) {
-                                    gameModel.players[1].updateLifeCount(newCount);
-                                  },
-                                ),
+                            width: sw(context) / 2,
+                            height: sh(context) * 3 / 5,
+                            //color: gameModel.players[0].color,
+                            child: RotatedBox(
+                              quarterTurns: 1,
+                              child: CountWidget(
+                                defaultV: gameModel.players[0].lifeCount,
+                                player: gameModel.players[0],
+                                onChanged: (newCount) {
+                                  // todo snackbar then update
+                                  gameModel.players[0]
+                                      .updateLifeCount(newCount);
+                                },
                               ),
                             ),
+                          ),
+                          Container(
+                            width: sw(context) / 2,
+                            height: sh(context) * 3 / 5,
+                            color: gameModel.players[1].color,
+                            child: RotatedBox(
+                              quarterTurns: -1,
+                              child: CountWidget(
+                                defaultV: gameModel.players[1].lifeCount,
+                                player: gameModel.players[1],
+                                onChanged: (newCount) {
+                                  gameModel.players[1]
+                                      .updateLifeCount(newCount);
+                                },
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                      Expanded(child: Container(
+                      Expanded(
+                          child: Container(
                         /*width: getScreenWidth(context),
                         height: getScreenHeight(context) / 3,*/
                         color: gameModel.players[2].color,
@@ -88,7 +91,7 @@ class _ThreePlayersState extends State<ThreePlayers> {
                     ],
                   ),
 
-                  CenterButton(top: getScreenHeight(context) * 3/5),
+                  CenterButton(top: sh(context) * 3 / 5),
                 ],
               );
             },

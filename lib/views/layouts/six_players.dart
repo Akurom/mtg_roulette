@@ -37,93 +37,105 @@ class _SixPlayersState extends State<SixPlayers> {
                       Flexible(
                         flex: 2,
                         child: Container(
-                        /*width: getScreenWidth(context) / 2,
+                          /*width: getScreenWidth(context) / 2,
                         height: getScreenHeight(context) / 2,*/
-                        color: gameModel.players[0].color,
-                        child: RotatedBox(
-                          quarterTurns: 2,
-                          child: CountWidget(
-                            defaultV: gameModel.players[0].lifeCount,
-                            player: gameModel.players[0],
-                            onChanged: (newCount) {
-                              gameModel.players[0].updateLifeCount(newCount);
-                            },
+                          color: gameModel.players[0].color,
+                          child: RotatedBox(
+                            quarterTurns: 2,
+                            child: CountWidget(
+                              defaultV: gameModel.players[0].lifeCount,
+                              player: gameModel.players[0],
+                              onChanged: (newCount) {
+                                gameModel.players[0].updateLifeCount(newCount);
+                              },
+                            ),
                           ),
                         ),
-                      ),
                       ),
                       Row(
                         //mainAxisAlignment: ,
                         children: [
                           Flexible(
-                            flex: 2,child: Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) * 3/10,
-                            //color: gameModel.players[0].color,
-                            child: RotatedBox(
-                              quarterTurns: 1,
-                              child: CountWidget(
-                                defaultV: gameModel.players[5].lifeCount,
-                                player: gameModel.players[5],
-                                onChanged: (newCount) {
-                                  // todo snackbar then update
-                                  gameModel.players[5].updateLifeCount(newCount);
-                                },
+                            flex: 2,
+                            child: Container(
+                              width: sw(context) / 2,
+                              height: sh(context) * 3 / 10,
+                              //color: gameModel.players[0].color,
+                              child: RotatedBox(
+                                quarterTurns: 1,
+                                child: CountWidget(
+                                  defaultV: gameModel.players[5].lifeCount,
+                                  player: gameModel.players[5],
+                                  onChanged: (newCount) {
+                                    // todo snackbar then update
+                                    gameModel.players[5]
+                                        .updateLifeCount(newCount);
+                                  },
+                                ),
                               ),
                             ),
-                          ),),
+                          ),
                           Flexible(
-                            flex: 2, child: Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) * 3/10,
-                            color: gameModel.players[1].color,
-                            child: RotatedBox(
-                              quarterTurns: -1,
-                              child: CountWidget(
-                                defaultV: gameModel.players[1].lifeCount,
-                                player: gameModel.players[1],
-                                onChanged: (newCount) {
-                                  gameModel.players[1].updateLifeCount(newCount);
-                                },
+                            flex: 2,
+                            child: Container(
+                              width: sw(context) / 2,
+                              height: sh(context) * 3 / 10,
+                              color: gameModel.players[1].color,
+                              child: RotatedBox(
+                                quarterTurns: -1,
+                                child: CountWidget(
+                                  defaultV: gameModel.players[1].lifeCount,
+                                  player: gameModel.players[1],
+                                  onChanged: (newCount) {
+                                    gameModel.players[1]
+                                        .updateLifeCount(newCount);
+                                  },
+                                ),
                               ),
                             ),
-                          ),),
+                          ),
                         ],
                       ),
                       Row(
                         children: [
                           Flexible(
-                            flex: 2, child: Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) * 3/10,
-                            color: gameModel.players[3].color,
-                            child: RotatedBox(
-                              quarterTurns: 1,
-                              child: CountWidget(
-                                defaultV: gameModel.players[4].lifeCount,
-                                player: gameModel.players[4],
-                                onChanged: (newCount) {
-                                  gameModel.players[4].updateLifeCount(newCount);
-                                },
+                            flex: 2,
+                            child: Container(
+                              width: sw(context) / 2,
+                              height: sh(context) * 3 / 10,
+                              color: gameModel.players[3].color,
+                              child: RotatedBox(
+                                quarterTurns: 1,
+                                child: CountWidget(
+                                  defaultV: gameModel.players[4].lifeCount,
+                                  player: gameModel.players[4],
+                                  onChanged: (newCount) {
+                                    gameModel.players[4]
+                                        .updateLifeCount(newCount);
+                                  },
+                                ),
                               ),
                             ),
-                          ),),
+                          ),
                           Flexible(
-                            flex: 2, child:Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) * 3/10,
-                            color: gameModel.players[2].color,
-                            child: RotatedBox(
-                              quarterTurns: -1,
-                              child: CountWidget(
-                                defaultV: gameModel.players[2].lifeCount,
-                                player: gameModel.players[2],
-                                onChanged: (newCount) {
-                                  gameModel.players[2].updateLifeCount(newCount);
-                                },
+                            flex: 2,
+                            child: Container(
+                              width: sw(context) / 2,
+                              height: sh(context) * 3 / 10,
+                              color: gameModel.players[2].color,
+                              child: RotatedBox(
+                                quarterTurns: -1,
+                                child: CountWidget(
+                                  defaultV: gameModel.players[2].lifeCount,
+                                  player: gameModel.players[2],
+                                  onChanged: (newCount) {
+                                    gameModel.players[2]
+                                        .updateLifeCount(newCount);
+                                  },
+                                ),
                               ),
                             ),
-                          ),),
+                          ),
                         ],
                       ),
                       Flexible(

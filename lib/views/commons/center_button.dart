@@ -17,13 +17,15 @@ class CenterButton extends StatefulWidget {
   State<CenterButton> createState() => _CenterButtonState();
 }
 
-class _CenterButtonState extends State<CenterButton> with SingleTickerProviderStateMixin {
+class _CenterButtonState extends State<CenterButton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   bool isPlaying = false;
 
   @override
   void initState() {
-    _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 450));
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 450));
     super.initState();
   }
 
@@ -36,7 +38,9 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
   void _handleClicked() {
     setState(() {
       isPlaying = !isPlaying;
-      isPlaying ? _animationController.forward() : _animationController.reverse();
+      isPlaying
+          ? _animationController.forward()
+          : _animationController.reverse();
     });
     ToggleMenuCommand().run();
   }
@@ -44,11 +48,11 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     // ugly ?
-    double _top = widget.top ?? getScreenHeight(context) / 2;
-    double _left = widget.left ?? getScreenWidth(context) / 2;
+    double _top = widget.top ?? sh(context) / 2;
+    double _left = widget.left ?? sw(context) / 2;
 
-    double w = getScreenWidth(context) / 8;
-    double h = getScreenWidth(context) / 8;
+    double w = sw(context) / 8;
+    double h = sw(context) / 8;
 
     return Stack(
       children: [

@@ -38,8 +38,8 @@ class _FivePlayersState extends State<FivePlayers> {
                         //mainAxisAlignment: ,
                         children: [
                           Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) * 3/8,
+                            width: sw(context) / 2,
+                            height: sh(context) * 3 / 8,
                             //color: gameModel.players[0].color,
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -48,14 +48,15 @@ class _FivePlayersState extends State<FivePlayers> {
                                 player: gameModel.players[0],
                                 onChanged: (newCount) {
                                   // todo snackbar then update
-                                  gameModel.players[0].updateLifeCount(newCount);
+                                  gameModel.players[0]
+                                      .updateLifeCount(newCount);
                                 },
                               ),
                             ),
                           ),
                           Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) * 3/8,
+                            width: sw(context) / 2,
+                            height: sh(context) * 3 / 8,
                             color: gameModel.players[1].color,
                             child: RotatedBox(
                               quarterTurns: -1,
@@ -63,7 +64,8 @@ class _FivePlayersState extends State<FivePlayers> {
                                 defaultV: gameModel.players[1].lifeCount,
                                 player: gameModel.players[1],
                                 onChanged: (newCount) {
-                                  gameModel.players[1].updateLifeCount(newCount);
+                                  gameModel.players[1]
+                                      .updateLifeCount(newCount);
                                 },
                               ),
                             ),
@@ -73,8 +75,8 @@ class _FivePlayersState extends State<FivePlayers> {
                       Row(
                         children: [
                           Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) * 3/8,
+                            width: sw(context) / 2,
+                            height: sh(context) * 3 / 8,
                             color: gameModel.players[3].color,
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -82,14 +84,15 @@ class _FivePlayersState extends State<FivePlayers> {
                                 defaultV: gameModel.players[3].lifeCount,
                                 player: gameModel.players[3],
                                 onChanged: (newCount) {
-                                  gameModel.players[3].updateLifeCount(newCount);
+                                  gameModel.players[3]
+                                      .updateLifeCount(newCount);
                                 },
                               ),
                             ),
                           ),
                           Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) * 3/8,
+                            width: sw(context) / 2,
+                            height: sh(context) * 3 / 8,
                             color: gameModel.players[2].color,
                             child: RotatedBox(
                               quarterTurns: -1,
@@ -97,7 +100,8 @@ class _FivePlayersState extends State<FivePlayers> {
                                 defaultV: gameModel.players[2].lifeCount,
                                 player: gameModel.players[2],
                                 onChanged: (newCount) {
-                                  gameModel.players[2].updateLifeCount(newCount);
+                                  gameModel.players[2]
+                                      .updateLifeCount(newCount);
                                 },
                               ),
                             ),
@@ -124,7 +128,7 @@ class _FivePlayersState extends State<FivePlayers> {
                     ],
                   ),
 
-                  CenterButton(top: getScreenHeight(context) * 3/8),
+                  CenterButton(top: sh(context) * 3 / 8),
                 ],
               );
             },

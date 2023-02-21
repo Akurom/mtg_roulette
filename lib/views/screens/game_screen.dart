@@ -38,8 +38,8 @@ class _GameScreenState extends State<GameScreen> {
                         //mainAxisAlignment: ,
                         children: [
                           Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) / 2,
+                            width: sw(context) / 2,
+                            height: sh(context) / 2,
                             //color: gameModel.players[0].color,
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -48,14 +48,15 @@ class _GameScreenState extends State<GameScreen> {
                                 player: gameModel.players[0],
                                 onChanged: (newCount) {
                                   // todo snackbar then update
-                                  gameModel.players[0].updateLifeCount(newCount);
+                                  gameModel.players[0]
+                                      .updateLifeCount(newCount);
                                 },
                               ),
                             ),
                           ),
                           Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) / 2,
+                            width: sw(context) / 2,
+                            height: sh(context) / 2,
                             color: gameModel.players[1].color,
                             child: RotatedBox(
                               quarterTurns: -1,
@@ -63,7 +64,8 @@ class _GameScreenState extends State<GameScreen> {
                                 defaultV: gameModel.players[1].lifeCount,
                                 player: gameModel.players[1],
                                 onChanged: (newCount) {
-                                  gameModel.players[1].updateLifeCount(newCount);
+                                  gameModel.players[1]
+                                      .updateLifeCount(newCount);
                                 },
                               ),
                             ),
@@ -73,8 +75,8 @@ class _GameScreenState extends State<GameScreen> {
                       Row(
                         children: [
                           Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) / 2,
+                            width: sw(context) / 2,
+                            height: sh(context) / 2,
                             color: gameModel.players[3].color,
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -82,14 +84,15 @@ class _GameScreenState extends State<GameScreen> {
                                 defaultV: gameModel.players[3].lifeCount,
                                 player: gameModel.players[3],
                                 onChanged: (newCount) {
-                                  gameModel.players[3].updateLifeCount(newCount);
+                                  gameModel.players[3]
+                                      .updateLifeCount(newCount);
                                 },
                               ),
                             ),
                           ),
                           Container(
-                            width: getScreenWidth(context) / 2,
-                            height: getScreenHeight(context) / 2,
+                            width: sw(context) / 2,
+                            height: sh(context) / 2,
                             color: gameModel.players[2].color,
                             child: RotatedBox(
                               quarterTurns: -1,
@@ -97,7 +100,8 @@ class _GameScreenState extends State<GameScreen> {
                                 defaultV: gameModel.players[2].lifeCount,
                                 player: gameModel.players[2],
                                 onChanged: (newCount) {
-                                  gameModel.players[2].updateLifeCount(newCount);
+                                  gameModel.players[2]
+                                      .updateLifeCount(newCount);
                                 },
                               ),
                             ),
