@@ -9,7 +9,7 @@ class TextConstants {
   static const String creationTimePerPlayer = "Time limit";
   static const String creationPlay = "PLAY!";
   // ----- game screen
-  static const String defaultPlayerName = "Player ";
+  static const String defaultPlayerName = "PLAYER ";
   // ----- edit player screen
   static const String save = "SAVE! ";
 

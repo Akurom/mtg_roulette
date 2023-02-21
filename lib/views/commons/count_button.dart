@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:mtg_roulette/const/colors.dart';
+
 typedef void IntCallback(int c);
 
 class CountButton extends StatelessWidget {
@@ -16,7 +18,10 @@ class CountButton extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
-        child: SizedBox(child: Icon((pace > 0) ? Icons.add : Icons.remove)),
+        child: Icon(
+            (pace > 0) ? Icons.add : Icons.remove,
+            color: ColorConstants.main,
+        ),
         onTap: () {
           onClicked(pace);
         },

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/tools/tools.dart';
-import 'package:mtg_roulette/views/commons/count_widget.dart';
+import 'package:mtg_roulette/views/commons/player_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/models/game_model.dart';
-import '../commons/center_button.dart';
+import '../commons/center_menu.dart';
 
 class FivePlayers extends StatefulWidget {
   const FivePlayers({Key? key}) : super(key: key);
@@ -28,22 +28,19 @@ class _FivePlayersState extends State<FivePlayers> {
             builder: (context, gameModel, child) {
               return Stack(
                 children: [
-                  // mid button
-
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Row(
-                        //mainAxisAlignment: ,
                         children: [
                           Container(
                             width: sw(context) / 2,
                             height: sh(context) * 3 / 8,
-                            //color: gameModel.players[0].color,
                             child: RotatedBox(
                               quarterTurns: 1,
-                              child: CountWidget(
+                              child: PlayerWidget(
+                                axis: Axis.horizontal,
                                 defaultV: gameModel.players[0].lifeCount,
                                 player: gameModel.players[0],
                                 onChanged: (newCount) {
@@ -60,7 +57,8 @@ class _FivePlayersState extends State<FivePlayers> {
                             color: gameModel.players[1].color,
                             child: RotatedBox(
                               quarterTurns: -1,
-                              child: CountWidget(
+                              child: PlayerWidget(
+                                axis: Axis.horizontal,
                                 defaultV: gameModel.players[1].lifeCount,
                                 player: gameModel.players[1],
                                 onChanged: (newCount) {
@@ -80,7 +78,8 @@ class _FivePlayersState extends State<FivePlayers> {
                             color: gameModel.players[3].color,
                             child: RotatedBox(
                               quarterTurns: 1,
-                              child: CountWidget(
+                              child: PlayerWidget(
+                                axis: Axis.horizontal,
                                 defaultV: gameModel.players[3].lifeCount,
                                 player: gameModel.players[3],
                                 onChanged: (newCount) {
@@ -96,7 +95,8 @@ class _FivePlayersState extends State<FivePlayers> {
                             color: gameModel.players[2].color,
                             child: RotatedBox(
                               quarterTurns: -1,
-                              child: CountWidget(
+                              child: PlayerWidget(
+                                axis: Axis.horizontal,
                                 defaultV: gameModel.players[2].lifeCount,
                                 player: gameModel.players[2],
                                 onChanged: (newCount) {
@@ -115,7 +115,8 @@ class _FivePlayersState extends State<FivePlayers> {
                           color: gameModel.players[4].color,
                           child: RotatedBox(
                             quarterTurns: 0,
-                            child: CountWidget(
+                            child: PlayerWidget(
+                              axis: Axis.vertical,
                               defaultV: gameModel.players[4].lifeCount,
                               player: gameModel.players[4],
                               onChanged: (newCount) {

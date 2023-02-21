@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 class EditPlayerCommand extends BaseCommand {
 
 
-  Future<bool> run(PlayerModel player, String name, Color color) async {
-    player.editPreferences(name, color);
+  Future<bool> run(PlayerModel player, String name, Color color, String? watermark) async {
+    player.editPreferences(name, color, watermark);
     return true;
   }
 }

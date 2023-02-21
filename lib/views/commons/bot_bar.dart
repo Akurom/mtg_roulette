@@ -7,20 +7,20 @@ import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
+import 'package:mtg_roulette/const/path_constants.dart';
 
 class BotBar extends StatefulWidget {
   final PlayerModel player;
+  final Axis axis;
 
-  BotBar({Key? key, required this.player}) : super(key: key);
+  BotBar({Key? key, required this.player, required this.axis}) : super(key: key);
 
   @override
   State<BotBar> createState() => _BotBarState();
 }
 
 class _BotBarState extends State<BotBar> {
-  List<String> _setCounterList = []; //['PSN', 'ENR', 'EXP'];
-  List<String> _counterList = ['PSN', 'ENR', 'EXP'];
-  bool _visible = false;
+  bool _visible = true;
   IconData _icon = Icons.add_circle_outline;
 
   void _toggleMenu() {
@@ -48,14 +48,14 @@ class _BotBarState extends State<BotBar> {
                 decoration: BoxDecoration(
                     //border: Border.all()
                     ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                /*child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,*/
                   //crossAxisAlignment: CrossAxisAlignment.end,
 
-                  children: [
-                    Expanded(
+                  /*children: [*/
+                    //child: Expanded(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         //crossAxisAlignment: CrossAxisAlignment.end,
 
                         children: [
@@ -63,7 +63,9 @@ class _BotBarState extends State<BotBar> {
                             opacity: _visible || player.countersMap['TIX'] != null ? 1.0 : 0.0,
                             duration: const Duration(milliseconds: 200),
                             child: CounterItem(
+                              axis: widget.axis,
                               tag: "TIX",
+                              iconPath: PathConstants.ticketCounterIconBlack,
                               player: player,
                             ),
                           ),
@@ -71,32 +73,36 @@ class _BotBarState extends State<BotBar> {
                             opacity: _visible || player.countersMap['EXP'] != null ? 1.0 : 0.0,
                             duration: const Duration(milliseconds: 200),
                             child: CounterItem(
+                              axis: widget.axis,
                               tag: "EXP",
+                              iconPath: PathConstants.experienceCounterIconBlack,
                               player: player,
                             ),
                           ),
-                        ],
+                        /*],
                       ),
                     ),
-                    InkWell(
+                    *//*InkWell(
                       child: Icon(
                         _icon,
                       ),
                       onTap: () {
                         _toggleMenu();
                       },
-                    ),
+                    ),*//*
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         //crossAxisAlignment: CrossAxisAlignment.end,
 
-                        children: [
+                        children: [*/
                           AnimatedOpacity(
                             opacity: _visible || player.countersMap['PSN'] != null ? 1.0 : 0.0,
                             duration: const Duration(milliseconds: 200),
                             child: CounterItem(
+                              axis: widget.axis,
                               tag: "PSN",
+                              iconPath: PathConstants.poisonCounterIconBlack,
                               player: player,
                             ),
                           ),
@@ -104,29 +110,78 @@ class _BotBarState extends State<BotBar> {
                             opacity: _visible || player.countersMap['NRG'] != null ? 1.0 : 0.0,
                             duration: const Duration(milliseconds: 200),
                             child: CounterItem(
+                              axis: widget.axis,
                               tag: "NRG",
+                              iconPath: PathConstants.energyCounterIconBlack,
                               player: player,
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
-              ),
+                 /* ],
+                ),*/
+              //),
             );
           },
         ));
   }
 }
 
+// ================= COUUTER ITEM ==================
 class CounterItem extends StatelessWidget {
+  Axis axis;
   final String tag;
+  final String iconPath;
   int? count;
   bool isInMenu;
   PlayerModel player;
 
-  CounterItem({required this.tag, required this.player, this.count, this.isInMenu = true});
+  CounterItem(
+      {required this.axis,
+      required this.tag,
+      required this.iconPath,
+      required this.player,
+      this.count,
+      this.isInMenu = true});
+
+  Widget _counter(context) {
+    return
+        FractionallySizedBox(
+            widthFactor: 0.7,
+            child: FittedBox(
+
+                    child: Text(player.countersMap[tag].toString(),
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(color: /*player.color*/Colors.white, fontWeight: FontWeight.bold))));
+
+  }
+
+  List<Widget> _children(context) {
+    return [
+      // number of counters
+      /*if (player.countersMap[tag] != null)
+        Text(player.countersMap[tag].toString(), style: Theme.of(context).textTheme.displaySmall),*/
+
+      Container(
+          width: sw(context) / 11,
+          height: sw(context) / 11,
+          decoration: BoxDecoration(
+            //color: (player.countersMap[tag] != null) ? ColorConstants.black : ColorConstants.white,
+            color: (player.countersMap[tag] != null) ? ColorConstants.black : Colors.white,
+            shape: BoxShape.circle,
+            //border: Border.all(/*color: */),
+            image: DecorationImage(
+              image: AssetImage(iconPath),
+              fit: BoxFit.fitHeight,
+            ),
+          ),
+          child: (player.countersMap[tag] != null) ? _counter(context) : SizedBox.shrink()),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,20 +205,16 @@ class CounterItem extends StatelessWidget {
           RemoveOneCounterCommand().run(player, tag);
         }
       },
-      child: Row(
-        children: [
-          // number of counters
-          if (player.countersMap[tag] != null) Text(player.countersMap[tag].toString()),
-
-          Card(
-            color: (player.countersMap[tag] != null) ? ColorConstants.black : ColorConstants.white,
-            child: Text(
-              tag,
-              style: TextStyle(color: (player.countersMap[tag] != null) ? ColorConstants.white : ColorConstants.black),
-            ),
-          ),
-        ],
-      ),
+      child: Builder(builder: (context) {
+        if (axis == Axis.horizontal)
+          return Row(
+            children: _children(context).reversed.toList(),
+          );
+        else
+          return Column(
+            children: _children(context),
+          );
+      }),
     );
   }
 }

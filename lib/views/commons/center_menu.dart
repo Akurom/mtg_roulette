@@ -17,15 +17,13 @@ class CenterButton extends StatefulWidget {
   State<CenterButton> createState() => _CenterButtonState();
 }
 
-class _CenterButtonState extends State<CenterButton>
-    with SingleTickerProviderStateMixin {
+class _CenterButtonState extends State<CenterButton> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   bool isPlaying = false;
 
   @override
   void initState() {
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 450));
+    _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 450));
     super.initState();
   }
 
@@ -38,9 +36,7 @@ class _CenterButtonState extends State<CenterButton>
   void _handleClicked() {
     setState(() {
       isPlaying = !isPlaying;
-      isPlaying
-          ? _animationController.forward()
-          : _animationController.reverse();
+      isPlaying ? _animationController.forward() : _animationController.reverse();
     });
     ToggleMenuCommand().run();
   }
@@ -65,15 +61,19 @@ class _CenterButtonState extends State<CenterButton>
           defaultTop: _top - w / 2,
           openLeft: _left / 2 - w / 2,
           openTop: _top - w / 2,
+          icon: Icon(Icons.restart_alt),
+          callback: () {},
         ),
         AnimatedMenuElement(
           w: w,
           h: h,
-          color: ColorConstants.white,
+          color: ColorConstants.main,
           defaultLeft: _left - w / 2,
           defaultTop: _top - w / 2,
           openLeft: _left + _left / 2 - w / 2,
           openTop: _top - w / 2,
+          icon: Icon(Icons.question_mark),
+          callback: () {},
         ),
         // ---------------------
 
@@ -81,7 +81,7 @@ class _CenterButtonState extends State<CenterButton>
           top: _top - h / 2,
           left: _left - w / 2,
           child: RotationTransition(
-            turns: new AlwaysStoppedAnimation(45 / 360),
+            turns: AlwaysStoppedAnimation(45 / 360),
             child: GestureDetector(
               onTap: () {
                 _handleClicked();
@@ -91,16 +91,17 @@ class _CenterButtonState extends State<CenterButton>
                 height: h,
                 decoration: BoxDecoration(
                   color: ColorConstants.centerButton,
-                  //border: Border.all(),
+                  //border: Border.all()
                 ),
                 child: RotationTransition(
-                  turns: new AlwaysStoppedAnimation(-45 / 360),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: AnimatedIcon(
-                      icon: AnimatedIcons.pause_play,
-                      progress: _animationController,
-                      size: 34, // todo set size from themeData
+                  turns: AlwaysStoppedAnimation(-45 / 360),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.7,
+                    child: FittedBox(
+                      child: AnimatedIcon(
+                        icon: AnimatedIcons.pause_play,
+                        progress: _animationController,
+                      ),
                     ),
                   ),
                 ),
@@ -121,6 +122,8 @@ class AnimatedMenuElement extends StatefulWidget {
   final double defaultLeft;
   final double openTop;
   final double openLeft;
+  final Icon icon;
+  final Function callback;
 
   AnimatedMenuElement({
     Key? key,
@@ -131,6 +134,8 @@ class AnimatedMenuElement extends StatefulWidget {
     required this.defaultLeft,
     required this.openTop,
     required this.openLeft,
+    required this.icon,
+    required this.callback,
   }) : super(key: key);
 
   @override
@@ -161,10 +166,20 @@ class _AnimatedMenuElementState extends State<AnimatedMenuElement> {
           duration: Duration(milliseconds: 500),
           curve: Curves.fastOutSlowIn,
           child: RotationTransition(
-            turns: new AlwaysStoppedAnimation(-45 / 360),
+            turns: AlwaysStoppedAnimation(45 / 360),
             child: Container(
               decoration: BoxDecoration(
                 color: widget.color,
+                //border: Border.all()
+              ),
+              child: RotationTransition(
+                turns: AlwaysStoppedAnimation(-45 / 360),
+                child: FractionallySizedBox(
+                  widthFactor: 0.7,
+                  child: FittedBox(
+                    child: widget.icon,
+                  ),
+                ),
               ),
             ),
           ),

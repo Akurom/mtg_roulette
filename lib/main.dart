@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:mtg_roulette/views/layouts/layouts.dart';
 import 'package:mtg_roulette/views/screens/screens.dart';
 
-//import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mtg_roulette/commands/base_command.dart' as Commands;
 import 'package:mtg_roulette/const/colors.dart';
@@ -43,17 +43,18 @@ class MyApp extends StatelessWidget {
           // ----------- theme data
           theme: new ThemeData(       // todo load from AppModel
             scaffoldBackgroundColor: ColorConstants.white,
-            fontFamily: 'Oswald',
-            textTheme: const TextTheme(
-              displayLarge: TextStyle(fontSize: 86.0, /*fontWeight: FontWeight.bold,*/ color: Colors.black87),
-              displayMedium: TextStyle(fontSize: 44.0, fontWeight: FontWeight.bold, color: Colors.black87),
+
+
+            textTheme: TextTheme(
+              displayLarge: GoogleFonts.roboto(/*fontSize: 94.0,*/ color: ColorConstants.main),
+              displayMedium: GoogleFonts.roboto(fontSize: 44.0, color: ColorConstants.main),
+              displaySmall: GoogleFonts.roboto(fontSize: 24.0, color: ColorConstants.main),
             ),
           ),
           // ----------- routes
           initialRoute: '/splash',
           routes: {
             '/splash': (context) => const SplashScreen(),
-            '/game': (context) => const GameScreen(),
             '/two': (context) => const TwoPlayers(),
             '/three': (context) => const ThreePlayers(),
             '/four': (context) => const FourPlayers(),

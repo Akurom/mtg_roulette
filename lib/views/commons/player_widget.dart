@@ -5,40 +5,41 @@ import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/commons/bot_bar.dart';
 import 'package:mtg_roulette/views/commons/clock.dart';
 import 'package:mtg_roulette/views/commons/count.dart';
+import 'package:mtg_roulette/views/commons/markers_bar.dart';
 
-import 'package:mtg_roulette/views/commons/up_bar.dart';
-import 'dart:async';
+import 'package:mtg_roulette/views/commons/top_bar.dart';
 
 import 'package:provider/provider.dart';
 
 typedef void IntCallback(int id);
 
-class CountWidget extends StatefulWidget {
+class PlayerWidget extends StatefulWidget {
   final int defaultV;
   final int? lowLimit, highLimit;
   final Color color;
   final bool displaySnack;
   final IntCallback onChanged;
   final PlayerModel? player;
+  final Axis axis;
 
-  const CountWidget(
+  const PlayerWidget(
       {Key? key,
       this.lowLimit,
       this.highLimit,
       this.displaySnack = false,
       this.color = Colors.transparent,
       this.player = null,
+      required this.axis,
       required this.defaultV,
       required this.onChanged})
       : super(key: key);
 
   @override
-  State<CountWidget> createState() => _CountWidgetState();
+  State<PlayerWidget> createState() => _PlayerWidgetState();
 }
 
-class _CountWidgetState extends State<CountWidget> {
+class _PlayerWidgetState extends State<PlayerWidget> {
   late int _count;
-  late Timer _timer;
   late Color? _color;
 
   @override
@@ -53,7 +54,8 @@ class _CountWidgetState extends State<CountWidget> {
     super.initState();
   }
 
-  void _updateCount(int newCount) { // let Count handlle counter ? but how to validate form ? => PROVIDER ?
+  void _updateCount(int newCount) {
+    // let Count handlle counter ? but how to validate form ? => PROVIDER ?
 
     _count = newCount;
     widget.onChanged(_count);
@@ -68,15 +70,17 @@ class _CountWidgetState extends State<CountWidget> {
           //decoration: BoxDecoration(color: widget.color, border: Border.all()),
           color: _color ?? player!.color,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (widget.player != null) UpBar(player: player! /* widget.player!*/),
-              // -------- player name
-              //if (widget.player != null) PlayerName(playerName: widget.player!.name),
-              // ---
+              if (player != null) ...[
+                Spacer(),
+                TopBar(player: player),
+                if (widget.axis == Axis.vertical) Spacer(),
+              ],
+
               IntrinsicHeight(
                 child: Count(
-                  player: widget.player,
+                  player: player,
                   onChanged: _updateCount,
                   defaultV: widget.defaultV,
                   lowLimit: widget.lowLimit,
@@ -84,11 +88,13 @@ class _CountWidgetState extends State<CountWidget> {
                 ),
               ),
 
+
               // --------- Counters bar
-              if (widget.player != null)
-                BotBar(
-                  player: widget.player!,
-                ),
+              if (player != null) ...[
+                Spacer(),
+                MarkersBar(player: player, axis: widget.axis),
+                Spacer(),
+              ],
               // ---
             ],
           ),

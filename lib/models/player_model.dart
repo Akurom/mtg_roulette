@@ -5,6 +5,7 @@ class PlayerModel extends ChangeNotifier {
 
   String name;
   Color color;
+  String? watermark;
   int lifeCount;
   Map<String, int> countersMap = {};
 
@@ -12,6 +13,7 @@ class PlayerModel extends ChangeNotifier {
   PlayerModel({
     required this.name,
     required this.color,
+    this.watermark,
     required this.lifeCount,
   });
 
@@ -21,8 +23,8 @@ class PlayerModel extends ChangeNotifier {
   }
 
 
-  void editPreferences(String name, Color color) {
-    this.name = name; this.color = color;
+  void editPreferences(String name, Color color, String? watermark) {
+    this.name = name; this.color = color; this.watermark = watermark;
     notifyListeners();
   }
 

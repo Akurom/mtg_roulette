@@ -52,12 +52,13 @@ class _CountState extends State<Count> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: widget.player,
-      child: Consumer<PlayerModel?>(builder: (context, player, child) {
-        return Row(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(),
+      ),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CountButton(pace: -1, onClicked: _onClicked),
             ValueListenableBuilder(
@@ -67,8 +68,8 @@ class _CountState extends State<Count> {
                 }),
             CountButton(pace: 1, onClicked: _onClicked),
           ],
-        );
-      }),
+        //);
+      ),
     );
   }
 }

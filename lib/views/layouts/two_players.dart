@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/tools/tools.dart';
-import 'package:mtg_roulette/views/commons/count_widget.dart';
+import 'package:mtg_roulette/views/commons/player_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/models/game_model.dart';
-import '../commons/center_button.dart';
+import '../commons/center_menu.dart';
 
 class TwoPlayers extends StatefulWidget {
   const TwoPlayers({Key? key}) : super(key: key);
@@ -40,7 +40,8 @@ class _TwoPlayersState extends State<TwoPlayers> {
                         //color: gameModel.players[0].color,
                         child: RotatedBox(
                           quarterTurns: 2,
-                          child: CountWidget(
+                          child: PlayerWidget(
+                            axis: Axis.vertical,
                             defaultV: gameModel.players[0].lifeCount,
                             player: gameModel.players[0],
                             onChanged: (newCount) {
@@ -56,7 +57,8 @@ class _TwoPlayersState extends State<TwoPlayers> {
                         color: gameModel.players[1].color,
                         child: RotatedBox(
                           quarterTurns: 0,
-                          child: CountWidget(
+                          child: PlayerWidget(
+                            axis: Axis.vertical,
                             defaultV: gameModel.players[1].lifeCount,
                             player: gameModel.players[1],
                             onChanged: (newCount) {
