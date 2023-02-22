@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/const/color_constants.dart';
+import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
@@ -14,6 +15,7 @@ import 'package:mtg_roulette/views/widgets/markers_bar.dart';
 import 'package:mtg_roulette/views/widgets/top_bar.dart';
 
 import 'package:provider/provider.dart';
+import 'package:mtg_roulette/views/screens/edit_player_screen.dart';
 
 typedef void IntCallback(int id);
 
@@ -95,31 +97,67 @@ class _PlayerState extends State<Player> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TopBar(player: player),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Flexible(
+                            child: Icon(
+                              Icons.access_time,
+                              color: ColorConstants.main,
+                            ),
+                          ),
+                          InkWell(
+                            child: FittedBox(
+                              child: Text(
+                                player.name,
+                                style: Theme.of(context).textTheme.displaySmall,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => EditPlayerScreen(player: player)),
+                              );
+                            },
+                          ),
+                          Flexible(
+                            child: DamageSnack(
+                              initialCount: player.lifeCount,
+                              counter: player.lifeCounter,
+                            ),
+                          ),
+                        ].setOrderFromAlignment(widget.alignment),
+                      ),
+                      //TopBar(player: player),
                       /*if (displaySnack)
                         DamageSnack(initialCount: _initialCount!),*/
                       Container(
                         //decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
-                        child:  IntrinsicHeight(child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                        child: IntrinsicHeight(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                        Expanded(
-                        child: Column(
-                                children: [
-                                  /*Expanded(
-                                    child: */Counter(
+                              SizedBox(
+                                width: (screenWidth(context) * SizeConstants.commanderTagWidth).hypotenuse,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Counter(
                                       model: player.lifeCounter,
                                       paces: [10, 5, 1],
                                     ),
-
-                                  MarkersBar(player: player, axis: widget.axis),
-                                ],
-                              ),),
-                              CommanderDamageBar(currentPlayer: player,),
+                                    MarkersBar(player: player, axis: widget.axis),
+                                  ],
+                                ),
+                              ),
+                              CommanderDamageBar(
+                                currentPlayer: player,
+                              ),
                             ].setOrderFromAlignment(widget.alignment),
                           ),
-                        ),),
-
+                        ),
+                      ),
 
                       // --------- Counters bar
 

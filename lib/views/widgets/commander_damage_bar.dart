@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_roulette/commands/toggle_highlight_player_command.dart';
 import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/game_model.dart';
@@ -42,7 +43,7 @@ class CommanderDamageTag extends StatelessWidget {
         width: screenWidth(context) * SizeConstants.commanderTagWidth,
         height: screenWidth(context) * SizeConstants.commanderTagWidth,
         decoration: BoxDecoration(
-          border: Border.all(color: ColorConstants.main, width: 2.0),
+          border: Border.all(color: ColorConstants.main, width: 3.0),
           color: playerModel.color,
         ),
         child: RotationTransition(
@@ -50,7 +51,13 @@ class CommanderDamageTag extends StatelessWidget {
           child: FractionallySizedBox(
             widthFactor: 0.7,
             child: FittedBox(
-              child: Text("0", textAlign: TextAlign.center, style: Theme.of(context).textTheme.displaySmall!),
+              child: InkWell(
+                child: Text("0", textAlign: TextAlign.center, style: Theme.of(context).textTheme.displaySmall!),
+                onTap: () {
+                  ToggleHighlightPlayerCommand().run(playerModel);
+                  // todo link counter to this widget value, how?
+                },
+              ),
             ),
           ),
         ),
