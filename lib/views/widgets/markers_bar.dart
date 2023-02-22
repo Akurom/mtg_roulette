@@ -100,7 +100,7 @@ class CounterItem extends StatelessWidget {
   List<Widget> _children(context) {
     return [
       Container(
-        margin: EdgeInsets.symmetric(horizontal: sw(context) / 33),
+        margin: EdgeInsets.symmetric(horizontal: sw(context) / 40), // change if isSmall todo
           width: sw(context) / 11,
           height: sw(context) / 11,
           decoration: BoxDecoration(

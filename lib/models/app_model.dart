@@ -18,6 +18,7 @@ class AppModel extends ChangeNotifier {
     ColorConstants.fluoBlue,
     //ColorConstants.fluoOrange,
     ColorConstants.fluoGreen,
+    ColorConstants.greenBlueish,
     //ColorConstants.fluoYellow,
 
     Colors.cyan,
@@ -46,6 +47,7 @@ class AppModel extends ChangeNotifier {
     PathConstants.scourge,
     PathConstants.sun,
     PathConstants.torment,
+
   ];
 
 

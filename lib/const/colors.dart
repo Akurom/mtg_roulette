@@ -13,7 +13,7 @@ class ColorConstants {
   //static const Color pastelGreen = Color(0xFFBDD4D1);
   //static const Color pastelWhite = Color(0xFFFDFFEB);
   //static const Color pastelBlack = Color(0xFFb7b7b7);
-  static const Color pastelOrange = Color(0xFFFFDAC1);
+  static const Color pastelOrange = Color(0xFFFFA071);
 
   static const Color pastelDeepBlue = Color(0xFFc9c9ff);
   //static const Color pastelLightGreen = Color(0xffe1f7d5);
@@ -24,6 +24,7 @@ class ColorConstants {
   //static const Color fluoOrange = Color(0xffff9770);
   //static const Color fluoYellow = Color(0xffffd670);
   static const Color fluoGreen = Color(0xff77dd77);
+  static const Color greenBlueish = Color(0xff5AC0AB);
 
   static const Color white = Colors.white;
   static const Color black = Colors.black;

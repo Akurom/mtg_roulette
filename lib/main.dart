@@ -44,11 +44,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           // ----------- theme data
           theme: new ThemeData(       // todo load from AppModel
-            scaffoldBackgroundColor: ColorConstants.white,
-
-
+            scaffoldBackgroundColor: ColorConstants.black,
             textTheme: TextTheme(
-              displayLarge: GoogleFonts.roboto(fontSize: 97.0, color: ColorConstants.main),
+              displayLarge: GoogleFonts.roboto(fontSize: 92.0, color: ColorConstants.main),
               displayMedium: GoogleFonts.roboto(fontSize: 44.0, color: ColorConstants.main),
               displaySmall: GoogleFonts.roboto(fontSize: 24.0, color: ColorConstants.main),
             ),

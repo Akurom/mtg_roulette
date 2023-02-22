@@ -18,7 +18,6 @@ class PlayerWidget extends StatefulWidget {
   final int defaultV;
   final int? lowLimit, highLimit;
   final Color color;
-  final bool displaySnack;
   final IntCallback onChanged;
   final PlayerModel? player;
   final Axis axis;
@@ -27,7 +26,6 @@ class PlayerWidget extends StatefulWidget {
       {Key? key,
       this.lowLimit,
       this.highLimit,
-      this.displaySnack = false,
       this.color = Colors.transparent,
       this.player = null,
       required this.axis,
@@ -43,6 +41,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   late int _count;
   int? _initialCount;
   late Color? _color;
+  bool displaySnack = true;
 
   @override
   void initState() {
@@ -92,14 +91,20 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                 if (player != null) ...[
                   if (widget.axis == Axis.vertical)
                     SizedBox(
-                      height: sh(context) / 18,
+                      height: sh(context) / 20, // prevents center menu overlapping
                     ),
+                  Spacer(),
                   TopBar(player: player),
-                  if (widget.axis == Axis.vertical) Spacer(),
+                  //if (widget.axis == Axis.vertical) Spacer(),
                 ],
 
-                if (player != null)
-                  //DamageSnack(initialCount: _initialCount!),
+                /*if (player != null && displaySnack)
+                  DamageSnack(initialCount: _initialCount!),*/
+
+                /*if (widget.axis == Axis.horizontal)
+                  SizedBox(
+                    height: sw(context) / 20, // prevents center menu overlapping
+                  ),*/
 
                 IntrinsicHeight(
                   child: Count(
@@ -113,7 +118,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
                 // --------- Counters bar
                 if (player != null) ...[
-                  Spacer(),
                   MarkersBar(player: player, axis: widget.axis),
                   Spacer(),
                 ],
