@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/models/app_model.dart';
 import 'package:mtg_roulette/models/game_model.dart';
+import 'package:mtg_roulette/models/menu_model.dart';
 import 'package:provider/provider.dart';
 
 
@@ -15,6 +16,7 @@ class BaseCommand {
   AppModel appModel = _mainContext.read();
   //CreationModel creationModel = _mainContext.read();
   GameModel gameModel = _mainContext.read();
+  MenuModel menuModel = _mainContext.read();
   // Services
   //UserService userService = _mainContext.read();
 }

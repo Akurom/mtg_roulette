@@ -20,13 +20,33 @@ class GameModel extends ChangeNotifier {
 
   void init(int nbPlayers, int initialLifeCount) {
     _nbPlayers = nbPlayers; _initialLifeCount = nbPlayers;
-    int base = randInt(0, AppModel().colorPalette.length);  // used for default color picks
+    //int base = randInt(0, AppModel().colorPalette.length);  // used for default color picks
+    List<int> usedColors = [];
+    List<int> usedWatermarks = [];
+    int colorIndex;
+    int watermarkIndex;
+
     for (int p = 0; p < nbPlayers; p ++) {
+
+
+      do {
+        colorIndex = (randInt(0, AppModel().colorPalette.length));
+      } while(usedColors.contains(colorIndex));
+      usedColors.add(colorIndex);
+
+      do {
+        watermarkIndex = randInt(0, AppModel().watermarks.length);
+      } while(usedWatermarks.contains(watermarkIndex));
+      usedWatermarks.add(watermarkIndex);
+
       _players.add(
           PlayerModel(
               name: TextConstants.defaultPlayerName + '${p + 1}',
               lifeCount: initialLifeCount,
-              color: AppModel().colorPalette[(base + p) % AppModel().colorPalette.length]
+              color: AppModel().colorPalette[colorIndex],
+                  //% AppModel().colorPalette.length]
+              watermark: AppModel().watermarks[watermarkIndex]
+
           )
       );
     }

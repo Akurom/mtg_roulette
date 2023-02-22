@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/commands/toggle_menu_command.dart';
-import 'package:mtg_roulette/models/game_model.dart';
+import 'package:mtg_roulette/commands/menu/pick_random_player_command.dart';
+import 'package:mtg_roulette/commands/menu/toggle_menu_command.dart';
+import 'package:mtg_roulette/commands/menu/toggle_menu_ready_command.dart';
+import 'package:mtg_roulette/models/menu_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 
 import 'package:mtg_roulette/const/colors.dart';
@@ -34,6 +36,12 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
   }
 
   void _handleClicked() {
+    ToggleMenuReadyCommand().run();
+    _animationController.addStatusListener((status) {
+      if(status == AnimationStatus.completed) {
+        ToggleMenuReadyCommand().run();
+      }
+    });
     setState(() {
       isPlaying = !isPlaying;
       isPlaying ? _animationController.forward() : _animationController.reverse();
@@ -73,7 +81,10 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
           openLeft: _left + _left / 2 - w / 2,
           openTop: _top - w / 2,
           icon: Icon(Icons.question_mark),
-          callback: () {},
+          callback: () {
+            print("clicked");
+            PickRandomPlayerCommand().run(false);
+          },
         ),
         // ---------------------
 
@@ -83,6 +94,7 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
           child: RotationTransition(
             turns: AlwaysStoppedAnimation(45 / 360),
             child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTap: () {
                 _handleClicked();
               },
@@ -144,6 +156,7 @@ class AnimatedMenuElement extends StatefulWidget {
 
 class _AnimatedMenuElementState extends State<AnimatedMenuElement> {
   late double _top, _left;
+  bool  built = false;
 
   @override
   void initState() {
@@ -156,11 +169,11 @@ class _AnimatedMenuElementState extends State<AnimatedMenuElement> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<GameModel>(
-      builder: (context, game, child) {
+    return Consumer<MenuModel>(
+      builder: (context, menu, child) {
         return AnimatedPositioned(
-          top: (game.isMenuOpen) ? widget.openTop : _top,
-          left: (game.isMenuOpen) ? widget.openLeft : _left,
+          top: (menu.isOpen) ? widget.openTop : _top,
+          left: (menu.isOpen) ? widget.openLeft : _left,
           width: widget.w,
           height: widget.h,
           duration: Duration(milliseconds: 500),
@@ -172,14 +185,18 @@ class _AnimatedMenuElementState extends State<AnimatedMenuElement> {
                 color: widget.color,
                 //border: Border.all()
               ),
-              child: RotationTransition(
-                turns: AlwaysStoppedAnimation(-45 / 360),
-                child: FractionallySizedBox(
-                  widthFactor: 0.7,
-                  child: FittedBox(
-                    child: widget.icon,
+              child: InkWell(
+
+                child: RotationTransition(
+                  turns: AlwaysStoppedAnimation(-45 / 360),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.7,
+                    child: FittedBox(
+                      child: widget.icon,
+                    ),
                   ),
                 ),
+                onTap: (menu.isOpen && menu.isReady) ? () => widget.callback() : () {},
               ),
             ),
           ),

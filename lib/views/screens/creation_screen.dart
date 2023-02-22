@@ -7,7 +7,7 @@ import '../widgets/player_widget.dart';
 import 'package:mtg_roulette/commands/create_game_command.dart';
 
 const int DEFAULT_LIFE_COUNT = 20;
-const int DEFAULT_NBPLAYERS = 3;
+const int DEFAULT_NBPLAYERS = 4;
 
 class CreationScreen extends StatelessWidget {
   final Color color;
@@ -46,7 +46,7 @@ class CreationScreen extends StatelessWidget {
               axis: Axis.vertical,
               defaultV: DEFAULT_NBPLAYERS,
               lowLimit: 2,
-              highLimit: 4,
+              highLimit: 6,
               onChanged: _updateNbPlayers,
             ),
 

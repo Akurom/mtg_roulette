@@ -8,6 +8,7 @@ class PlayerModel extends ChangeNotifier {
   String? watermark;
   int lifeCount;
   Map<String, int> countersMap = {};
+  bool isHighlighted = false;
 
 
   PlayerModel({
@@ -50,6 +51,11 @@ class PlayerModel extends ChangeNotifier {
 
   void clearCounterTag(String tag) {
     countersMap.remove(tag);
+    notifyListeners();
+  }
+
+  void toggleHighlight() {
+    isHighlighted = !isHighlighted;
     notifyListeners();
   }
 }

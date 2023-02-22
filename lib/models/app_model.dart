@@ -12,8 +12,8 @@ class AppModel extends ChangeNotifier {
     ColorConstants.pastelOrange,
     //ColorConstants.pastelWhite,
     ColorConstants.pastelDeepBlue,
-    ColorConstants.pastelLightGreen,
-    ColorConstants.pastelPink,
+    //ColorConstants.pastelLightGreen,
+    //ColorConstants.pastelPink,
     ColorConstants.fluoRed,
     ColorConstants.fluoBlue,
     //ColorConstants.fluoOrange,
@@ -23,10 +23,13 @@ class AppModel extends ChangeNotifier {
     Colors.cyan,
     Colors.redAccent,
     Colors.greenAccent,
+    Colors.blueAccent,
     Colors.purpleAccent,
     //Colors.yellow,
     Colors.grey,
+    Colors.green,
     Colors.amber,
+    Colors.blueGrey
   ];
 
   List<String> watermarks = [

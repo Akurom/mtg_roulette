@@ -16,8 +16,8 @@ class ColorConstants {
   static const Color pastelOrange = Color(0xFFFFDAC1);
 
   static const Color pastelDeepBlue = Color(0xFFc9c9ff);
-  static const Color pastelLightGreen = Color(0xffe1f7d5);
-  static const Color pastelPink = Color(0xFFf1cbff);
+  //static const Color pastelLightGreen = Color(0xffe1f7d5);
+  //static const Color pastelPink = Color(0xFFf1cbff);
 
   static const Color fluoRed = Color(0xffff70a6);
   static const Color fluoBlue = Color(0xff70d6ff);

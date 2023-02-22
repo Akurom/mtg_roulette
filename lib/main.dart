@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:mtg_roulette/models/game_model.dart';
 import 'package:mtg_roulette/models/app_model.dart';
+import 'package:mtg_roulette/models/menu_model.dart';
 import 'package:provider/provider.dart';
 
 import 'package:mtg_roulette/views/layouts/layouts.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (c) => AppModel()),
         ChangeNotifierProvider<GameModel>(create: (c) => GameModel()),  // todo set in sky section init there and link to basecommand
+        ChangeNotifierProvider<MenuModel>(create: (c) => MenuModel()),  // todo set in sky section init there and link to basecommand
       ],
       child: Builder(builder: (context) {
         Commands.init(context);         // todo UNDERSTAND !!!

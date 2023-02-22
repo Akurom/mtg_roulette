@@ -5,6 +5,7 @@ import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/widgets/bot_bar.dart';
 import 'package:mtg_roulette/views/widgets/clock.dart';
 import 'package:mtg_roulette/views/widgets/count.dart';
+import 'package:mtg_roulette/views/widgets/damage_snack.dart';
 import 'package:mtg_roulette/views/widgets/markers_bar.dart';
 
 import 'package:mtg_roulette/views/widgets/top_bar.dart';
@@ -22,15 +23,16 @@ class PlayerWidget extends StatefulWidget {
   final PlayerModel? player;
   final Axis axis;
 
-  const PlayerWidget({Key? key,
-    this.lowLimit,
-    this.highLimit,
-    this.displaySnack = false,
-    this.color = Colors.transparent,
-    this.player = null,
-    required this.axis,
-    required this.defaultV,
-    required this.onChanged})
+  const PlayerWidget(
+      {Key? key,
+      this.lowLimit,
+      this.highLimit,
+      this.displaySnack = false,
+      this.color = Colors.transparent,
+      this.player = null,
+      required this.axis,
+      required this.defaultV,
+      required this.onChanged})
       : super(key: key);
 
   @override
@@ -39,14 +41,18 @@ class PlayerWidget extends StatefulWidget {
 
 class _PlayerWidgetState extends State<PlayerWidget> {
   late int _count;
+  int? _initialCount;
   late Color? _color;
 
   @override
   void initState() {
-    _count = widget.defaultV;
+
     if (widget.player != null) {
+      _count = widget.player!.lifeCount;
+      _initialCount = _count;
       _color = null;
     } else {
+      _count = widget.defaultV;
       _color = widget.color;
     }
 
@@ -55,9 +61,9 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   void _updateCount(int newCount) {
     // let Count handlle counter ? but how to validate form ? => PROVIDER ?
-
+    print ("update count");
     _count = newCount;
-    widget.onChanged(_count);
+    widget.onChanged(_count); // todo not called, use command ?
   }
 
   @override
@@ -67,6 +73,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       child: Consumer<PlayerModel?>(builder: (context, player, child) {
         return Stack(children: [
 
+          // ------ watermark
           if (player != null && player.watermark != null)
             Container(
               decoration: BoxDecoration(
@@ -78,23 +85,27 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             ),
 
           Container(
-            //decoration: BoxDecoration(color: widget.color, border: Border.all()),
             color: _color ?? player!.color.withOpacity(0.9),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 if (player != null) ...[
                   if (widget.axis == Axis.vertical)
-                    SizedBox(height: sh(context)/20,),
+                    SizedBox(
+                      height: sh(context) / 18,
+                    ),
                   TopBar(player: player),
                   if (widget.axis == Axis.vertical) Spacer(),
                 ],
+
+                if (player != null)
+                  //DamageSnack(initialCount: _initialCount!),
 
                 IntrinsicHeight(
                   child: Count(
                     player: player,
                     onChanged: _updateCount,
-                    defaultV: widget.defaultV,
+                    defaultV: _count,
                     lowLimit: widget.lowLimit,
                     highLimit: widget.highLimit,
                   ),
@@ -110,6 +121,13 @@ class _PlayerWidgetState extends State<PlayerWidget> {
               ],
             ),
           ),
+          if (player != null && player.isHighlighted) ...[
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(width: 7.0, color: ColorConstants.main)
+              ),
+            ),
+          ]
         ]);
       }),
     );

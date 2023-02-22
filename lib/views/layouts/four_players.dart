@@ -13,20 +13,26 @@ class FourPlayers extends StatefulWidget {
 }
 
 class _FourPlayersState extends State<FourPlayers> {
+
+  late GameModel gameModel;
+
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
+    gameModel = context.read<GameModel>();
+
     return Scaffold(
       body: Center(
         child: Container(
-          child: Consumer<GameModel>(
+          child: /*Consumer<GameModel>(
             builder: (context, gameModel, child) {
-              return Stack(
+              return */Stack(
                 children: [
                   // mid button
 
@@ -48,7 +54,9 @@ class _FourPlayersState extends State<FourPlayers> {
                                 defaultV: gameModel.players[0].lifeCount,
                                 player: gameModel.players[0],
                                 onChanged: (newCount) {
+                                  print ('layer onchanged');
                                   // todo snackbar then update
+                                  // todo remove !!! & use command !
                                   gameModel.players[0]
                                       .updateLifeCount(newCount);
                                 },
@@ -117,8 +125,8 @@ class _FourPlayersState extends State<FourPlayers> {
 
                   CenterButton(),
                 ],
-              );
-            },
+              //);
+            //},
           ),
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/commands/add_counter_command.dart';
-import 'package:mtg_roulette/commands/remove_one_counter_command.dart';
-import 'package:mtg_roulette/commands/clear_counter_command.dart';
+import 'package:mtg_roulette/commands/markers/add_counter_command.dart';
+import 'package:mtg_roulette/commands/markers/remove_one_counter_command.dart';
+import 'package:mtg_roulette/commands/markers/clear_counter_command.dart';
 import 'package:mtg_roulette/const/colors.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
