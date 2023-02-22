@@ -1,138 +1,87 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/tools/tools.dart';
-import 'package:mtg_roulette/views/widgets/player_widget.dart';
+import 'package:mtg_roulette/views/widgets/player.dart';
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/models/game_model.dart';
 import '../widgets/center_menu.dart';
 
-class FivePlayers extends StatefulWidget {
+class FivePlayers extends StatelessWidget {
   const FivePlayers({Key? key}) : super(key: key);
 
   @override
-  State<FivePlayers> createState() => _FivePlayersState();
-}
-
-class _FivePlayersState extends State<FivePlayers> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+
+    GameModel gameModel = context.read<GameModel>();
+
     return Scaffold(
       body: Center(
         child: Container(
-          child: Consumer<GameModel>(
-            builder: (context, gameModel, child) {
-              return Stack(
+          child: Stack(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: screenWidth(context) / 2,
-                            height: screenHeight(context) * 3 / 8,
-                            child: RotatedBox(
-                              quarterTurns: 1,
-                              child: PlayerWidget(
-                                axis: Axis.horizontal,
-                                defaultV: gameModel.players[0].lifeCount,
-                                player: gameModel.players[0],
-                                onChanged: (newCount) {
-                                  // todo snackbar then update
-                                  gameModel.players[0]
-                                      .updateLifeCount(newCount);
-                                },
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: screenWidth(context) / 2,
-                            height: screenHeight(context) * 3 / 8,
-                            color: gameModel.players[1].color,
-                            child: RotatedBox(
-                              quarterTurns: -1,
-                              child: PlayerWidget(
-                                axis: Axis.horizontal,
-                                defaultV: gameModel.players[1].lifeCount,
-                                player: gameModel.players[1],
-                                onChanged: (newCount) {
-                                  gameModel.players[1]
-                                      .updateLifeCount(newCount);
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
+                      Container(
+                        width: screenWidth(context) / 2,
+                        height: screenHeight(context) * 3 / 8,
+                        child: Player(
+                          axis: Axis.horizontal,
+                          alignment: Alignment.topLeft,
+                          player: gameModel.players[0],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            width: screenWidth(context) / 2,
-                            height: screenHeight(context) * 3 / 8,
-                            color: gameModel.players[3].color,
-                            child: RotatedBox(
-                              quarterTurns: 1,
-                              child: PlayerWidget(
-                                axis: Axis.horizontal,
-                                defaultV: gameModel.players[3].lifeCount,
-                                player: gameModel.players[3],
-                                onChanged: (newCount) {
-                                  gameModel.players[3]
-                                      .updateLifeCount(newCount);
-                                },
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: screenWidth(context) / 2,
-                            height: screenHeight(context) * 3 / 8,
-                            color: gameModel.players[2].color,
-                            child: RotatedBox(
-                              quarterTurns: -1,
-                              child: PlayerWidget(
-                                axis: Axis.horizontal,
-                                defaultV: gameModel.players[2].lifeCount,
-                                player: gameModel.players[2],
-                                onChanged: (newCount) {
-                                  gameModel.players[2]
-                                      .updateLifeCount(newCount);
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Expanded(
-                        child: Container(
-                          /*width: getscreenWidth(context) / 2,
-                        height: getScreenHeight(context) / 2,*/
-                          color: gameModel.players[4].color,
-                          child: RotatedBox(
-                            quarterTurns: 0,
-                            child: PlayerWidget(
-                              axis: Axis.vertical,
-                              defaultV: gameModel.players[4].lifeCount,
-                              player: gameModel.players[4],
-                              onChanged: (newCount) {
-                                gameModel.players[4].updateLifeCount(newCount);
-                              },
-                            ),
-                          ),
+                      Container(
+                        width: screenWidth(context) / 2,
+                        height: screenHeight(context) * 3 / 8,
+                        child: Player(
+                          axis: Axis.horizontal,
+                          alignment: Alignment.topRight,
+                          player: gameModel.players[1],
                         ),
                       ),
                     ],
                   ),
+                  Row(
+                    children: [
+                      Container(
+                        width: screenWidth(context) / 2,
+                        height: screenHeight(context) * 3 / 8,
+                        child: Player(
+                          axis: Axis.horizontal,
+                          alignment: Alignment.bottomLeft,
+                          player: gameModel.players[4],
+                        ),
+                      ),
+                      Container(
+                        width: screenWidth(context) / 2,
+                        height: screenHeight(context) * 3 / 8,
+                        child: Player(
+                          axis: Axis.horizontal,
+                          alignment: Alignment.bottomRight,
+                          player: gameModel.players[2],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Container(
+                      /*width: getscreenWidth(context) / 2,
+                        height: getScreenHeight(context) / 2,*/
 
-                  CenterButton(top: screenHeight(context) * 3 / 8),
+                      child: Player(
+                        axis: Axis.vertical,
+                        alignment: Alignment.bottomCenter,
+                        player: gameModel.players[3],
+                      ),
+                    ),
+                  ),
                 ],
-              );
-            },
+              ),
+              CenterButton(top: screenHeight(context) * 3 / 8),
+            ],
           ),
         ),
       ),

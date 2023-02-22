@@ -6,7 +6,7 @@ import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
 import 'package:provider/provider.dart';
-import '../widgets/player_widget.dart';
+
 
 import 'package:mtg_roulette/commands/create_game_command.dart';
 

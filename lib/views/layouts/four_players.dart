@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/widgets/player.dart';
-import 'package:mtg_roulette/views/widgets/player_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/models/game_model.dart';
 import '../widgets/center_menu.dart';
