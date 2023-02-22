@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/widgets/bot_bar.dart';
 import 'package:mtg_roulette/views/widgets/clock.dart';
-import 'package:mtg_roulette/views/widgets/count.dart';
+import 'package:mtg_roulette/views/widgets/counter/counter.dart';
+import 'package:mtg_roulette/views/widgets/counter/counter.dart';
 import 'package:mtg_roulette/views/widgets/damage_snack.dart';
 import 'package:mtg_roulette/views/widgets/markers_bar.dart';
 
@@ -91,7 +93,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                 if (player != null) ...[
                   if (widget.axis == Axis.vertical)
                     SizedBox(
-                      height: sh(context) / 20, // prevents center menu overlapping
+                      height: screenHeight(context) / 20, // prevents center menu overlapping
                     ),
                   Spacer(),
                   TopBar(player: player),
@@ -103,17 +105,21 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
                 /*if (widget.axis == Axis.horizontal)
                   SizedBox(
-                    height: sw(context) / 20, // prevents center menu overlapping
+                    height: screenWidth(context) / 20, // prevents center menu overlapping
                   ),*/
 
                 IntrinsicHeight(
-                  child: Count(
+                  child: Counter(
+                    model: CounterModel(initial: _count),
+                    paces: [10, 5, 1],
+                  ),
+                  /*child: Count(
                     player: player,
                     onChanged: _updateCount,
                     defaultV: _count,
                     lowLimit: widget.lowLimit,
                     highLimit: widget.highLimit,
-                  ),
+                  ),*/
                 ),
 
                 // --------- Counters bar

@@ -49,6 +49,8 @@ class MyApp extends StatelessWidget {
               displayLarge: GoogleFonts.roboto(fontSize: 92.0, color: ColorConstants.main),
               displayMedium: GoogleFonts.roboto(fontSize: 44.0, color: ColorConstants.main),
               displaySmall: GoogleFonts.roboto(fontSize: 24.0, color: ColorConstants.main),
+              labelSmall: GoogleFonts.roboto(color: ColorConstants.main),
+              headlineSmall: GoogleFonts.roboto(color: ColorConstants.main),
             ),
           ),
           // ----------- routes

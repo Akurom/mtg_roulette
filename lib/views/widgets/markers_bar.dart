@@ -28,7 +28,7 @@ class _MarkersBarState extends State<MarkersBar> {
           builder: (context, player, child) {
             return Center(
               child: Container(
-                margin: EdgeInsets.only(bottom: sw(context) / 33),
+                margin: EdgeInsets.only(bottom: screenWidth(context) / 33),
                 decoration: BoxDecoration(
                     //border: Border.all()
                     ),
@@ -100,9 +100,9 @@ class CounterItem extends StatelessWidget {
   List<Widget> _children(context) {
     return [
       Container(
-        margin: EdgeInsets.symmetric(horizontal: sw(context) / 40), // change if isSmall todo
-          width: sw(context) / 11,
-          height: sw(context) / 11,
+        margin: EdgeInsets.symmetric(horizontal: screenWidth(context) / 40), // change if isSmall todo
+          width: screenWidth(context) / 11,
+          height: screenWidth(context) / 11,
           decoration: BoxDecoration(
             //color: (player.countersMap[tag] != null) ? ColorConstants.black : ColorConstants.white,
             color: (player.countersMap[tag] != null) ? ColorConstants.black : Colors.white.withOpacity(0.6),

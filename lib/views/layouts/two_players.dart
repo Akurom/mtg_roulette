@@ -35,8 +35,8 @@ class _TwoPlayersState extends State<TwoPlayers> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
-                        width: sw(context) / 2,
-                        height: sh(context) / 2,
+                        width: screenWidth(context) / 2,
+                        height: screenHeight(context) / 2,
                         //color: gameModel.players[0].color,
                         child: RotatedBox(
                           quarterTurns: 2,
@@ -52,8 +52,8 @@ class _TwoPlayersState extends State<TwoPlayers> {
                         ),
                       ),
                       Container(
-                        width: sw(context) / 2,
-                        height: sh(context) / 2,
+                        width: screenWidth(context) / 2,
+                        height: screenHeight(context) / 2,
                         color: gameModel.players[1].color,
                         child: RotatedBox(
                           quarterTurns: 0,

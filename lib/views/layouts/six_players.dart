@@ -37,7 +37,7 @@ class _SixPlayersState extends State<SixPlayers> {
                       Flexible(
                         flex: 2,
                         child: Container(
-                          /*width: getScreenWidth(context) / 2,
+                          /*width: getscreenWidth(context) / 2,
                         height: getScreenHeight(context) / 2,*/
                           color: gameModel.players[0].color,
                           child: RotatedBox(
@@ -59,8 +59,8 @@ class _SixPlayersState extends State<SixPlayers> {
                           Flexible(
                             flex: 2,
                             child: Container(
-                              width: sw(context) / 2,
-                              height: sh(context) * 3 / 10,
+                              width: screenWidth(context) / 2,
+                              height: screenHeight(context) * 3 / 10,
                               //color: gameModel.players[0].color,
                               child: RotatedBox(
                                 quarterTurns: 1,
@@ -80,8 +80,8 @@ class _SixPlayersState extends State<SixPlayers> {
                           Flexible(
                             flex: 2,
                             child: Container(
-                              width: sw(context) / 2,
-                              height: sh(context) * 3 / 10,
+                              width: screenWidth(context) / 2,
+                              height: screenHeight(context) * 3 / 10,
                               color: gameModel.players[1].color,
                               child: RotatedBox(
                                 quarterTurns: -1,
@@ -104,8 +104,8 @@ class _SixPlayersState extends State<SixPlayers> {
                           Flexible(
                             flex: 2,
                             child: Container(
-                              width: sw(context) / 2,
-                              height: sh(context) * 3 / 10,
+                              width: screenWidth(context) / 2,
+                              height: screenHeight(context) * 3 / 10,
                               color: gameModel.players[3].color,
                               child: RotatedBox(
                                 quarterTurns: 1,
@@ -124,8 +124,8 @@ class _SixPlayersState extends State<SixPlayers> {
                           Flexible(
                             flex: 2,
                             child: Container(
-                              width: sw(context) / 2,
-                              height: sh(context) * 3 / 10,
+                              width: screenWidth(context) / 2,
+                              height: screenHeight(context) * 3 / 10,
                               color: gameModel.players[2].color,
                               child: RotatedBox(
                                 quarterTurns: -1,
@@ -146,7 +146,7 @@ class _SixPlayersState extends State<SixPlayers> {
                       Flexible(
                         flex: 2,
                         child: Container(
-                          /*width: getScreenWidth(context) / 2,
+                          /*width: getscreenWidth(context) / 2,
                         height: getScreenHeight(context) / 2,*/
                           color: gameModel.players[3].color,
                           child: RotatedBox(

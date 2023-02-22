@@ -12,10 +12,10 @@ Size getScreenSize(BuildContext context) {
   return MediaQuery.of(context).size;
 }
 
-double sh(BuildContext context, {double dividedBy = 1}) {
+double screenHeight(BuildContext context, {double dividedBy = 1}) {
   return getScreenSize(context).height / dividedBy;
 }
 
-double sw(BuildContext context, {double dividedBy = 1}) {
+double screenWidth(BuildContext context, {double dividedBy = 1}) {
   return getScreenSize(context).width / dividedBy;
 }

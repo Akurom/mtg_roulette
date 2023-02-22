@@ -35,8 +35,8 @@ class _FivePlayersState extends State<FivePlayers> {
                       Row(
                         children: [
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) * 3 / 8,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) * 3 / 8,
                             child: RotatedBox(
                               quarterTurns: 1,
                               child: PlayerWidget(
@@ -52,8 +52,8 @@ class _FivePlayersState extends State<FivePlayers> {
                             ),
                           ),
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) * 3 / 8,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) * 3 / 8,
                             color: gameModel.players[1].color,
                             child: RotatedBox(
                               quarterTurns: -1,
@@ -73,8 +73,8 @@ class _FivePlayersState extends State<FivePlayers> {
                       Row(
                         children: [
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) * 3 / 8,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) * 3 / 8,
                             color: gameModel.players[3].color,
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -90,8 +90,8 @@ class _FivePlayersState extends State<FivePlayers> {
                             ),
                           ),
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) * 3 / 8,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) * 3 / 8,
                             color: gameModel.players[2].color,
                             child: RotatedBox(
                               quarterTurns: -1,
@@ -110,7 +110,7 @@ class _FivePlayersState extends State<FivePlayers> {
                       ),
                       Expanded(
                         child: Container(
-                          /*width: getScreenWidth(context) / 2,
+                          /*width: getscreenWidth(context) / 2,
                         height: getScreenHeight(context) / 2,*/
                           color: gameModel.players[4].color,
                           child: RotatedBox(
@@ -129,7 +129,7 @@ class _FivePlayersState extends State<FivePlayers> {
                     ],
                   ),
 
-                  CenterButton(top: sh(context) * 3 / 8),
+                  CenterButton(top: screenHeight(context) * 3 / 8),
                 ],
               );
             },

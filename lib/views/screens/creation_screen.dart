@@ -30,8 +30,8 @@ class CreationScreen extends StatelessWidget {
     print(color);
     return Scaffold(
       body: Container(
-        width: sw(context),
-        height: sh(context),
+        width: screenWidth(context),
+        height: screenHeight(context),
         color: color,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

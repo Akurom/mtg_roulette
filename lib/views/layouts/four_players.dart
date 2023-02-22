@@ -44,8 +44,8 @@ class _FourPlayersState extends State<FourPlayers> {
                         //mainAxisAlignment: ,
                         children: [
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) / 2,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) / 2,
                             //color: gameModel.players[0].color,
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -64,8 +64,8 @@ class _FourPlayersState extends State<FourPlayers> {
                             ),
                           ),
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) / 2,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) / 2,
                             color: gameModel.players[1].color,
                             child: RotatedBox(
                               quarterTurns: -1,
@@ -85,8 +85,8 @@ class _FourPlayersState extends State<FourPlayers> {
                       Row(
                         children: [
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) / 2,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) / 2,
                             color: gameModel.players[3].color,
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -102,8 +102,8 @@ class _FourPlayersState extends State<FourPlayers> {
                             ),
                           ),
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) / 2,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) / 2,
                             color: gameModel.players[2].color,
                             child: RotatedBox(
                               quarterTurns: -1,

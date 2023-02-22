@@ -167,8 +167,8 @@ class CounterItem extends StatelessWidget {
         Text(player.countersMap[tag].toString(), style: Theme.of(context).textTheme.displaySmall),*/
 
       Container(
-          width: sw(context) / 11,
-          height: sw(context) / 11,
+          width: screenWidth(context) / 11,
+          height: screenWidth(context) / 11,
           decoration: BoxDecoration(
             //color: (player.countersMap[tag] != null) ? ColorConstants.black : ColorConstants.white,
             color: (player.countersMap[tag] != null) ? ColorConstants.black : Colors.white,

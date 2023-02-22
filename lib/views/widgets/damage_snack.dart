@@ -20,8 +20,8 @@ class DamageSnack extends StatelessWidget {
           alignment: Alignment.topCenter,
           minHeight: 20,
           minWidth: 50,
-          maxHeight: sh(context) / 20,
-          maxWidth: sh(context) / 10,
+          maxHeight: screenHeight(context) / 20,
+          maxWidth: screenHeight(context) / 10,
           child: Card(
             color: ColorConstants.black,
             child: FractionallySizedBox(

@@ -52,11 +52,11 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     // ugly ?
-    double _top = widget.top ?? sh(context) / 2;
-    double _left = widget.left ?? sw(context) / 2;
+    double _top = widget.top ?? screenHeight(context) / 2;
+    double _left = widget.left ?? screenWidth(context) / 2;
 
-    double w = sw(context) / 8;
-    double h = sw(context) / 8;
+    double w = screenWidth(context) / 8;
+    double h = screenWidth(context) / 8;
 
     return Stack(
       children: [

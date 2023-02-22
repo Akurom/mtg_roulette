@@ -38,8 +38,8 @@ class _ThreePlayersState extends State<ThreePlayers> {
                         //mainAxisAlignment: ,
                         children: [
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) * 3 / 5,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) * 3 / 5,
                             //color: gameModel.players[0].color,
                             child: RotatedBox(
                               quarterTurns: 1,
@@ -56,8 +56,8 @@ class _ThreePlayersState extends State<ThreePlayers> {
                             ),
                           ),
                           Container(
-                            width: sw(context) / 2,
-                            height: sh(context) * 3 / 5,
+                            width: screenWidth(context) / 2,
+                            height: screenHeight(context) * 3 / 5,
                             color: gameModel.players[1].color,
                             child: RotatedBox(
                               quarterTurns: -1,
@@ -76,7 +76,7 @@ class _ThreePlayersState extends State<ThreePlayers> {
                       ),
                       Expanded(
                           child: Container(
-                        /*width: getScreenWidth(context),
+                        /*width: getscreenWidth(context),
                         height: getScreenHeight(context) / 3,*/
                         color: gameModel.players[2].color,
                         child: RotatedBox(
@@ -94,7 +94,7 @@ class _ThreePlayersState extends State<ThreePlayers> {
                     ],
                   ),
 
-                  CenterButton(top: sh(context) * 3 / 5),
+                  CenterButton(top: screenHeight(context) * 3 / 5),
                 ],
               );
             },
