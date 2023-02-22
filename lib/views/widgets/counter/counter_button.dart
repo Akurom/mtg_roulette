@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 
 typedef void IntCallback(int c);
 

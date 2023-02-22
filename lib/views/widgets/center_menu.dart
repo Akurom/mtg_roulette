@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/menu/pick_random_player_command.dart';
 import 'package:mtg_roulette/commands/menu/toggle_menu_command.dart';
 import 'package:mtg_roulette/commands/menu/toggle_menu_ready_command.dart';
+import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/menu_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 
 import 'package:provider/provider.dart';
 
@@ -55,8 +56,8 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
     double _top = widget.top ?? screenHeight(context) / 2;
     double _left = widget.left ?? screenWidth(context) / 2;
 
-    double w = screenWidth(context) / 8;
-    double h = screenWidth(context) / 8;
+    double w = screenWidth(context) * SizeConstants.centerMenuButtonWidth;
+    double h = screenWidth(context) * SizeConstants.centerMenuButtonWidth;
 
     return Stack(
       children: [

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/markers/add_counter_command.dart';
 import 'package:mtg_roulette/commands/markers/remove_one_counter_command.dart';
 import 'package:mtg_roulette/commands/markers/clear_counter_command.dart';
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/const/path_constants.dart';
+import 'package:mtg_roulette/const/size_constants.dart';
 
 class MarkersBar extends StatefulWidget {
   final PlayerModel player;
@@ -19,7 +20,6 @@ class MarkersBar extends StatefulWidget {
 }
 
 class _MarkersBarState extends State<MarkersBar> {
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
@@ -87,22 +87,22 @@ class CounterItem extends StatelessWidget {
 
   Widget _counter(context) {
     return FractionallySizedBox(
-        widthFactor: 0.7,
-        child: FittedBox(
-            child: Text(player.countersMap[tag].toString(),
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .displaySmall!
-                    .copyWith(color: /*player.color*/ Colors.white, fontWeight: FontWeight.bold))));
+      widthFactor: 0.7,
+      child: FittedBox(
+        child: Text(player.countersMap[tag].toString(),
+            textAlign: TextAlign.center, style: Theme.of(context).textTheme.displaySmall!),
+        //.copyWith(color: /*player.color*/ Colors.white, fontWeight: FontWeight.bold))));
+      ),
+    );
   }
 
   List<Widget> _children(context) {
     return [
       Container(
-        margin: EdgeInsets.symmetric(horizontal: screenWidth(context) / 40), // change if isSmall todo
-          width: screenWidth(context) / 11,
-          height: screenWidth(context) / 11,
+          margin: EdgeInsets.symmetric(horizontal: screenWidth(context) / 40),
+          // change if isSmall todo
+          width: screenWidth(context) * SizeConstants.markerWidth,
+          height: screenWidth(context) * SizeConstants.markerWidth,
           decoration: BoxDecoration(
             //color: (player.countersMap[tag] != null) ? ColorConstants.black : ColorConstants.white,
             color: (player.countersMap[tag] != null) ? ColorConstants.black : Colors.white.withOpacity(0.6),

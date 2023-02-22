@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_roulette/models/counter_model.dart';
+
 
 
 class PlayerModel extends ChangeNotifier {
@@ -7,6 +9,7 @@ class PlayerModel extends ChangeNotifier {
   Color color;
   String? watermark;
   int lifeCount;
+  CounterModel lifeCounter;
   Map<String, int> countersMap = {};
   bool isHighlighted = false;
 
@@ -15,6 +18,7 @@ class PlayerModel extends ChangeNotifier {
     required this.name,
     required this.color,
     this.watermark,
+    required this.lifeCounter,
     required this.lifeCount,
   });
 

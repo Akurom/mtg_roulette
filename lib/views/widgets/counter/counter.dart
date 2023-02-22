@@ -7,12 +7,16 @@ import 'package:mtg_roulette/views/widgets/counter/counter_digits.dart';
 import 'package:provider/provider.dart';
 import 'counter_button.dart';
 
+
 class Counter extends StatelessWidget {
   final CounterModel _counterModel;
   final int? lowLimit, highLimit;
   final List<int> paces;
 
-  const Counter({Key? key, required CounterModel model, this.lowLimit, this.highLimit, this.paces = const [1]})
+  const Counter({
+    Key? key,
+    required CounterModel model,
+    this.lowLimit, this.highLimit, this.paces = const [1]})
       : _counterModel = model,
         super(key: key);
 

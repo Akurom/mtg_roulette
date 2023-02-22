@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 
 Random random = new Random();
 
+
+extension HypotenuseX on num {
+  double get hypotenuse => sqrt(this*this + this*this);
+}
+
+
 int randInt(int min, int max) {
   // [min; max[
   return min + random.nextInt(max - min);

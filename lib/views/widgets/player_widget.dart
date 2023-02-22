@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/widgets/bot_bar.dart';
 import 'package:mtg_roulette/views/widgets/clock.dart';
+import 'package:mtg_roulette/views/widgets/commander_damage_bar.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
 import 'package:mtg_roulette/views/widgets/damage_snack.dart';
@@ -47,7 +48,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   @override
   void initState() {
-
     if (widget.player != null) {
       _count = widget.player!.lifeCount;
       _initialCount = _count;
@@ -62,7 +62,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   void _updateCount(int newCount) {
     // let Count handlle counter ? but how to validate form ? => PROVIDER ?
-    print ("update count");
+    print("update count");
     _count = newCount;
     widget.onChanged(_count); // todo not called, use command ?
   }
@@ -73,7 +73,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       value: widget.player,
       child: Consumer<PlayerModel?>(builder: (context, player, child) {
         return Stack(children: [
-
           // ------ watermark
           if (player != null && player.watermark != null)
             Container(
@@ -108,19 +107,27 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                     height: screenWidth(context) / 20, // prevents center menu overlapping
                   ),*/
 
-                IntrinsicHeight(
-                  child: Counter(
-                    model: CounterModel(initial: _count),
-                    paces: [10, 5, 1],
-                  ),
-                  /*child: Count(
+                Row(
+                  children: [
+                    /*IntrinsicHeight(
+                      child: */Counter(
+                        model: CounterModel(initial: _count),
+                        paces: [10, 5, 1],
+                      ),
+                      /*child: Count(
                     player: player,
                     onChanged: _updateCount,
                     defaultV: _count,
                     lowLimit: widget.lowLimit,
                     highLimit: widget.highLimit,
                   ),*/
+                    //),
+
+                    //CommanderDamageBar(),
+                  ],
                 ),
+
+
 
                 // --------- Counters bar
                 if (player != null) ...[
@@ -133,9 +140,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           ),
           if (player != null && player.isHighlighted) ...[
             Container(
-              decoration: BoxDecoration(
-                  border: Border.all(width: 7.0, color: ColorConstants.main)
-              ),
+              decoration: BoxDecoration(border: Border.all(width: 7.0, color: ColorConstants.main)),
             ),
           ]
         ]);

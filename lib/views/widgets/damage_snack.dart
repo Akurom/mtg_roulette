@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:provider/provider.dart';
