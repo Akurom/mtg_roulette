@@ -44,7 +44,7 @@ class GameModel extends ChangeNotifier {
       _players.add(
           PlayerModel(
               name: TextConstants.defaultPlayerName + '${p + 1}',
-              lifeCount: initialLifeCount,
+              //lifeCount: initialLifeCount,
               lifeCounter: CounterModel(initial: initialLifeCount),
               color: AppModel().colorPalette[colorIndex],
                   //% AppModel().colorPalette.length]

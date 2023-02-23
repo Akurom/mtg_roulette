@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:mtg_roulette/commands/clear_all_highlighted_command.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 
 import '../base_command.dart';
@@ -8,6 +9,8 @@ class PickRandomPlayerCommand extends BaseCommand {
 
 
   Future<bool> run([bool quickly = false]) async {
+
+    await ClearAllHighlightedCommand().run();
 
     if (menuModel.isPicking) return false;
     // todo find a better way, not recommended to use await in loops

@@ -30,7 +30,8 @@ class _DamageSnackState extends State<DamageSnack> {
   @override
   void initState() {
     _initialCount = widget.initialCount;
-    _visible = true;
+    _visible = false;
+    _timer = Timer(Duration(milliseconds: 0), () {});
     /*_timer = Timer(Duration(milliseconds: WIDGET_DECAY_MS), () {
       _visible = false;
     });*/
@@ -44,21 +45,29 @@ class _DamageSnackState extends State<DamageSnack> {
   }
 
   void _refresh(int count) {
-    /*_visible = true;
+    _visible = true;
     _timer.cancel();
-    _timer = Timer(Duration(milliseconds: WIDGET_DECAY_MS), () {
-      _initialCount = count;
+    _timer = Timer(Duration(milliseconds: WIDGET_DECAY_MS), ()
+    {
       setState(() {
         _visible = false;
       });
-      //dispose();
     });
-*/
+      //dispose();
+  }
+
+
+  @override
+  void setState(VoidCallback fn) {
+    _visible = true;
+    super.setState(fn);
   }
 
   @override
   Widget build(BuildContext context) {
     print('snack built');
+
+
 
     double width = screenWidth(context) * SizeConstants.damageSnackWidth;
     double height = width;
@@ -77,8 +86,7 @@ class _DamageSnackState extends State<DamageSnack> {
                 maxHeight: screenWidth(context) * SizeConstants.damageSnackWidth,
                 maxWidth: screenWidth(context) * SizeConstants.damageSnackWidth,
                 child: AnimatedOpacity(
-                  // If the widget is visible, animate to 0.0 (invisible).
-                  // If the widget is hidden, animate to 1.0 (fully visible).
+
                   opacity: _visible ? 1.0 : 0.0,
                   duration: const Duration(milliseconds: 200),
                   // The green box must be a child of the AnimatedOpacity widget.
@@ -88,7 +96,7 @@ class _DamageSnackState extends State<DamageSnack> {
                         width: width,
                         height: height,
                         color: ColorConstants.black,
-                        // ---
+                        // --- transforms to flat losange
                         transform: Matrix4.translationValues(width / 2, 1.0, 1.0) *
                             Matrix4.diagonal3Values(1.0, 0.5, 1.0) *
                             Matrix4.rotationZ(pi / 4),

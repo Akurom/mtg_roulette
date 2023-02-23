@@ -8,7 +8,7 @@ class PlayerModel extends ChangeNotifier {
   String name;
   Color color;
   String? watermark;
-  int lifeCount;
+  //int lifeCount;
   CounterModel lifeCounter;
   Map<String, int> countersMap = {};
   bool isHighlighted = false;
@@ -19,13 +19,13 @@ class PlayerModel extends ChangeNotifier {
     required this.color,
     this.watermark,
     required this.lifeCounter,
-    required this.lifeCount,
+    //required this.lifeCount,
   });
 
 
-  void updateLifeCount(int newCount) {
+  /*void updateLifeCount(int newCount) {
     lifeCount = newCount;
-  }
+  }*/
 
 
   void editPreferences(String name, Color color, String? watermark) {
@@ -60,6 +60,10 @@ class PlayerModel extends ChangeNotifier {
 
   void toggleHighlight() {
     isHighlighted = !isHighlighted;
+    notifyListeners();
+  }
+  void setHighlight(bool value) {
+    isHighlighted = value;
     notifyListeners();
   }
 }

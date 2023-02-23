@@ -55,7 +55,6 @@ class CommanderDamageTag extends StatelessWidget {
               child: InkWell(
                 child: Text("0", textAlign: TextAlign.center, style: Theme.of(context).textTheme.displaySmall!),
                 onTap: () {
-                  // todo reset current highlight
                   ToggleHighlightPlayerCommand().run(playerModel);
                   // todo link counter to this widget value, how?
                 },

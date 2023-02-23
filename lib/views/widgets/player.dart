@@ -101,12 +101,13 @@ class _PlayerState extends State<Player> {
                         // --- header
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Flexible(
+                          Flexible(child: SizedBox.shrink(),),
+                         /* Flexible(
                             child: Icon(
                               Icons.access_time,
                               color: ColorConstants.main,
                             ),
-                          ),
+                          ),*/
                           InkWell(
                             child: FittedBox(
                               child: Text(
@@ -128,7 +129,7 @@ class _PlayerState extends State<Player> {
 
                       // --- damage mode indicator
                       DamageSnack(
-                        initialCount: player.lifeCount,
+                        initialCount: player.lifeCounter.count,
                         alignment: widget.alignment,
                         counter: player.lifeCounter,
                       ),
