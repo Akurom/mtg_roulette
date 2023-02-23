@@ -7,9 +7,12 @@ class CounterDigits extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return FittedBox(
+      fit: BoxFit.fitWidth,
+      child: Text(
         count.toString(),
         style: Theme.of(context).textTheme.displayLarge,
+      ),
     );
   }
 }

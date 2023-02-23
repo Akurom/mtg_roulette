@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/modify_counter_command.dart';
+import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
@@ -7,16 +8,12 @@ import 'package:mtg_roulette/views/widgets/counter/counter_digits.dart';
 import 'package:provider/provider.dart';
 import 'counter_button.dart';
 
-
 class Counter extends StatelessWidget {
   final CounterModel _counterModel;
   final int? lowLimit, highLimit;
   final List<int> paces;
 
-  const Counter({
-    Key? key,
-    required CounterModel model,
-    this.lowLimit, this.highLimit, this.paces = const [1]})
+  const Counter({Key? key, required CounterModel model, this.lowLimit, this.highLimit, this.paces = const [1]})
       : _counterModel = model,
         super(key: key);
 
@@ -33,10 +30,7 @@ class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: screenWidth(context) * 3/10,
-      decoration: BoxDecoration(
-        //border: Border.all(color: Colors.red),
-      ),
+      height: screenWidth(context) * 3 / 10,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -49,17 +43,19 @@ class Counter extends StatelessWidget {
           ),
           ConstrainedBox(
             constraints: BoxConstraints(
-                maxWidth: screenWidth(context) * 3/5,
-                maxHeight: screenWidth(context) * 3/10),
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: ChangeNotifierProvider<CounterModel>.value(
-                value: _counterModel,
-                child: Consumer<CounterModel>(
-                  builder: (context, counter, child) {
-                    return CounterDigits(count: counter.count);
-                  },
-                ),
+              maxWidth: screenWidth(context) -
+                  screenWidth(context) *
+                      (2 * SizeConstants.commanderTagWidth.hypotenuse +
+                          5 * SizeConstants.smallPaddingRatio +
+                          2 * SizeConstants.minCounterButtonRatio),
+              //maxHeight: screenWidth(context) * 3 / 10
+            ),
+            child: ChangeNotifierProvider<CounterModel>.value(
+              value: _counterModel,
+              child: Consumer<CounterModel>(
+                builder: (context, counter, child) {
+                  return CounterDigits(count: counter.count);
+                },
               ),
             ),
           ),

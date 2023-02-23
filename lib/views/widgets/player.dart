@@ -98,6 +98,7 @@ class _PlayerState extends State<Player> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
+                        // --- header
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Flexible(
@@ -110,7 +111,7 @@ class _PlayerState extends State<Player> {
                             child: FittedBox(
                               child: Text(
                                 player.name,
-                                style: Theme.of(context).textTheme.displaySmall,
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ),
                             onTap: () {
@@ -120,17 +121,20 @@ class _PlayerState extends State<Player> {
                               );
                             },
                           ),
-                          Flexible(
-                            child: DamageSnack(
-                              initialCount: player.lifeCount,
-                              counter: player.lifeCounter,
-                            ),
-                          ),
-                        ].setOrderFromAlignment(widget.alignment),
+                          Flexible(child: SizedBox.shrink(),),
+                        ],//.setOrderFromAlignment(widget.alignment),
                       ),
-                      //TopBar(player: player),
-                      /*if (displaySnack)
-                        DamageSnack(initialCount: _initialCount!),*/
+                      // --- header
+
+                      // --- damage mode indicator
+                      DamageSnack(
+                        initialCount: player.lifeCount,
+                        alignment: widget.alignment,
+                        counter: player.lifeCounter,
+                      ),
+                      // --- damage mode indicator
+
+                      // --- counter & commander buttons
                       Container(
                         //decoration: BoxDecoration(border: Border.all(color: Colors.blue)),
                         child: IntrinsicHeight(

@@ -35,9 +35,9 @@ class TopBar extends StatelessWidget {
           },
         ),
 
-        Flexible(
+        /*Flexible(
           child: DamageSnack(initialCount: player.lifeCount, counter: player.lifeCounter,),
-        ),
+        ),*/
       ],
     );
   }

@@ -17,10 +17,11 @@ class CommanderDamageBar extends StatelessWidget {
     List<PlayerModel> players = context.select<GameModel, List<PlayerModel>>((game) => game.players);
 
     return Container(
+      padding: EdgeInsets.only(bottom: screenWidth(context) * SizeConstants.standardPaddingRatio),
       width: (screenWidth(context) * SizeConstants.commanderTagWidth).hypotenuse,
       //decoration: BoxDecoration(border: Border.all()),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           for (PlayerModel p in players)
             if (p != currentPlayer) CommanderDamageTag(playerModel: p),

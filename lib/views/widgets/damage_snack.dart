@@ -71,7 +71,7 @@ class _DamageSnackState extends State<DamageSnack> {
         return SizedBox(
             width: 0, height: 0,
             child: OverflowBox(
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.topCenter,
                 /*minHeight: 20,
                 minWidth: 20,*/
                 maxHeight: screenWidth(context) * SizeConstants.damageSnackWidth,

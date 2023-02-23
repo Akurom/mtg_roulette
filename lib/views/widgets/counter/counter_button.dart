@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:mtg_roulette/const/color_constants.dart';
+import 'package:mtg_roulette/const/size_constants.dart';
+import 'package:mtg_roulette/tools/tools.dart';
 
 typedef void IntCallback(int c);
 
@@ -27,16 +29,22 @@ class CounterButton extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
-        child: Row(
-          mainAxisAlignment: pace > 0 ? MainAxisAlignment.end : MainAxisAlignment.start,
-          children: [
-            Icon(
-              (pace > 0) ? Icons.add : Icons.remove,
-              color: ColorConstants.main,
-              size: Theme.of(context).textTheme.headlineSmall!.fontSize,
+        child: Opacity(
+          opacity: 0.7,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: screenWidth(context) * SizeConstants.smallPaddingRatio),
+            child: Row(
+              mainAxisAlignment: pace > 0 ? MainAxisAlignment.end : MainAxisAlignment.start,
+              children: [
+                Icon(
+                  (pace > 0) ? Icons.add : Icons.remove,
+                  color: ColorConstants.main,
+                  size: Theme.of(context).textTheme.headlineSmall!.fontSize,
+                ),
+                Text(pace.abs().toString(), style: Theme.of(context).textTheme.headlineSmall),
+              ],
             ),
-            Text(pace.abs().toString(), style: Theme.of(context).textTheme.headlineSmall),
-          ],
+          ),
         ),
         onTap: () {
           onClicked(pace);
