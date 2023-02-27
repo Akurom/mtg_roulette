@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:mtg_roulette/commands/clear_all_highlighted_command.dart';
+import 'package:mtg_roulette/commands/player/clear_all_highlighted_command.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 
 import '../base_command.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/commands/clear_all_highlighted_command.dart';
+import 'package:mtg_roulette/commands/player/clear_all_highlighted_command.dart';
 import 'package:mtg_roulette/commands/menu/pick_random_player_command.dart';
 import 'package:mtg_roulette/commands/menu/toggle_menu_command.dart';
 import 'package:mtg_roulette/commands/menu/toggle_menu_ready_command.dart';

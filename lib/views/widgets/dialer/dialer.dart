@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/dialer/dialer_clear_command.dart';
 import 'package:mtg_roulette/commands/dialer/dialer_remove_digit_command.dart';
 import 'package:mtg_roulette/commands/dialer/dialer_set_to_counter_command.dart';
-import 'package:mtg_roulette/commands/toggle_dialer_command.dart';
+import 'package:mtg_roulette/commands/player/toggle_dialer_command.dart';
 import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/dialer_model.dart';
@@ -87,8 +87,10 @@ class Dialer extends StatelessWidget {
                       DButton(
                         icon: Icons.check,
                         commandRun: () {
-                          DialerSetToCounterCommand().run(dialer, player);
-                          ToggleDialerCommand().run(player);
+                          if (dialer.count != 0) {
+                            DialerSetToCounterCommand().run(dialer, player);
+                            ToggleDialerCommand().run(player);
+                          }
                         },
                       ),
                     ],

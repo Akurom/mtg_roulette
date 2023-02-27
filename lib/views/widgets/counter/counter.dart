@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/commands/modify_counter_command.dart';
+import 'package:mtg_roulette/commands/counter/modify_counter_command.dart';
 import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';

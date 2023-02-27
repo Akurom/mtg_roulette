@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/commands/toggle_dialer_command.dart';
+import 'package:mtg_roulette/commands/player/toggle_dialer_command.dart';
 import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/counter_model.dart';
