@@ -8,11 +8,11 @@ class PlayerModel extends ChangeNotifier {
   String name;
   Color color;
   String? watermark;
-  //int lifeCount;
   CounterModel lifeCounter;
   Map<String, int> countersMap = {};
+  List commanderDamages = [];
   bool isHighlighted = false;
-  bool _showDialer = true;
+  bool _showDialer = false;
 
 
   PlayerModel({
@@ -29,6 +29,12 @@ class PlayerModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  // ----- Commander damage
+  void initCommanderDamage(players) {
+
+  }
+
+  // ----- COUNTERS (markers)
   void addOneCounter(String tag) {
     if (countersMap[tag] == null) {
       countersMap[tag] = 1;
@@ -37,6 +43,7 @@ class PlayerModel extends ChangeNotifier {
     }
     notifyListeners();
   }
+
   void removeOneCounter(String tag) {
     if (countersMap[tag] != null) {
       countersMap[tag] = countersMap[tag]! - 1;
