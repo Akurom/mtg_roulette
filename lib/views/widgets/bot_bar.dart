@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/markers/add_counter_command.dart';
 import 'package:mtg_roulette/commands/markers/remove_one_counter_command.dart';
 import 'package:mtg_roulette/commands/markers/clear_counter_command.dart';
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:provider/provider.dart';
@@ -167,8 +167,8 @@ class CounterItem extends StatelessWidget {
         Text(player.countersMap[tag].toString(), style: Theme.of(context).textTheme.displaySmall),*/
 
       Container(
-          width: sw(context) / 11,
-          height: sw(context) / 11,
+          width: screenWidth(context) / 11,
+          height: screenWidth(context) / 11,
           decoration: BoxDecoration(
             //color: (player.countersMap[tag] != null) ? ColorConstants.black : ColorConstants.white,
             color: (player.countersMap[tag] != null) ? ColorConstants.black : Colors.white,

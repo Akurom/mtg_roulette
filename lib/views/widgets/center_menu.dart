@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_roulette/commands/clear_all_highlighted_command.dart';
 import 'package:mtg_roulette/commands/menu/pick_random_player_command.dart';
 import 'package:mtg_roulette/commands/menu/toggle_menu_command.dart';
 import 'package:mtg_roulette/commands/menu/toggle_menu_ready_command.dart';
+import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/menu_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 
 import 'package:provider/provider.dart';
 
@@ -37,6 +39,7 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
 
   void _handleClicked() {
     ToggleMenuReadyCommand().run();
+    ClearAllHighlightedCommand().run();
     _animationController.addStatusListener((status) {
       if(status == AnimationStatus.completed) {
         ToggleMenuReadyCommand().run();
@@ -52,11 +55,11 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     // ugly ?
-    double _top = widget.top ?? sh(context) / 2;
-    double _left = widget.left ?? sw(context) / 2;
+    double _top = widget.top ?? screenHeight(context) / 2;
+    double _left = widget.left ?? screenWidth(context) / 2;
 
-    double w = sw(context) / 8;
-    double h = sw(context) / 8;
+    double w = screenWidth(context) * SizeConstants.centerMenuButtonWidth;
+    double h = screenWidth(context) * SizeConstants.centerMenuButtonWidth;
 
     return Stack(
       children: [

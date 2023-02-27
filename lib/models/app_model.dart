@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/const/path_constants.dart';
 
 class AppModel extends ChangeNotifier {
@@ -18,6 +18,7 @@ class AppModel extends ChangeNotifier {
     ColorConstants.fluoBlue,
     //ColorConstants.fluoOrange,
     ColorConstants.fluoGreen,
+    ColorConstants.greenBlueish,
     //ColorConstants.fluoYellow,
 
     Colors.cyan,
@@ -46,6 +47,7 @@ class AppModel extends ChangeNotifier {
     PathConstants.scourge,
     PathConstants.sun,
     PathConstants.torment,
+
   ];
 
 

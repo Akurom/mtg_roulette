@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/base_command.dart';
 import 'package:mtg_roulette/commands/edit_player_command.dart';
-import 'package:mtg_roulette/const/strings.dart';
+import 'package:mtg_roulette/const/path_constants.dart';
+import 'package:mtg_roulette/const/text_constants.dart';
 import 'package:mtg_roulette/models/app_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 
 class EditPlayerScreen extends StatefulWidget {
   final PlayerModel player;

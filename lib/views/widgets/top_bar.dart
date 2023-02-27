@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/views/screens/edit_player_screen.dart';
+import 'package:mtg_roulette/views/widgets/damage_snack.dart';
 
 class TopBar extends StatelessWidget {
   final PlayerModel player;
@@ -12,9 +14,12 @@ class TopBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        /*Icon(
-          Icons.access_time
-        ),*/
+
+
+        Flexible(child: Icon(
+          Icons.access_time,
+          color: ColorConstants.main,
+        ),),
         InkWell(
           child: FittedBox(
             child: Text(
@@ -30,9 +35,9 @@ class TopBar extends StatelessWidget {
           },
         ),
 
-        /*Icon(
-          Icons.star_border
-        )*/
+        /*Flexible(
+          child: DamageSnack(initialCount: player.lifeCount, counter: player.lifeCounter,),
+        ),*/
       ],
     );
   }

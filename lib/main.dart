@@ -12,7 +12,7 @@ import 'package:mtg_roulette/views/screens/screens.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mtg_roulette/commands/base_command.dart' as Commands;
-import 'package:mtg_roulette/const/colors.dart';
+import 'package:mtg_roulette/const/color_constants.dart';
 import 'tools/tools.dart';
 
 
@@ -36,21 +36,22 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (c) => AppModel()),
-        ChangeNotifierProvider<GameModel>(create: (c) => GameModel()),  // todo set in sky section init there and link to basecommand
-        ChangeNotifierProvider<MenuModel>(create: (c) => MenuModel()),  // todo set in sky section init there and link to basecommand
+        ChangeNotifierProvider<GameModel>(create: (c) => GameModel()),
+        ChangeNotifierProvider<MenuModel>(create: (c) => MenuModel()),
       ],
       child: Builder(builder: (context) {
         Commands.init(context);         // todo UNDERSTAND !!!
         return MaterialApp(
           // ----------- theme data
           theme: new ThemeData(       // todo load from AppModel
+            //scaffoldBackgroundColor: ColorConstants.black,
             scaffoldBackgroundColor: ColorConstants.white,
-
-
             textTheme: TextTheme(
-              displayLarge: GoogleFonts.roboto(fontSize: 97.0, color: ColorConstants.main),
+              displayLarge: GoogleFonts.roboto(fontSize: 92.0, color: ColorConstants.main),
               displayMedium: GoogleFonts.roboto(fontSize: 44.0, color: ColorConstants.main),
               displaySmall: GoogleFonts.roboto(fontSize: 24.0, color: ColorConstants.main),
+              labelSmall: GoogleFonts.roboto(color: ColorConstants.main),
+              headlineSmall: GoogleFonts.roboto(color: ColorConstants.main),
             ),
           ),
           // ----------- routes

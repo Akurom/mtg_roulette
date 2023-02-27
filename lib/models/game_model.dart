@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:mtg_roulette/const/strings.dart';
+import 'package:mtg_roulette/const/path_constants.dart';
+import 'package:mtg_roulette/const/text_constants.dart';
 import 'package:mtg_roulette/models/app_model.dart';
+import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'player_model.dart';
 
@@ -42,7 +44,8 @@ class GameModel extends ChangeNotifier {
       _players.add(
           PlayerModel(
               name: TextConstants.defaultPlayerName + '${p + 1}',
-              lifeCount: initialLifeCount,
+              //lifeCount: initialLifeCount,
+              lifeCounter: CounterModel(initial: initialLifeCount),
               color: AppModel().colorPalette[colorIndex],
                   //% AppModel().colorPalette.length]
               watermark: AppModel().watermarks[watermarkIndex]

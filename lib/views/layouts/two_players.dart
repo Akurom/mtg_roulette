@@ -1,78 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/tools/tools.dart';
-import 'package:mtg_roulette/views/widgets/player_widget.dart';
+import 'package:mtg_roulette/views/widgets/player.dart';
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/models/game_model.dart';
 import '../widgets/center_menu.dart';
 
-class TwoPlayers extends StatefulWidget {
+class TwoPlayers extends StatelessWidget {
   const TwoPlayers({Key? key}) : super(key: key);
 
   @override
-  State<TwoPlayers> createState() => _TwoPlayersState();
-}
-
-class _TwoPlayersState extends State<TwoPlayers> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    GameModel gameModel = context.read<GameModel>();
+
     return Scaffold(
       body: Center(
         child: Container(
-          child: Consumer<GameModel>(
-            builder: (context, gameModel, child) {
-              return Stack(
-                children: [
-                  // mid button
+          child: Stack(
+            children: [
+              // mid button
 
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Container(
-                        width: sw(context) / 2,
-                        height: sh(context) / 2,
-                        //color: gameModel.players[0].color,
-                        child: RotatedBox(
-                          quarterTurns: 2,
-                          child: PlayerWidget(
-                            axis: Axis.vertical,
-                            defaultV: gameModel.players[0].lifeCount,
-                            player: gameModel.players[0],
-                            onChanged: (newCount) {
-                              // todo snackbar then update
-                              gameModel.players[0].updateLifeCount(newCount);
-                            },
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: sw(context) / 2,
-                        height: sh(context) / 2,
-                        color: gameModel.players[1].color,
-                        child: RotatedBox(
-                          quarterTurns: 0,
-                          child: PlayerWidget(
-                            axis: Axis.vertical,
-                            defaultV: gameModel.players[1].lifeCount,
-                            player: gameModel.players[1],
-                            onChanged: (newCount) {
-                              gameModel.players[1].updateLifeCount(newCount);
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    width: screenWidth(context) / 2,
+                    height: screenHeight(context) / 2,
+                    child: Player(
+                      axis: Axis.vertical,
+                      alignment: Alignment.topCenter,
+                      player: gameModel.players[0],
+                    ),
                   ),
-                  CenterButton(),
+                  Container(
+                    width: screenWidth(context) / 2,
+                    height: screenHeight(context) / 2,
+                    child: Player(
+                      axis: Axis.vertical,
+                      alignment: Alignment.bottomCenter,
+                      player: gameModel.players[1],
+                    ),
+                  ),
                 ],
-              );
-            },
+              ),
+              CenterButton(),
+            ],
           ),
         ),
       ),
