@@ -12,6 +12,7 @@ class PlayerModel extends ChangeNotifier {
   CounterModel lifeCounter;
   Map<String, int> countersMap = {};
   bool isHighlighted = false;
+  bool _showDialer = true;
 
 
   PlayerModel({
@@ -23,16 +24,10 @@ class PlayerModel extends ChangeNotifier {
   });
 
 
-  /*void updateLifeCount(int newCount) {
-    lifeCount = newCount;
-  }*/
-
-
   void editPreferences(String name, Color color, String? watermark) {
     this.name = name; this.color = color; this.watermark = watermark;
     notifyListeners();
   }
-
 
   void addOneCounter(String tag) {
     if (countersMap[tag] == null) {
@@ -43,7 +38,6 @@ class PlayerModel extends ChangeNotifier {
     notifyListeners();
   }
   void removeOneCounter(String tag) {
-
     if (countersMap[tag] != null) {
       countersMap[tag] = countersMap[tag]! - 1;
     }
@@ -64,6 +58,12 @@ class PlayerModel extends ChangeNotifier {
   }
   void setHighlight(bool value) {
     isHighlighted = value;
+    notifyListeners();
+  }
+
+  bool get showDialer => _showDialer;
+  void toggleDialer() {
+    _showDialer = !_showDialer;
     notifyListeners();
   }
 }

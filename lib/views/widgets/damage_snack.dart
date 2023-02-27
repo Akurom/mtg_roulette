@@ -3,13 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/const/size_constants.dart';
+import 'package:mtg_roulette/const/time_constants.dart';
 import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
 import 'package:provider/provider.dart';
-
-const WIDGET_DECAY_MS = 2000;
 
 class DamageSnack extends StatefulWidget {
   final int initialCount;
@@ -32,9 +31,6 @@ class _DamageSnackState extends State<DamageSnack> {
     _initialCount = widget.initialCount;
     _visible = false;
     _timer = Timer(Duration(milliseconds: 0), () {});
-    /*_timer = Timer(Duration(milliseconds: WIDGET_DECAY_MS), () {
-      _visible = false;
-    });*/
     super.initState();
   }
 
@@ -47,13 +43,12 @@ class _DamageSnackState extends State<DamageSnack> {
   void _refresh(int count) {
     _visible = true;
     _timer.cancel();
-    _timer = Timer(Duration(milliseconds: WIDGET_DECAY_MS), ()
+    _timer = Timer(Duration(milliseconds: TimeConstants.snackDecayMs), ()
     {
       setState(() {
         _visible = false;
       });
     });
-      //dispose();
   }
 
 
@@ -67,28 +62,26 @@ class _DamageSnackState extends State<DamageSnack> {
   Widget build(BuildContext context) {
     print('snack built');
 
-
-
     double width = screenWidth(context) * SizeConstants.damageSnackWidth;
     double height = width;
 
     return ChangeNotifierProvider<CounterModel>.value(
       value: widget.counter,
       child: Consumer<CounterModel>(builder: (context, counter, child) {
-        _refresh(counter.count);
+        if (counter.count != _initialCount) _refresh(counter.count);
 
         return SizedBox(
             width: 0, height: 0,
             child: OverflowBox(
                 alignment: Alignment.topCenter,
-                /*minHeight: 20,
-                minWidth: 20,*/
                 maxHeight: screenWidth(context) * SizeConstants.damageSnackWidth,
                 maxWidth: screenWidth(context) * SizeConstants.damageSnackWidth,
                 child: AnimatedOpacity(
-
+                  onEnd: () {
+                    _initialCount = counter.count;
+                  },
                   opacity: _visible ? 1.0 : 0.0,
-                  duration: const Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds: TimeConstants.fadeOutSnackMs),
                   // The green box must be a child of the AnimatedOpacity widget.
                   child: Stack(
                     children: [

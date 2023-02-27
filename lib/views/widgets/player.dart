@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_roulette/commands/toggle_dialer_command.dart';
 import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/counter_model.dart';
@@ -10,6 +11,7 @@ import 'package:mtg_roulette/views/widgets/commander_damage_bar.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
 import 'package:mtg_roulette/views/widgets/damage_snack.dart';
+import 'package:mtg_roulette/views/widgets/dialer/dialer.dart';
 import 'package:mtg_roulette/views/widgets/markers_bar.dart';
 
 import 'package:mtg_roulette/views/widgets/top_bar.dart';
@@ -101,8 +103,10 @@ class _PlayerState extends State<Player> {
                         // --- header
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Flexible(child: SizedBox.shrink(),),
-                         /* Flexible(
+                          Flexible(
+                            child: SizedBox.shrink(),
+                          ),
+                          /* Flexible(
                             child: Icon(
                               Icons.access_time,
                               color: ColorConstants.main,
@@ -122,8 +126,10 @@ class _PlayerState extends State<Player> {
                               );
                             },
                           ),
-                          Flexible(child: SizedBox.shrink(),),
-                        ],//.setOrderFromAlignment(widget.alignment),
+                          Flexible(
+                            child: SizedBox.shrink(),
+                          ),
+                        ], //.setOrderFromAlignment(widget.alignment),
                       ),
                       // --- header
 
@@ -151,6 +157,9 @@ class _PlayerState extends State<Player> {
                                     Counter(
                                       model: player.lifeCounter,
                                       paces: [10, 5, 1],
+                                      callback: () {
+                                        ToggleDialerCommand().run(player);
+                                      }
                                     ),
                                     MarkersBar(player: player, axis: widget.axis),
                                   ],
@@ -179,6 +188,13 @@ class _PlayerState extends State<Player> {
                     decoration: BoxDecoration(border: Border.all(width: 7.0, color: ColorConstants.main)),
                   ),
                 ],
+
+                if (player.showDialer) ...[
+                  Container(
+                    color: player.color,
+                    child: Dialer(player: player),
+                  ),
+                ]
               ],
             ),
           );
