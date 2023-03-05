@@ -13,6 +13,7 @@ class ThreePlayers extends StatelessWidget {
     GameModel gameModel = context.read<GameModel>();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
           child: Stack(

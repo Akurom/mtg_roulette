@@ -25,6 +25,7 @@ class _FourPlayersState extends State<FourPlayers> {
     gameModel = context.read<GameModel>();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Container(
           child: /*Consumer<GameModel>(
