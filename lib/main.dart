@@ -59,6 +59,7 @@ class MyApp extends StatelessWidget {
           initialRoute: '/splash',
           routes: {
             '/splash': (context) => const SplashScreen(),
+            '/creation': (context) => CreationScreen(),
             '/two': (context) => const TwoPlayers(),
             '/three': (context) => const ThreePlayers(),
             '/four': (context) => const FourPlayers(),
@@ -103,7 +104,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: _appLoaded
-            ? CreationScreen(color: AppModel().colorPalette[randInt(0, AppModel().colorPalette.length)])
+            ? CreationScreen()
             : CircularProgressIndicator(), // todo show splash screen here instead of progress indicator
       ),
     );

@@ -73,7 +73,11 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
           openLeft: _left / 2 - w / 2,
           openTop: _top - w / 2,
           icon: Icon(Icons.restart_alt),
-          callback: () {},
+          callback: () {
+            Navigator.pop(context);
+            ToggleMenuCommand().run();
+            //Navigator.pushNamed(context, '/creation');
+          },
         ),
         AnimatedMenuElement(
           w: w,

@@ -8,20 +8,17 @@ import 'package:mtg_roulette/tools/tools.dart';
 import 'player_model.dart';
 
 class GameModel extends ChangeNotifier {
-  late List<PlayerModel> _players = []; // not final ? when a player dies must remove it ?
-  late final int _nbPlayers;
-  late final int _initialLifeCount;
+  late List<PlayerModel> _players;
 
   GameModel();
 
   void init(int nbPlayers, int initialLifeCount) {
-    _nbPlayers = nbPlayers;
-    _initialLifeCount = nbPlayers;
-    //int base = randInt(0, AppModel().colorPalette.length);  // used for default color picks
     List<int> usedColors = [];
     List<int> usedWatermarks = [];
     int colorIndex;
     int watermarkIndex;
+
+    _players = [];
 
     for (int p = 0; p < nbPlayers; p++) {
       do {

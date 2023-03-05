@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mtg_roulette/const/color_constants.dart';
 import 'package:mtg_roulette/const/path_constants.dart';
 import 'package:mtg_roulette/const/text_constants.dart';
+import 'package:mtg_roulette/models/app_model.dart';
 import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
@@ -22,9 +23,9 @@ class PlayerCounterModel extends CounterModel {
 }
 
 class CreationScreen extends StatelessWidget {
-  final Color color;
+  final Color color = AppModel().colorPalette[randInt(0, AppModel().colorPalette.length)];
 
-  CreationScreen({required this.color});
+  CreationScreen();
 
   LifeCounterModel _lifeCounter = LifeCounterModel(initial: DEFAULT_LIFE_COUNT);
   PlayerCounterModel _playersCounter = PlayerCounterModel(initial: DEFAULT_NBPLAYERS);
