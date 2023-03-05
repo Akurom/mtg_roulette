@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 typedef void VoidCallback();
@@ -10,6 +12,7 @@ class CounterDigits extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('CounterDigits built.');
     return InkWell(
       child: FittedBox(
         fit: BoxFit.fitWidth,

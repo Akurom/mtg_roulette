@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
       child: Builder(builder: (context) {
         Commands.init(context);         // todo UNDERSTAND !!!
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           // ----------- theme data
           theme: new ThemeData(       // todo load from AppModel
             //scaffoldBackgroundColor: ColorConstants.black,

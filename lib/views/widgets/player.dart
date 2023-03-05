@@ -6,7 +6,6 @@ import 'package:mtg_roulette/models/counter_model.dart';
 import 'package:mtg_roulette/models/player_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';
 import 'package:mtg_roulette/views/widgets/bot_bar.dart';
-import 'package:mtg_roulette/views/widgets/clock.dart';
 import 'package:mtg_roulette/views/widgets/commander_damage_bar.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
 import 'package:mtg_roulette/views/widgets/counter/counter.dart';
@@ -18,6 +17,7 @@ import 'package:mtg_roulette/views/widgets/top_bar.dart';
 
 import 'package:provider/provider.dart';
 import 'package:mtg_roulette/views/screens/edit_player_screen.dart';
+import 'dart:developer';
 
 typedef void IntCallback(int id);
 
@@ -30,7 +30,7 @@ extension ReverseRowX on List<Widget> {
   }
 }
 
-class Player extends StatefulWidget {
+class Player extends StatelessWidget {
   final PlayerModel player;
   final Axis axis;
   final Alignment alignment;
@@ -42,31 +42,20 @@ class Player extends StatefulWidget {
     required this.alignment,
   }) : super(key: key);
 
-  @override
-  State<Player> createState() => _PlayerState();
-}
 
-class _PlayerState extends State<Player> {
-  bool displaySnack = false;
-
-  @override
-  void initState() {
-    //
-    super.initState();
-  }
 
   int _getOrientation() {
-    if (widget.alignment == Alignment.topCenter) {
+    if (alignment == Alignment.topCenter) {
       return 2;
-    } else if (widget.alignment == Alignment.bottomCenter) {
+    } else if (alignment == Alignment.bottomCenter) {
       return 0;
-    } else if (widget.alignment == Alignment.topLeft) {
+    } else if (alignment == Alignment.topLeft) {
       return 1;
-    } else if (widget.alignment == Alignment.topRight) {
+    } else if (alignment == Alignment.topRight) {
       return -1;
-    } else if (widget.alignment == Alignment.bottomRight) {
+    } else if (alignment == Alignment.bottomRight) {
       return -1;
-    } else if (widget.alignment == Alignment.bottomLeft) {
+    } else if (alignment == Alignment.bottomLeft) {
       return 1;
     }
     return 0;
@@ -74,8 +63,9 @@ class _PlayerState extends State<Player> {
 
   @override
   Widget build(BuildContext context) {
+    log('Player built.');
     return ChangeNotifierProvider.value(
-      value: widget.player,
+      value: player,
       child: Consumer<PlayerModel>(
         builder: (context, player, child) {
           return RotatedBox(
@@ -136,7 +126,7 @@ class _PlayerState extends State<Player> {
                       // --- damage mode indicator
                       DamageSnack(
                         initialCount: player.lifeCounter.count,
-                        alignment: widget.alignment,
+                        alignment: alignment,
                         counter: player.lifeCounter,
                       ),
                       // --- damage mode indicator
@@ -161,14 +151,14 @@ class _PlayerState extends State<Player> {
                                         ToggleDialerCommand().run(player);
                                       }
                                     ),
-                                    MarkersBar(player: player, axis: widget.axis),
+                                    MarkersBar(player: player, axis: axis),
                                   ],
                                 ),
                               ),
                               CommanderDamageBar(
                                 currentPlayer: player,
                               ),
-                            ].setOrderFromAlignment(widget.alignment),
+                            ].setOrderFromAlignment(alignment),
                           ),
                         ),
                       ),

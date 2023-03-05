@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/models/dialer_model.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +7,7 @@ import 'package:provider/provider.dart';
 class DialerDigits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    log('DialerDigits built.');
     return Consumer<DialerModel>(builder: (context, dialer, child) {
       return Container(
         decoration: BoxDecoration(border: Border.all(width:3, color: Colors.white)),

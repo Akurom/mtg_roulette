@@ -1,4 +1,5 @@
-import 'dart:math';
+import 'dart:math' as math;
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -21,6 +22,7 @@ class CounterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('CounterButton built.');
     late Timer _timer;
 
     int modified = 0;
@@ -30,7 +32,7 @@ class CounterButton extends StatelessWidget {
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         child: Opacity(
-          opacity: 0.7,
+          opacity: 0.5,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: screenWidth(context) * SizeConstants.smallPaddingRatio),
             child: Row(
@@ -52,7 +54,7 @@ class CounterButton extends StatelessWidget {
         onTapDown: (TapDownDetails details) {
           _timer = Timer.periodic(Duration(milliseconds: 100), (t) {
             modified++;
-            factor = exp(modified / 5).toInt();
+            factor = math.exp(modified / 5).toInt();
 
             _handleTap(pace * factor);
           });

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/dialer/dialer_clear_command.dart';
 import 'package:mtg_roulette/commands/dialer/dialer_remove_digit_command.dart';
@@ -116,6 +118,7 @@ class DButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('Dialer built.');
     return InkWell(
         child: Container(
           width: SizeConstants.centerMenuButtonWidth * screenWidth(context),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mtg_roulette/commands/counter/modify_counter_command.dart';
 import 'package:mtg_roulette/const/size_constants.dart';
@@ -32,6 +34,7 @@ class Counter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('Counter built.');
     return Container(
       height: screenWidth(context) * 3 / 10,
       child: Row(
