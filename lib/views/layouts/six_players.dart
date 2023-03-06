@@ -22,18 +22,19 @@ class SixPlayers extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Flexible(
+                  /*Flexible(
                     flex: 2,
                     child: Container(
-                      /*width: getscreenWidth(context) / 2,
-                        height: getScreenHeight(context) / 2,*/
+                      *//*width: getscreenWidth(context) / 2,
+                        height: getScreenHeight(context) / 2,*//*
                       child: Player(
+
                         axis: Axis.vertical,
                         alignment: Alignment.topCenter,
                         player: gameModel.players[0],
                       ),
                     ),
-                  ),
+                  ),*/
                   Row(
                     //mainAxisAlignment: ,
                     children: [
@@ -41,8 +42,9 @@ class SixPlayers extends StatelessWidget {
                         flex: 2,
                         child: Container(
                           width: screenWidth(context) / 2,
-                          height: screenHeight(context) * 3 / 10,
+                          height: screenHeight(context) * 3 / 9,
                           child: Player(
+                            tiny: true,
                             axis: Axis.horizontal,
                             alignment: Alignment.topLeft,
                             player: gameModel.players[5],
@@ -53,8 +55,41 @@ class SixPlayers extends StatelessWidget {
                         flex: 2,
                         child: Container(
                           width: screenWidth(context) / 2,
-                          height: screenHeight(context) * 3 / 10,
+                          height: screenHeight(context) * 3 / 9,
                           child: Player(
+                            tiny: true,
+                            axis: Axis.horizontal,
+                            alignment: Alignment.topRight,
+                            player: gameModel.players[0],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Row(
+                    //mainAxisAlignment: ,
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: Container(
+                          width: screenWidth(context) / 2,
+                          height: screenHeight(context) * 3 / 9,
+                          child: Player(
+                            tiny: true,
+                            axis: Axis.horizontal,
+                            alignment: Alignment.topLeft,
+                            player: gameModel.players[4],
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 2,
+                        child: Container(
+                          width: screenWidth(context) / 2,
+                          height: screenHeight(context) * 3 / 9,
+                          child: Player(
+                            tiny: true,
                             axis: Axis.horizontal,
                             alignment: Alignment.topRight,
                             player: gameModel.players[1],
@@ -69,11 +104,12 @@ class SixPlayers extends StatelessWidget {
                         flex: 2,
                         child: Container(
                           width: screenWidth(context) / 2,
-                          height: screenHeight(context) * 3 / 10,
+                          height: screenHeight(context) * 3 / 9,
                           child: Player(
+                            tiny: true,
                             axis: Axis.horizontal,
                             alignment: Alignment.bottomLeft,
-                            player: gameModel.players[4],
+                            player: gameModel.players[3],
                           ),
                         ),
                       ),
@@ -81,9 +117,10 @@ class SixPlayers extends StatelessWidget {
                         flex: 2,
                         child: Container(
                           width: screenWidth(context) / 2,
-                          height: screenHeight(context) * 3 / 10,
+                          height: screenHeight(context) * 3 / 9,
                           color: gameModel.players[2].color,
                           child: Player(
+                            tiny: true,
                             axis: Axis.horizontal,
                             alignment: Alignment.bottomRight,
                             player: gameModel.players[2],
@@ -92,22 +129,10 @@ class SixPlayers extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Flexible(
-                    flex: 2,
-                    child: Container(
-                      /*width: getscreenWidth(context) / 2,
-                        height: getScreenHeight(context) / 2,*/
 
-                      child: Player(
-                        axis: Axis.vertical,
-                        alignment: Alignment.bottomCenter,
-                        player: gameModel.players[3],
-                      ),
-                    ),
-                  ),
                 ],
               ),
-              CenterButton(),
+              CenterButton(top: screenHeight(context) * 2 / 3),
             ],
           ),
         ),

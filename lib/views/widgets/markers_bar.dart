@@ -12,8 +12,9 @@ import 'package:mtg_roulette/const/size_constants.dart';
 class MarkersBar extends StatefulWidget {
   final PlayerModel player;
   final Axis axis;
+  final bool tiny;
 
-  MarkersBar({Key? key, required this.player, required this.axis}) : super(key: key);
+  MarkersBar({Key? key, required this.player, required this.axis, this.tiny = false}) : super(key: key);
 
   @override
   State<MarkersBar> createState() => _MarkersBarState();
@@ -22,13 +23,21 @@ class MarkersBar extends StatefulWidget {
 class _MarkersBarState extends State<MarkersBar> {
   @override
   Widget build(BuildContext context) {
+
+    double margin;
+    if (widget.tiny) {
+      margin = screenWidth(context) / 33 * 0.75;
+    } else {
+      margin = screenWidth(context) / 33;
+    }
+
     return ChangeNotifierProvider.value(
         value: widget.player,
         child: Consumer<PlayerModel>(
           builder: (context, player, child) {
             return Center(
               child: Container(
-                margin: EdgeInsets.only(bottom: screenWidth(context) / 33),
+                margin: EdgeInsets.only(bottom: margin),
                 decoration: BoxDecoration(
                     //border: Border.all()
                     ),
@@ -36,24 +45,28 @@ class _MarkersBarState extends State<MarkersBar> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CounterItem(
+                      tiny: widget.tiny,
                       axis: widget.axis,
                       tag: "TIX",
                       iconPath: PathConstants.ticketCounterIconBlack,
                       player: player,
                     ),
                     CounterItem(
+                      tiny: widget.tiny,
                       axis: widget.axis,
                       tag: "EXP",
                       iconPath: PathConstants.experienceCounterIconBlack,
                       player: player,
                     ),
                     CounterItem(
+                      tiny: widget.tiny,
                       axis: widget.axis,
                       tag: "PSN",
                       iconPath: PathConstants.poisonCounterIconBlack,
                       player: player,
                     ),
                     CounterItem(
+                      tiny: widget.tiny,
                       axis: widget.axis,
                       tag: "NRG",
                       iconPath: PathConstants.energyCounterIconBlack,
@@ -70,15 +83,18 @@ class _MarkersBarState extends State<MarkersBar> {
 
 // ================= COUUTER ITEM ==================
 class CounterItem extends StatelessWidget {
-  Axis axis;
+  final bool tiny;
+  final Axis axis;
   final String tag;
   final String iconPath;
-  int? count;
-  bool isInMenu;
-  PlayerModel player;
+  final int? count;
+  final bool isInMenu;
+  final PlayerModel player;
 
   CounterItem(
-      {required this.axis,
+      {
+        this.tiny = false,
+      required this.axis,
       required this.tag,
       required this.iconPath,
       required this.player,
@@ -97,17 +113,22 @@ class CounterItem extends StatelessWidget {
   }
 
   List<Widget> _children(context) {
+
+    double margin;
+    if (tiny) {
+      margin = screenWidth(context) / 40 * 0.25;
+    } else {
+      margin = screenWidth(context) / 40;
+    }
+
     return [
       Container(
-          margin: EdgeInsets.symmetric(horizontal: screenWidth(context) / 40),
-          // change if isSmall todo
-          width: screenWidth(context) * SizeConstants.markerWidth,
-          height: screenWidth(context) * SizeConstants.markerWidth,
+          margin: EdgeInsets.symmetric(horizontal: margin),
+          width: screenWidth(context) * SizeConstants.markerWidth * (tiny ? 0.9: 1),
+          height: screenWidth(context) * SizeConstants.markerWidth * (tiny ? 0.9: 1),
           decoration: BoxDecoration(
-            //color: (player.countersMap[tag] != null) ? ColorConstants.black : ColorConstants.white,
-            color: (player.countersMap[tag] != null) ? ColorConstants.black : Colors.white.withOpacity(0.6),
+            color: (player.countersMap[tag] != null) ? ColorConstants.black : Colors.white.withOpacity(0.7),
             shape: BoxShape.circle,
-            //border: Border.all(/*color: */),
             image: DecorationImage(
               image: AssetImage(iconPath),
               fit: BoxFit.fitHeight,

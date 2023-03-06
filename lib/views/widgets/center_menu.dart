@@ -3,7 +3,6 @@ import 'package:mtg_roulette/commands/menu/set_menu_ready_command.dart';
 import 'package:mtg_roulette/commands/player/clear_all_highlighted_command.dart';
 import 'package:mtg_roulette/commands/menu/pick_random_player_command.dart';
 import 'package:mtg_roulette/commands/menu/toggle_menu_command.dart';
-import 'package:mtg_roulette/commands/menu/toggle_menu_ready_command.dart';
 import 'package:mtg_roulette/const/size_constants.dart';
 import 'package:mtg_roulette/models/menu_model.dart';
 import 'package:mtg_roulette/tools/tools.dart';

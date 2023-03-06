@@ -12,9 +12,10 @@ typedef void IntCallback(int c);
 
 class CounterButton extends StatelessWidget {
   final int pace;
+  final bool tiny;
   final IntCallback onClicked;
 
-  const CounterButton({Key? key, this.pace = 1, required this.onClicked}) : super(key: key);
+  const CounterButton({Key? key, this.pace = 1, required this.onClicked, this.tiny = false}) : super(key: key);
 
   void _handleTap(pace) {
     onClicked(pace);
@@ -23,6 +24,18 @@ class CounterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     log('CounterButton built.');
+
+    TextStyle textStyle;
+    double padding;
+
+    if (tiny) {
+      textStyle = Theme.of(context).textTheme.bodyLarge!;
+      padding = SizeConstants.tinySmallPaddingRatio;
+    } else {
+      textStyle = Theme.of(context).textTheme.headlineMedium!;
+      padding = SizeConstants.smallPaddingRatio;
+    }
+
     late Timer _timer;
 
     int modified = 0;
@@ -34,16 +47,18 @@ class CounterButton extends StatelessWidget {
         child: Opacity(
           opacity: 0.5,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: screenWidth(context) * SizeConstants.smallPaddingRatio),
+            padding: (pace < 0)
+                ? EdgeInsets.only(left: screenWidth(context) * padding)
+                : EdgeInsets.only(right: screenWidth(context) * padding),
             child: Row(
               mainAxisAlignment: pace > 0 ? MainAxisAlignment.end : MainAxisAlignment.start,
               children: [
                 Icon(
                   (pace > 0) ? Icons.add : Icons.remove,
                   color: ColorConstants.main,
-                  size: Theme.of(context).textTheme.headlineSmall!.fontSize,
+                  size: textStyle.fontSize, //Theme.of(context).textTheme.displaySmall!.fontSize,
                 ),
-                Text(pace.abs().toString(), style: Theme.of(context).textTheme.headlineSmall),
+                Text(pace.abs().toString(), style: textStyle /*Theme.of(context).textTheme.displaySmall*/),
               ],
             ),
           ),

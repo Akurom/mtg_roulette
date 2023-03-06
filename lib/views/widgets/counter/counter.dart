@@ -16,9 +16,17 @@ class Counter extends StatelessWidget {
   final CounterModel _counterModel;
   final int? lowLimit, highLimit;
   final List<int> paces;
+  final bool tiny;
   final voidCallback? callback;
 
-  const Counter({Key? key, required CounterModel model, this.lowLimit, this.highLimit, this.paces = const [1], this.callback})
+  const Counter(
+      {Key? key,
+      required CounterModel model,
+      this.lowLimit,
+      this.highLimit,
+      this.paces = const [1],
+      this.tiny = false,
+      this.callback})
       : _counterModel = model,
         super(key: key);
 
@@ -38,39 +46,30 @@ class Counter extends StatelessWidget {
     return Container(
       height: screenWidth(context) * 3 / 10,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            child: Column(
-              children: [
-                for (int pace in paces) CounterButton(pace: -pace, onClicked: _onClicked),
-              ],
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (int pace in paces) CounterButton(pace: -pace, tiny: tiny, onClicked: _onClicked),
+            ],
+          ),
+          ChangeNotifierProvider<CounterModel>.value(
+            value: _counterModel,
+            child: Consumer<CounterModel>(
+              builder: (context, counter, child) {
+                return CounterDigits(
+                  count: counter.count,
+                  callback: callback,
+                );
+              },
             ),
           ),
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: screenWidth(context) -
-                  screenWidth(context) *
-                      (2 * SizeConstants.commanderTagWidth.hypotenuse +
-                         6 * SizeConstants.smallPaddingRatio +
-                          2 * SizeConstants.minCounterButtonRatio),
-              //maxHeight: screenWidth(context) * 3 / 10
-            ),
-            child: ChangeNotifierProvider<CounterModel>.value(
-              value: _counterModel,
-              child: Consumer<CounterModel>(
-                builder: (context, counter, child) {
-                  return CounterDigits(count: counter.count, callback: callback,);
-                },
-              ),
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                for (int pace in paces) CounterButton(pace: pace, onClicked: _onClicked),
-              ],
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              for (int pace in paces) CounterButton(pace: pace, tiny: tiny, onClicked: _onClicked),
+            ],
           ),
         ],
       ),

@@ -13,22 +13,23 @@ import 'package:provider/provider.dart';
 
 class CommanderDamageBar extends StatelessWidget {
   final PlayerModel currentPlayer;
+  final bool tiny;
 
-  const CommanderDamageBar({required this.currentPlayer});
+  const CommanderDamageBar({required this.currentPlayer, this.tiny = false});
 
   @override
   Widget build(BuildContext context) {
-    //<PlayerModel> players = context.select<GameModel, List<PlayerModel>>((game) => game.players);
 
     return Container(
       padding: EdgeInsets.only(bottom: screenWidth(context) * SizeConstants.standardPaddingRatio),
-      width: (screenWidth(context) * SizeConstants.commanderTagWidth).hypotenuse,
+      width: (screenWidth(context) * SizeConstants.commanderTagWidth).hypotenuse * (tiny ? 0.90 : 1),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           for (CommanderDamageModel cmdD in currentPlayer.commanderDamages)
             CommanderDamageTag(
               player: currentPlayer,
+              tiny: tiny,
               commanderDamageModel: cmdD,
               counterModel: currentPlayer.lifeCounter,
             ),
@@ -43,8 +44,9 @@ class CommanderDamageTag extends StatefulWidget {
   final PlayerModel player;
   final CommanderDamageModel commanderDamageModel;
   final CounterModel counterModel;
+  final bool tiny;
 
-  const CommanderDamageTag({required this.player, required this.commanderDamageModel, required this.counterModel});
+  const CommanderDamageTag({required this.player, this.tiny = false, required this.commanderDamageModel, required this.counterModel});
 
   State<CommanderDamageTag> createState() => _CommanderDamageTagState();
 }
@@ -78,8 +80,8 @@ class _CommanderDamageTagState extends State<CommanderDamageTag> {
         return RotationTransition(
           turns: AlwaysStoppedAnimation(45 / 360),
           child: Container(
-            width: screenWidth(context) * SizeConstants.commanderTagWidth,
-            height: screenWidth(context) * SizeConstants.commanderTagWidth,
+            width: screenWidth(context) * SizeConstants.commanderTagWidth * (widget.tiny ? 0.90 : 1),
+            height: screenWidth(context) * SizeConstants.commanderTagWidth * (widget.tiny ? 0.90 : 1),
             decoration: BoxDecoration(
               border: Border.all(color: ColorConstants.main, width: 3.0),
               color: widget.commanderDamageModel.fromPlayer.color,

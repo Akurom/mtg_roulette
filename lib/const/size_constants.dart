@@ -7,6 +7,7 @@ class SizeConstants {
     // --- Padding
   static const double standardPaddingRatio = 1/26;
   static const double smallPaddingRatio = 1/52;
+  static const double tinySmallPaddingRatio = 1/52 * 0.75;
 
   // --- Counter
   static const double minCounterButtonRatio = 1/8;

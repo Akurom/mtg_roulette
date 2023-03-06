@@ -57,7 +57,6 @@ class CreationScreen extends StatelessWidget {
                     model: _playersCounter,
                     lowLimit: 2,
                     highLimit: 6,
-                    //onChanged: _updateNbPlayers,
                   ),
 
                   // starting life total

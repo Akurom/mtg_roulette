@@ -10,7 +10,6 @@ class FivePlayers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     GameModel gameModel = context.read<GameModel>();
 
     return Scaffold(
@@ -27,20 +26,30 @@ class FivePlayers extends StatelessWidget {
                     children: [
                       Container(
                         width: screenWidth(context) / 2,
-                        height: screenHeight(context) * 3 / 8,
-                        child: Player(
-                          axis: Axis.horizontal,
-                          alignment: Alignment.topLeft,
-                          player: gameModel.players[0],
+                        height: screenHeight(context) * 11/32,
+                        child: LayoutBuilder(
+                          builder: (BuildContext ctx, BoxConstraints constraints) {
+                            return Player(
+                              tiny: true,
+                              axis: Axis.horizontal,
+                              alignment: Alignment.topLeft,
+                              player: gameModel.players[0],
+                            );
+                          },
                         ),
                       ),
                       Container(
                         width: screenWidth(context) / 2,
-                        height: screenHeight(context) * 3 / 8,
-                        child: Player(
-                          axis: Axis.horizontal,
-                          alignment: Alignment.topRight,
-                          player: gameModel.players[1],
+                        height: screenHeight(context) * 11/32,
+                        child: LayoutBuilder(
+                          builder: (BuildContext ctx, BoxConstraints constraints) {
+                            return Player(
+                              tiny: true,
+                              axis: Axis.horizontal,
+                              alignment: Alignment.topRight,
+                              player: gameModel.players[1],
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -49,39 +58,55 @@ class FivePlayers extends StatelessWidget {
                     children: [
                       Container(
                         width: screenWidth(context) / 2,
-                        height: screenHeight(context) * 3 / 8,
-                        child: Player(
-                          axis: Axis.horizontal,
-                          alignment: Alignment.bottomLeft,
-                          player: gameModel.players[4],
+                        height: screenHeight(context) * 11/32,
+                        child: LayoutBuilder(
+                          builder: (BuildContext ctx, BoxConstraints constraints) {
+                            return Player(
+                              tiny: true,
+                              axis: Axis.horizontal,
+                              alignment: Alignment.bottomLeft,
+                              player: gameModel.players[4],
+                            );
+                          },
                         ),
                       ),
                       Container(
                         width: screenWidth(context) / 2,
-                        height: screenHeight(context) * 3 / 8,
-                        child: Player(
-                          axis: Axis.horizontal,
-                          alignment: Alignment.bottomRight,
-                          player: gameModel.players[2],
+                        height: screenHeight(context) * 11/32,
+                        child: LayoutBuilder(
+                          builder: (BuildContext ctx, BoxConstraints constraints) {
+                            return Player(
+                              tiny: true,
+                              axis: Axis.horizontal,
+                              alignment: Alignment.bottomRight,
+                              player: gameModel.players[2],
+                            );
+                          },
                         ),
                       ),
                     ],
                   ),
                   Expanded(
                     child: Container(
+                      //height: screenHeight(context) * 3 / 10,
                       /*width: getscreenWidth(context) / 2,
                         height: getScreenHeight(context) / 2,*/
 
-                      child: Player(
-                        axis: Axis.vertical,
-                        alignment: Alignment.bottomCenter,
-                        player: gameModel.players[3],
+                      child: LayoutBuilder(
+                        builder: (BuildContext ctx, BoxConstraints constraints) {
+                          return Player(
+                            axis: Axis.vertical,
+
+                            alignment: Alignment.bottomCenter,
+                            player: gameModel.players[3],
+                          );
+                        },
                       ),
                     ),
                   ),
                 ],
               ),
-              CenterButton(top: screenHeight(context) * 3 / 8),
+              CenterButton(top: screenHeight(context) * 11/32),
             ],
           ),
         ),

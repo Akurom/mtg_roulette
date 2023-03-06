@@ -34,12 +34,14 @@ class Player extends StatelessWidget {
   final PlayerModel player;
   final Axis axis;
   final Alignment alignment;
+  final bool tiny;
 
   const Player({
     Key? key,
     required this.player,
     required this.axis,
     required this.alignment,
+    this.tiny = false,
   }) : super(key: key);
 
 
@@ -96,12 +98,7 @@ class Player extends StatelessWidget {
                           Flexible(
                             child: SizedBox.shrink(),
                           ),
-                          /* Flexible(
-                            child: Icon(
-                              Icons.access_time,
-                              color: ColorConstants.main,
-                            ),
-                          ),*/
+
                           InkWell(
                             child: FittedBox(
                               child: Text(
@@ -139,7 +136,7 @@ class Player extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               SizedBox(
-                                width: (screenWidth(context) * SizeConstants.commanderTagWidth).hypotenuse,
+                                width: (screenWidth(context) * SizeConstants.commanderTagWidth).hypotenuse * (tiny ? 0.9 : 1),
                               ),
                               Expanded(
                                 child: Column(
@@ -147,16 +144,18 @@ class Player extends StatelessWidget {
                                     Counter(
                                       model: player.lifeCounter,
                                       paces: [10, 5, 1],
+                                      tiny: tiny,
                                       callback: () {
                                         ToggleDialerCommand().run(player);
                                       }
                                     ),
-                                    MarkersBar(player: player, axis: axis),
+                                    MarkersBar(player: player, tiny: tiny, axis: axis),
                                   ],
                                 ),
                               ),
                               CommanderDamageBar(
                                 currentPlayer: player,
+                                tiny: tiny,
                               ),
                             ].setOrderFromAlignment(alignment),
                           ),

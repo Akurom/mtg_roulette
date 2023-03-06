@@ -13,15 +13,17 @@ class CounterDigits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     log('CounterDigits built.');
-    return InkWell(
-      child: FittedBox(
-        fit: BoxFit.fitWidth,
-        child: Text(
-          count.toString(),
-          style: Theme.of(context).textTheme.displayLarge,
+    return Expanded(
+      child: InkWell(
+        child: FittedBox(
+          fit: BoxFit.fitHeight,
+          child: Text(
+            count.toString(),
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
         ),
+        onLongPress: callback,
       ),
-      onLongPress: callback,
     );
   }
 }
