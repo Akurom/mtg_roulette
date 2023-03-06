@@ -40,6 +40,7 @@ class Dialer extends StatelessWidget {
             ),
 
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               DialerDigits(),
               Row(
@@ -47,7 +48,6 @@ class Dialer extends StatelessWidget {
                 children: [
                   // ----- left
                   Container(
-                    //decoration: BoxDecoration(border: Border.all(color: Colors.white)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

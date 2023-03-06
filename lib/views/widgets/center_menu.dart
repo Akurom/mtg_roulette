@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtg_roulette/commands/menu/set_menu_ready_command.dart';
 import 'package:mtg_roulette/commands/player/clear_all_highlighted_command.dart';
 import 'package:mtg_roulette/commands/menu/pick_random_player_command.dart';
 import 'package:mtg_roulette/commands/menu/toggle_menu_command.dart';
@@ -38,11 +39,10 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
   }
 
   void _handleClicked() {
-    ToggleMenuReadyCommand().run();
-    ClearAllHighlightedCommand().run();
+    SetMenuReadyCommand().run(false);
     _animationController.addStatusListener((status) {
       if(status == AnimationStatus.completed) {
-        ToggleMenuReadyCommand().run();
+        SetMenuReadyCommand().run(true);
       }
     });
     setState(() {
@@ -76,7 +76,6 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
           callback: () {
             Navigator.pop(context);
             ToggleMenuCommand().run();
-            //Navigator.pushNamed(context, '/creation');
           },
         ),
         AnimatedMenuElement(
@@ -110,7 +109,6 @@ class _CenterButtonState extends State<CenterButton> with SingleTickerProviderSt
                 height: h,
                 decoration: BoxDecoration(
                   color: ColorConstants.centerButton,
-                  //border: Border.all()
                 ),
                 child: RotationTransition(
                   turns: AlwaysStoppedAnimation(-45 / 360),
@@ -190,7 +188,6 @@ class _AnimatedMenuElementState extends State<AnimatedMenuElement> {
             child: Container(
               decoration: BoxDecoration(
                 color: widget.color,
-                //border: Border.all()
               ),
               child: InkWell(
 
@@ -203,7 +200,7 @@ class _AnimatedMenuElementState extends State<AnimatedMenuElement> {
                     ),
                   ),
                 ),
-                onTap: (menu.isOpen && menu.isReady) ? () => widget.callback() : () {},
+                onTap: (menu.isOpen && menu.isReady) ? () => widget.callback() : () {print('nope');},
               ),
             ),
           ),

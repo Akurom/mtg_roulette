@@ -87,7 +87,7 @@ class Player extends StatelessWidget {
                 Container(
                   color: player.color.withOpacity(0.9),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         // --- header

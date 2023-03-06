@@ -15,8 +15,6 @@ class MenuModel extends ChangeNotifier {
 
   void togglePicking() {
     _isPicking = ! _isPicking;
-    print(_isPicking);
-    //notifyListeners();
   }
 
   void toggleReady() {
@@ -24,9 +22,13 @@ class MenuModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void set ready(bool ready) {
+    _isReady = ready;
+    notifyListeners();
+  }
+
   void toggleMenu() {
     _isOpen = !_isOpen;
-    // todo pause clocks
     notifyListeners();
   }
 }
